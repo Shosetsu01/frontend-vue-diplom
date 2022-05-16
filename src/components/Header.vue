@@ -1,40 +1,79 @@
 <template>
-  <div>
-    <v-app-bar
-        color=#b94289
-        elevation="2"
-    >
+<v-container>
+  <v-app-bar
+      color=#E47500
+      fixed
+      elevation="5"
+      elevate-on-scroll
+  >
+    <v-toolbar-title>
+      <v-avatar class=""  size="36">
+        <img src="https://via.placeholder.com/35" alt="logo"/>
+      </v-avatar>
+      <router-link to="/" class="header__title">
+        Конкурсы деканата ЦиТХИн
+      </router-link>
+    </v-toolbar-title>
 
-      <v-toolbar-title>Page title</v-toolbar-title>
+    <v-spacer></v-spacer>
 
-      <v-spacer></v-spacer>
-
-      <v-toolbar-items>
-
-        <v-toolbar-items class="" id="nav">
-          <router-link to="/results">
-            Results
+    <v-toolbar-items>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn
+            color=#E47500
+            depressed
+        >
+          <router-link to="/" class="nav__item">
+            Главная
           </router-link>
-        </v-toolbar-items>
-
-        <v-toolbar-items class="" id="nav">
-          <router-link to="/user">
-            User
-          </router-link>
-        </v-toolbar-items>
-
+        </v-btn>
       </v-toolbar-items>
 
-    </v-app-bar>
-  </div>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn
+            color=#E47500
+            depressed
+        >
+          <router-link to="/results" class="nav__item">
+            Результаты
+          </router-link>
+        </v-btn>
+      </v-toolbar-items>
+
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn
+            color=#E47500
+            depressed
+        >
+          <router-link to="/user" class="nav__item">
+            Личный кабинет
+          </router-link>
+        </v-btn>
+      </v-toolbar-items>
+    </v-toolbar-items>
+  </v-app-bar>
+</v-container>
 </template>
 
 <script>
 export default {
-  name: "Header"
+  name: "Header",
 }
 </script>
 
 <style scoped>
+.header__title {
+  margin-left: 12px;
+  color: white;
+  vertical-align: middle;
+}
 
+.nav__item {
+  color: white;
+  font-weight: bold;
+}
+
+.nav__item:hover {
+
+}
 </style>

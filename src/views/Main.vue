@@ -1,17 +1,17 @@
 <template>
   <div class="main">
-    <Header/>
+    <Intro/>
+    <Contests/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Header from "@/components/Header";
-
+import Intro from "@/components/Intro";
+import Contests from "@/components/Contests";
 export default {
-  name: 'Main',
   components: {
-    Header
+    Intro,
+    Contests,
   }
 }
 </script>

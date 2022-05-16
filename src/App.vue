@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Main</router-link> |
-      <router-link to="/user">User</router-link> |
-      <router-link to="/results">Results</router-link>
-    </div>
+    <Header/>
     <router-view/>
   </div>
 </template>
@@ -18,20 +14,18 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #36602c;
-
-    &.router-link-exact-active {
-      color: #b94289;
-    }
-  }
-}
-
 .container {
   max-width: 1200px !important;
+  padding-top: 26px;
+}
+
+a {
+  text-decoration: none;
 }
 </style>
+<script>
+import Header from "@/components/Header";
+export default {
+  components: {Header}
+}
+</script>

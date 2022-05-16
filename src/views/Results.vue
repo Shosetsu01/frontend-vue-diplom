@@ -1,18 +1,11 @@
 <template>
   <div class="results">
-    <h1>This is an results page</h1>
-    <Intro></Intro>
-    <Contests></Contests>
+    <v-container>
+      <h1>This is an results page</h1>
+    </v-container>
   </div>
 </template>
 
 <script>
-import Intro from "@/components/Intro";
-import Contests from "@/components/Contests";
-export default {
-  components: {
-    Intro,
-    Contests,
-  }
-}
+
 </script>
