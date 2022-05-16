@@ -18,7 +18,7 @@
     <v-spacer></v-spacer>
 
     <v-toolbar-items>
-      <v-toolbar-items class="hidden-sm-and-down">
+      <v-toolbar-items v-show="$vuetify.breakpoint.mdAndUp">
         <v-btn
             color=#E47500
             depressed
@@ -29,7 +29,7 @@
         </v-btn>
       </v-toolbar-items>
 
-      <v-toolbar-items class="hidden-sm-and-down">
+      <v-toolbar-items v-show="$vuetify.breakpoint.mdAndUp">
         <v-btn
             color=#E47500
             depressed
@@ -40,7 +40,7 @@
         </v-btn>
       </v-toolbar-items>
 
-      <v-toolbar-items class="hidden-sm-and-down">
+      <v-toolbar-items v-show="$vuetify.breakpoint.mdAndUp">
         <v-btn
             color=#E47500
             depressed
@@ -51,13 +51,70 @@
         </v-btn>
       </v-toolbar-items>
     </v-toolbar-items>
+
+    <v-app-bar-nav-icon
+        color=#ffffff
+        @click="drawer = true"
+        v-show="$vuetify.breakpoint.smAndDown"
+    ></v-app-bar-nav-icon>
   </v-app-bar>
+  <v-navigation-drawer
+      v-model="drawer"
+      right
+      fixed
+  >
+    <v-list
+        nav
+    >
+      <v-list-item-group
+          v-model="group"
+          active-class="deep-orange--text text--accent-4"
+      >
+        <v-list-item>
+          <v-list-item-icon>
+            <v-icon>mdi-home</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>
+            <router-link to="/" class="nav__item-burger">
+              Главная
+            </router-link>
+          </v-list-item-title>
+        </v-list-item>
+
+        <v-list-item>
+          <v-list-item-icon>
+            <v-icon>mdi-medal</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>
+            <router-link to="/results" class="nav__item-burger">
+              Результаты
+            </router-link>
+          </v-list-item-title>
+        </v-list-item>
+
+        <v-list-item>
+          <v-list-item-icon>
+            <v-icon>mdi-account</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>
+            <router-link to="/user" class="nav__item-burger">
+              Личный кабинет
+            </router-link>
+          </v-list-item-title>
+        </v-list-item>
+      </v-list-item-group>
+    </v-list>
+  </v-navigation-drawer>
 </v-container>
 </template>
 
 <script>
 export default {
   name: "Header",
+  data: () => ({
+    drawer: false,
+    group: null,
+  }),
 }
 </script>
 
@@ -73,7 +130,8 @@ export default {
   font-weight: bold;
 }
 
-.nav__item:hover {
-
+.nav__item-burger {
+  color: black;
 }
+
 </style>
