@@ -33,4 +33,8 @@ a {
   text-decoration: none;
   color: white;
 }
+
+.white--text {
+  color: white;
+}
 </style>

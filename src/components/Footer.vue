@@ -5,35 +5,70 @@
       class="footer"
   >
     <v-row
-        class="footer__items"
         no-gutters
     >
-      <div class="footer__item">
-        <v-icon>mdi-home</v-icon>
-        <router-link to="/" class="nav__item-burger">
-          Главная
-        </router-link>
-      </div>
-
-      <div class="footer__item">
-        <v-icon>mdi-medal</v-icon>
-        <router-link to="/results" class="nav__item-burger">
-          Результаты
-        </router-link>
-      </div>
-
-      <div class="footer__item">
-        <v-icon>mdi-account</v-icon>
-        <router-link to="/user" class="nav__item-burger">
-          Личный кабинет
-        </router-link>
-      </div>
+      <v-col
+          class="footer__items"
+          cols="4"
+      >
+        <h2 class="footer__item-title">
+          КОНТАКТЫ
+        </h2>
+        <div class="footer__item white--text">
+          <v-icon>mdi-map-marker</v-icon>
+          Наш адрес:
+        </div>
+        <div class="footer__item white--text">
+          <v-icon>mdi-email-edit</v-icon>
+          Почта для связи: <a href="mailto:"></a>
+        </div>
+        <div class="footer__item white--text">
+          Нашли ошибку? Сообщите нам: <a href="mailto: romamarin16@gmail.com">mail </a>
+        </div>
+      </v-col>
 
       <v-col
-          class="primary lighten-2 py-4 text-center white--text"
+          class="footer__items"
+          cols="3"
+      >
+        <h2 class="footer__item-title">
+          МЕНЮ
+        </h2>
+        <div class="footer__item">
+          <v-icon>mdi-home</v-icon>
+          <router-link to="/" class="nav__item-burger">
+            Главная
+          </router-link>
+        </div>
+        <div class="footer__item">
+          <v-icon>mdi-medal</v-icon>
+          <router-link to="/results" class="nav__item-burger">
+            Результаты
+          </router-link>
+        </div>
+        <div class="footer__item">
+          <v-icon>mdi-account</v-icon>
+          <router-link to="/user" class="nav__item-burger">
+            Личный кабинет
+          </router-link>
+        </div>
+      </v-col>
+
+      <v-col
+          class="footer__items"
+          cols="4"
+      >
+        <h2 class="footer__item-title">
+          СОЦИАЛЬНЫЕ СЕТИ
+        </h2>
+
+
+      </v-col>
+
+      <v-col
           cols="12"
       >
-        2022 — <strong>Конкурсы деканата ЦиТХИн</strong>
+        2022 — <strong>Веб-портал конкурсов учебных достижений обучающихся факультета ЦиТХИн</strong>
 <!--        {{ new Date().getFullYear() }} —-->
       </v-col>
     </v-row>
@@ -52,13 +87,27 @@ export default {
   padding: 20px;
 }
 
-.footer__items {
-  justify-content: center;
+.footer__items:first-child {
+  margin-left: 20px;
+}
+
+.footer__items:last-child {
+  margin-right: 20px;
 }
 
 .footer__item {
-  margin-bottom: 20px;
-  margin-right: 15px;
+  margin-bottom: 5px;
+  margin-left: 15px;
+  text-align: left;
 }
 
+.footer__item:last-child {
+  margin-bottom: 20px;
+}
+
+.footer__item-title {
+  margin-bottom: 5px;
+  text-align: left;
+  text-transform: uppercase;
+}
 </style>
