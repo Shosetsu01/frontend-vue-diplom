@@ -10,8 +10,11 @@
       <v-avatar class=""  size="36">
         <img src="https://via.placeholder.com/35" alt="logo"/>
       </v-avatar>
-      <router-link to="/" class="header__title">
-        Конкурсы деканата ЦиТХИн
+      <router-link to="/" class="header__title" v-show="$vuetify.breakpoint.smAndUp">
+        Конкурсы деканата факультета ЦиТХИн
+      </router-link>
+      <router-link to="/" class="header__title" v-show="$vuetify.breakpoint.xsOnly">
+        Конкурсы ЦиТХИн
       </router-link>
     </v-toolbar-title>
 

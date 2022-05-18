@@ -9,27 +9,28 @@
     >
       <v-col
           class="footer__items"
-          cols="4"
+          cols="12" sm="6" md="4"
       >
         <h2 class="footer__item-title">
           КОНТАКТЫ
         </h2>
-        <div class="footer__item white--text">
-          <v-icon>mdi-map-marker</v-icon>
-          Наш адрес:
-        </div>
+<!--        <div class="footer__item white&#45;&#45;text">-->
+<!--          <v-icon>mdi-map-marker</v-icon>-->
+<!--          Наш адрес:-->
+<!--        </div>-->
         <div class="footer__item white--text">
           <v-icon>mdi-email-edit</v-icon>
-          Почта для связи: <a href="mailto:"></a>
+          Почта для связи: <a href="mailto:">mail</a>
         </div>
         <div class="footer__item white--text">
-          Нашли ошибку? Сообщите нам: <a href="mailto: romamarin16@gmail.com">mail </a>
+          Нашли ошибку? Сообщите нам:<br>
+          <a href="mailto: romamarin16@gmail.com" target="_blank">mail </a>
         </div>
       </v-col>
 
       <v-col
           class="footer__items"
-          cols="3"
+          cols="12" xs="12" sm="5" md="3"
       >
         <h2 class="footer__item-title">
           МЕНЮ
@@ -56,19 +57,37 @@
 
       <v-col
           class="footer__items"
-          cols="4"
+          cols="12" sm="12" md="4"
       >
         <h2 class="footer__item-title">
           СОЦИАЛЬНЫЕ СЕТИ
         </h2>
-
-
+        <div class="footer__item-inline">
+          <div class="footer__item">
+            <a href="https://vk.com/dekanat_itu" target="_blank">
+              <v-img
+                  src="../assets/img/vk.svg"
+                  height="42"
+                  width="42"
+              />
+            </a>
+          </div>
+          <div class="footer__item">
+            <a href="#" target="_blank">
+              <v-img
+                  src="../assets/img/youtube.svg"
+                  height="42"
+                  width="42"
+              />
+            </a>
+          </div>
+        </div>
       </v-col>
 
       <v-col
           cols="12"
       >
-        2022 — <strong>Веб-портал конкурсов учебных достижений обучающихся факультета ЦиТХИн</strong>
+        2022 — <strong> © Веб-портал конкурсов учебных достижений обучающихся факультета ЦиТХИн</strong>
 <!--        {{ new Date().getFullYear() }} —-->
       </v-col>
     </v-row>
@@ -87,18 +106,18 @@ export default {
   padding: 20px;
 }
 
-.footer__items:first-child {
+.footer__items {
   margin-left: 20px;
-}
-
-.footer__items:last-child {
-  margin-right: 20px;
 }
 
 .footer__item {
   margin-bottom: 5px;
   margin-left: 15px;
   text-align: left;
+}
+
+.footer__item:hover {
+  font-weight: bold;
 }
 
 .footer__item:last-child {
@@ -109,5 +128,10 @@ export default {
   margin-bottom: 5px;
   text-align: left;
   text-transform: uppercase;
+}
+
+.footer__item-inline {
+  float: left;
+  display: inline-flex;
 }
 </style>
