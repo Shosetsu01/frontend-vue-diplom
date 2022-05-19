@@ -1,39 +1,55 @@
 <template>
-  <v-card
-      style="border-radius: 30px; border-color: #dc7000;"
-      class="mx-auto"
-      max-width="300"
-  >
-    <v-img
-        class="white--text align-end"
-        height="200px"
-        src="../assets/img/musketers.jpg"
+  <v-card color="basil">
+    <v-card-title class="text-center justify-center py-6">
+      <h1 class="font-weight-bold text-h2 basil--text">
+        Подробнее о конкурсах
+      </h1>
+    </v-card-title>
+
+    <v-tabs
+        v-model="tab"
+        background-color="transparent"
+        color="basil"
+        grow
     >
-    </v-img>
-
-    <v-card-subtitle class="pb-0">
-      Три мушкетера
-    </v-card-subtitle>
-
-    <v-card-actions>
-      <v-btn
-          style="margin: 0 auto"
-          text
+      <v-tab
+          v-for="item in items"
+          :key="item"
       >
-        <v-img
-            max-height="32"
-            max-width="32"
-            src="../assets/img/cursor.png"
-        ></v-img>
-      </v-btn>
-    </v-card-actions>
+        {{ item }}
+      </v-tab>
+    </v-tabs>
+
+    <v-tabs-items v-model="tab">
+      <v-tab-item
+          v-for="item in items"
+          :key="item"
+      >
+        <v-card
+            color="basil"
+            flat
+        >
+          <v-card-text>{{ text }}</v-card-text>
+        </v-card>
+      </v-tab-item>
+    </v-tabs-items>
   </v-card>
 </template>
 
 <script>
 export default {
-  name: "Contests"
+  name: "Contests",
+  data () {
+    return {
+      tab: null,
+      items: [
+        'Appetizers', 'Entrees', 'Deserts', 'Cocktails',
+      ],
+      text: 'Hello1',
+    }
+  },
 }
+
 </script>
 
 <style scoped>
