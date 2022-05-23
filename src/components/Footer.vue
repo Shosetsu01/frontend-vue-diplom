@@ -24,7 +24,7 @@
         </div>
         <div class="footer__item white--text">
           Нашли ошибку? Сообщите нам:<br>
-          <a href="mailto: romamarin16@gmail.com" target="_blank">mail </a>
+          <a href="mailto: romamarin16@gmail.com" target="_blank">mail</a>
         </div>
       </v-col>
 
