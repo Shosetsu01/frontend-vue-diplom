@@ -123,13 +123,5 @@ export default {
   margin: 0 48px;
 }
 
-/*.v-tabs-slider {*/
-/*  background-color: #FA8305;*/
-/*}*/
-
-/*v-card{*/
-/*  border-radius: 30px;*/
-/*}*/
-
 
 </style>
