@@ -129,8 +129,5 @@
  /*  border-radius: 30px;*/
  /*}*/
 
- /*v-slide-group__content {*/
- /*  justify-content: center;*/
- /*}*/
 
 </style>
