@@ -102,6 +102,7 @@ export default {
     left: 50%;
     transform: translate(-50%, 0);
     height: 40px;
+    margin-bottom: 8%;
   }
 }
 

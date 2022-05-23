@@ -1,57 +1,136 @@
 <template>
-  <v-card color="basil">
-    <v-card-title class="text-center justify-center py-6">
-      <h1 class="font-weight-bold text-h2 basil--text">
-        Подробнее о конкурсах
-      </h1>
-    </v-card-title>
-
+  <v-card>
     <v-tabs
-        v-model="tab"
-        background-color="transparent"
-        color="basil"
-        grow
+        color="deep-purple accent-4"
+        right
+        height="300px"
     >
-      <v-tab
-          v-for="item in items"
-          :key="item"
-      >
-        {{ item }}
-      </v-tab>
-    </v-tabs>
-
-    <v-tabs-items v-model="tab">
-      <v-tab-item
-          v-for="item in items"
-          :key="item"
-      >
+      <v-tab>
         <v-card
-            color="basil"
-            flat
+            class="mx-auto"
+            max-width="300"
         >
-          <v-card-text>{{ text }}</v-card-text>
+          <v-img
+              class="white--text align-end"
+              height="200px"
+              src="../assets/img/musketers.jpg"
+          >
+          </v-img>
+
+          <v-card-subtitle class="pb-0">
+            Три Мушкетера
+          </v-card-subtitle>
+
+          <v-card-actions>
+            <v-img
+                max-height="32"
+                max-width="32"
+                src="../assets/img/cursor.png"
+                style="margin: 0 auto"
+            ></v-img>
+          </v-card-actions>
         </v-card>
+      </v-tab>
+      <v-tab>
+        <v-card
+            class="mx-auto"
+            max-width="300"
+        >
+          <v-img
+              class="white--text align-end"
+              height="200px"
+              src="../assets/img/duels.jpg"
+          >
+          </v-img>
+
+          <v-card-subtitle class="pb-0">
+            Дуэли
+          </v-card-subtitle>
+          <v-card-actions>
+            <v-img
+                max-height="32"
+                max-width="32"
+                src="../assets/img/cursor.png"
+                style="margin: 0 auto"
+            ></v-img>
+          </v-card-actions>
+        </v-card>
+      </v-tab>
+      <v-tab>
+        <v-card
+            class="mx-auto"
+            max-width="300"
+        >
+          <v-img
+              class="white--text align-end"
+              height="200px"
+              src="../assets/img/competition.jpg"
+          >
+          </v-img>
+
+          <v-card-subtitle class="pb-0">
+            Конкурс
+          </v-card-subtitle>
+
+          <v-card-actions>
+            <v-img
+                max-height="32"
+                max-width="32"
+                src="../assets/img/cursor.png"
+                style="margin: 0 auto"
+            ></v-img>
+          </v-card-actions>
+        </v-card>
+      </v-tab>
+<!--      <v-tab>-->
+<!--        привет-->
+<!--      </v-tab>-->
+      <v-tab-item
+          v-for="n in 3"
+          :key="n"
+      >
+        <v-container fluid>
+          <v-row>
+            <v-col
+                v-for="i in 6"
+                :key="i"
+                cols="12"
+                md="4"
+            >
+              <v-img
+                  :src="`https://picsum.photos/500/300?image=${i * n * 5 + 10}`"
+                  :lazy-src="`https://picsum.photos/10/6?image=${i * n * 5 + 10}`"
+                  aspect-ratio="1"
+              ></v-img>
+            </v-col>
+          </v-row>
+        </v-container>
       </v-tab-item>
-    </v-tabs-items>
+    </v-tabs>
   </v-card>
 </template>
 
 <script>
-export default {
-  name: "Contests",
-  data () {
-    return {
-      tab: null,
-      items: [
-        'Appetizers', 'Entrees', 'Deserts', 'Cocktails',
-      ],
-      text: 'Hello1',
-    }
-  },
-}
 
 </script>
 
 <style scoped>
+
+ .v-tab {
+   padding: 0;
+   margin: 0 48px;
+ }
+
+ /*.v-tabs-slider {*/
+ /*  background-color: #FA8305;*/
+ /*}*/
+
+ /*v-card{*/
+ /*  border-radius: 30px;*/
+ /*}*/
+
+ /*v-slide-group__content {*/
+ /*  justify-content: center;*/
+ /*}*/
 
 </style>
