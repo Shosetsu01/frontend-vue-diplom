@@ -118,7 +118,7 @@ export default {
 
 <style scoped>
 
-.v-tab {
+v-tab {
   padding: 0;
   margin: 0 48px;
 }
