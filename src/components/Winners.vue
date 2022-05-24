@@ -1,30 +1,27 @@
 <template>
-  <v-container>
+  <v-container class="winners_bg">
     <v-card
         class="shadow-disabled"
     >
-      <h2 class="headings">
-        Подробнее о конкурсах
-      </h2>
+      <div class="news__content">
+        <h2 class="headings">
+          Победители прошлого семестра
+        </h2>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+      </div>
       <v-tabs
           color="#FA8305"
           centered
-          height="300px"
+          height="70px"
       >
         <v-tab>
-          <img src="../assets/img/musketers.jpg" alt="">
           <p>Три Мушкетера</p>
-          <img src="../assets/img/cursor.png"  alt="">
         </v-tab>
         <v-tab>
-          <img src="../assets/img/musketers.jpg" alt="">
           <p>Дуэли</p>
-          <img src="../assets/img/cursor.png" alt="">
         </v-tab>
         <v-tab>
-          <img src="../assets/img/musketers.jpg" alt="">
           <p>Конкурс</p>
-          <img src="../assets/img/cursor.png" alt="">
         </v-tab>
 
         <v-tab-item>
@@ -80,11 +77,31 @@
 
 <script>
 export default {
-  name: "Contests"
+  name: "Winners"
 }
 </script>
 
 <style scoped>
+
+.winners_bg{
+  background: url("../assets/img/intro_bg_md.png") no-repeat 64%;
+  background-size: cover;
+  width: 100%;
+  /*height: 666px;*/
+  margin: 0 auto;
+}
+
+.v-tab p {
+  line-height: 30px;
+}
+
+.v-card__text {
+  text-align: left;
+}
+
+.v-tabs-slider {
+  height: 0;
+}
 
 .headings {
   font-size: 40px;
@@ -99,41 +116,6 @@ export default {
 
 .v-tab--active {
   outline: 1px solid #FA8305;
-}
-
-.v-tab img {
-  display: block;
-}
-
-.v-tab img:nth-child(1) {
-  width: 230px;
-  margin-top: 5px;
-}
-
-.v-tab img:nth-child(3) {
-  margin: 0 auto;
-}
-
-.v-tab p {
-  display: block;
-  color: black;
-}
-
-/*.v-tabs-slider-wrapper {*/
-/*  height: 0px !important;*/
-/*  border-color: #000;*/
-/*}*/
-
-/*.v-tabs-slider-wrapper {*/
-/*  height: 0 !important;*/
-/*}*/
-
-.v-tabs-slider {
-  height: 0;
-}
-
-.v-card__text {
-  text-align: left;
 }
 
 .theme--light.v-tabs .v-tab--active:focus::before {
@@ -157,5 +139,6 @@ export default {
 .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active), .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-icon, .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-btn, .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
   color: #FA8305;
 }
+
 
 </style>
