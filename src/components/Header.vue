@@ -134,7 +134,8 @@ export default {
 }
 
 .nav__item-burger {
-  color: black;
+  color: black !important;
+  float: left;
 }
 
 </style>

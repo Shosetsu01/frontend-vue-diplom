@@ -28,8 +28,8 @@ export default {
 <style scoped>
 
 .intro_bg{
-  background: url("../assets/img/intro_bg.png") no-repeat 10% 10%;
-  background-size: 100% auto;
+  background: url("../assets/img/intro_bg.png") no-repeat 64%;
+  background-size: cover;
   width: 100%;
   height: 666px;
   margin: 0 auto;
@@ -77,6 +77,7 @@ export default {
   .intro_bg {
     background: url("../assets/img/intro_bg_md.png") no-repeat 48%;
     background-size: cover;
+    height: 730px;
   }
 
   #contests {
@@ -86,14 +87,14 @@ export default {
   }
 
   .intro_bg__content {
-    width: 90%;
+    width: 84%;
     text-align: justify;
     margin: 4% 0;
   }
 
   .intro_bg__content p:nth-child(4) {
     margin-top: 8%;
-    margin-bottom: 12%;
+    margin-bottom: 8%;
   }
 
   .more {
@@ -115,7 +116,7 @@ export default {
   .intro_bg__content p:nth-child(4) {
     font-size: 20px;
     margin-top: 7%;
-    margin-bottom: 7%;
+    margin-bottom: 3%;
   }
   .intro_bg {
     background: url("../assets/img/intro_bg_md.png") no-repeat 10% 10%;
