@@ -1,21 +1,19 @@
 <template>
   <v-container class="user__intro">
     <v-card
-        class="overflow-hidden"
-        color="purple lighten-1"
-
+        class="overflow-hidden shadow-disabled"
     >
       <v-toolbar
           flat
-          color="purple"
+          color="transparent"
       >
-        <v-icon>mdi-account</v-icon>
-        <v-toolbar-title class="font-weight-light">
-          User Profile
+        <v-icon class="mr-3">mdi-account</v-icon>
+        <v-toolbar-title class="font-weight-medium">
+          Данные пользователя
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn
-            color="purple darken-3"
+            color=#E47500
             fab
             small
             @click="isEditing = !isEditing"
@@ -34,8 +32,10 @@
         >
           <v-avatar
               tile
-              size="140"
-              color=#129129
+              height="200"
+              width="150"
+              color=#E47500
+              class="mt-4 ml-7"
           >
 
           </v-avatar>
@@ -46,13 +46,30 @@
           <v-card-text>
             <v-text-field
                 :disabled="!isEditing"
-                color="white"
-                label="Name"
+                color=#898989
+                outlined
+                solo
+                rounded
+                label="Имя"
+                type="text"
             ></v-text-field>
             <v-text-field
                 :disabled="!isEditing"
-                color="white"
-                label="Name"
+                color=#898989
+                outlined
+                solo
+                rounded
+                label="Фамилия"
+                type="text"
+            ></v-text-field>
+            <v-text-field
+                :disabled="!isEditing"
+                color=#898989
+                outlined
+                solo
+                rounded
+                label="Электронная почта"
+                type="email"
             ></v-text-field>
           </v-card-text>
         </v-col>
@@ -60,38 +77,56 @@
             cols="5"
         >
           <v-card-text>
-            <v-text-field
-                :disabled="!isEditing"
-                color="white"
-                label="Name"
-            ></v-text-field>
-            <v-text-field
-                :disabled="!isEditing"
-                color="white"
-                label="Name"
-            ></v-text-field>
             <v-autocomplete
                 :disabled="!isEditing"
+                outlined
+                solo
+                rounded
                 :items="states"
                 item-value="id"
                 v-model = state
-                color="white"
+                color=#898989
                 item-text="name"
-                label="State"
+                label="Факультет"
+            ></v-autocomplete><v-autocomplete
+                :disabled="!isEditing"
+                outlined
+                solo
+                rounded
+                :items="states"
+                item-value="id"
+                v-model = state
+                color=#898989
+                item-text="name"
+                label="Группа"
             ></v-autocomplete>
+            <v-text-field
+                :disabled="!isEditing"
+                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                :rules="[rules.required, rules.min]"
+                :type="show1 ? 'text' : 'password'"
+                outlined
+                solo
+                rounded
+                color=#898989
+                label="Пароль"
+                @click:append="show1 = !show1"
+            ></v-text-field>
           </v-card-text>
         </v-col>
       </v-row>
-
-      <v-divider></v-divider>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
             :disabled="!isEditing"
-            color="success"
+            rounded
+            color="white"
+            outlined
+            class="pa-5 mr-3 orange--text btn-bg"
             @click="save"
+            elevation="2"
         >
-          Save
+          Сохранить изменения
         </v-btn>
       </v-card-actions>
       <v-snackbar
@@ -99,9 +134,9 @@
           :timeout="2000"
           absolute
           bottom
-          left
+          centered
       >
-        Your profile has been updated
+        Данные профиля пользователя были обновлены.
       </v-snackbar>
     </v-card>
   </v-container>
@@ -123,9 +158,13 @@ export default {
         { name: 'California', abbr: 'CA', id: 4 },
         { name: 'New York', abbr: 'NY', id: 5 },
       ],
+      show1: false,
+      rules: {
+        required: value => !!value || 'Required.',
+        min: v => v.length >= 8 || 'Min 8 characters',
+      }
     }
   },
-
   methods: {
     customFilter (item, queryText) {
       const textOne = item.name.toLowerCase()
@@ -148,6 +187,14 @@ export default {
   height: 474px;
   background: url("../assets/img/user_bg.png") no-repeat;
   background-size: cover;
+}
+
+.v-text-field--outlined >>> fieldset {
+  border-color: #E47500;
+}
+
+.btn-bg {
+  background-color: white;
 }
 
 </style>

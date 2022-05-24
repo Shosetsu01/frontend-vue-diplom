@@ -43,4 +43,8 @@ a {
 .white--text {
   color: white !important;
 }
+
+.orange--text {
+  color: #E47500 !important;
+}
 </style>
