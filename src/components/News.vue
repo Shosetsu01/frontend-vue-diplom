@@ -154,23 +154,10 @@ export default {
 
 <style scoped>
 
-.v-card-actions {
-  float: right;
-}
-
 .news__content {
   margin-left: 20%;
   padding-top: 40px;
   width: 68%;
-}
-
-.headings {
-  font-size: 40px;
-  margin-bottom: 20px;
-}
-
-v-tabs > .v-tabs-bar {
-  background-color: #F5F5AF !important;
 }
 
 .v-card {
@@ -183,11 +170,6 @@ v-tabs > .v-tabs-bar {
   height: 360px;
 }
 
-.v-btn {
-  float: right;
-}
-
-
 .v-tab {
   text-transform: capitalize;
   margin: 2% 20px 20px 20px;
@@ -196,33 +178,7 @@ v-tabs > .v-tabs-bar {
   border-radius: 20px;
 }
 
-.v-tabs-slider.teal.lighten-3 {
-  height: 0;
-}
-
-.theme--light.v-tabs .v-tab--active:hover::before, .theme--light.v-tabs .v-tab--active::before {
-   opacity: 0;
-}
-
-.theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active), .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-icon, .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-btn, .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
-  color: #FA8305;
-  border-radius: 20px;
-}
-
-.v-application .primary--text {
-  color: #FA8305;
-  caret-color: #FA8305 !important;
-  border-radius: 20px;
-}
-
-.theme--light.v-tabs .v-tab--active:focus::before {
-  border-radius: 20px;
-}
-
-.theme--light.v-tabs .v-tab--active:hover::before {
-  border-radius: 20px;
-}
-
+/*НАЧАЛО работы с карточками, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
 .theme--light.v-tabs .v-tab:hover::before {
   border-radius: 20px;
   color: #FA8305;
@@ -232,5 +188,11 @@ v-tabs > .v-tabs-bar {
   border-radius: 20px;
   color: #FA8305;
 }
+
+.theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active), .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-icon, .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-btn, .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
+  color: #FA8305;
+  border-radius: 20px;
+}
+/*КОНЕЦ работы с карточками, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
 
 </style>

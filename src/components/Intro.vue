@@ -3,10 +3,11 @@
     <div class="intro_bg">
       <div class="intro_bg__content">
         <p>Факультет ЦиТХИн</p>
-        <p>Конкурсы декана</p>
+        <h2 class="headings">Конкурсы декана</h2>
         <img src="../assets/img/contests.png" id="contests" alt="">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ea eum molestiae quidem? Consequuntur ea eius iure modi necessitatibus, nostrum numquam, possimus praesentium quidem quos repellendus rerum sequi ullam voluptas!</p>
         <v-btn
+            large
             rounded
             color="#FA8305"
             dark
@@ -45,7 +46,6 @@ export default {
 
 .more {
   text-transform: none;
-  font-size: calc(5px + 1vw);
 }
 
 .intro_bg__content p:nth-child(1) {
@@ -136,6 +136,13 @@ export default {
   .intro_bg__content {
     width: 530px;
     text-align: justify;
+  }
+}
+
+@media (min-width: 1200px) {
+  .intro_bg__content {
+    margin-top: 70px;
+    padding-left: 110px;
   }
 }
 

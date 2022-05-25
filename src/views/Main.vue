@@ -31,4 +31,13 @@ export default {
   background-color: transparent !important;
 }
 
+.v-tabs-slider {
+  height: 0;
+}
+
+.headings {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
 </style>

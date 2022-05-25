@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="block_contents">
     <v-card
         class="shadow-disabled"
     >
@@ -60,15 +60,15 @@
         <v-tab-item>
           <v-card flat>
             <v-card-title class="text-h5">
-              Конкурс
+              Дуэли
             </v-card-title>
             <v-card-text>
               <p>
-                Maecenas ullamcorper, dui et placerat feugiat, eros pede varius nisi, condimentum viverra felis nunc et lorem. Sed hendrerit. Maecenas malesuada. Vestibulum ullamcorper mauris at ligula. Proin faucibus arcu quis ante.
+                Duis lobortis massa imperdiet quam. Donec vitae orci sed dolor rutrum auctor. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Praesent congue erat at massa.
               </p>
 
-              <p class="mb-0">
-                Etiam vitae tortor. Curabitur ullamcorper ultricies nisi. Sed magna purus, fermentum eu, tincidunt eu, varius ut, felis. Aliquam lobortis. Suspendisse potenti.
+              <p>
+                Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Etiam sit amet orci eget eros faucibus tincidunt. Donec sodales sagittis magna.
               </p>
             </v-card-text>
           </v-card>
@@ -86,9 +86,8 @@ export default {
 
 <style scoped>
 
-.headings {
-  font-size: 40px;
-  margin-bottom: 20px;
+.block_contents {
+  min-height: 660px;
 }
 
 .v-tab {
@@ -119,31 +118,15 @@ export default {
   color: black;
 }
 
-/*.v-tabs-slider-wrapper {*/
-/*  height: 0px !important;*/
-/*  border-color: #000;*/
-/*}*/
-
-/*.v-tabs-slider-wrapper {*/
-/*  height: 0 !important;*/
-/*}*/
+.v-card__text {
+  text-align: left;
+}
 
 .v-tabs-slider {
   height: 0;
 }
 
-.v-card__text {
-  text-align: left;
-}
-
-.theme--light.v-tabs .v-tab--active:focus::before {
-  border-radius: 30px;
-}
-
-.theme--light.v-tabs .v-tab--active:hover::before {
-  border-radius: 30px;
-}
-
+/*НАЧАЛО работы с карточками, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
 .theme--light.v-tabs .v-tab:hover::before {
   border-radius: 30px;
   color: #FA8305;
@@ -157,5 +140,6 @@ export default {
 .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active), .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-icon, .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-btn, .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
   color: #FA8305;
 }
+/*КОНЕЦ работы с карточками, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
 
 </style>
