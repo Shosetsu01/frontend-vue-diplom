@@ -28,20 +28,21 @@
       </v-toolbar>
       <v-row>
         <v-col
-            cols="2"
+            cols="12" md="4"
         >
           <v-avatar
-              tile
-              height="200"
-              width="150"
+              size="200px"
               color=#E47500
-              class="mt-4 ml-7"
+              class="mt-md-8 ml-md-7"
           >
-
+            <img
+                src="https://via.placeholder.com/200"
+                alt="avatar"
+            >
           </v-avatar>
         </v-col>
         <v-col
-            cols="5"
+            cols="12" md="4"
         >
           <v-card-text>
             <v-text-field
@@ -71,10 +72,50 @@
                 label="Электронная почта"
                 type="email"
             ></v-text-field>
+            <v-text-field
+                v-show="$vuetify.breakpoint.smAndDown"
+                :disabled="!isEditing"
+                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                :rules="[rules.required, rules.min]"
+                :type="show1 ? 'text' : 'password'"
+                outlined
+                solo
+                rounded
+                color=#898989
+                label="Пароль"
+                @click:append="show1 = !show1"
+            ></v-text-field>
+            <v-autocomplete
+              v-show="$vuetify.breakpoint.smAndDown"
+              :disabled="!isEditing"
+              outlined
+              solo
+              rounded
+              :items="states"
+              item-value="id"
+              v-model = state
+              color=#898989
+              item-text="name"
+              label="Факультет"
+            ></v-autocomplete>
+            <v-autocomplete
+              v-show="$vuetify.breakpoint.smAndDown"
+              :disabled="!isEditing"
+              outlined
+              solo
+              rounded
+              :items="states"
+              item-value="id"
+              v-model = state
+              color=#898989
+              item-text="name"
+              label="Группа"
+          ></v-autocomplete>
           </v-card-text>
         </v-col>
         <v-col
-            cols="5"
+            cols="12" md="4"
+            v-show="$vuetify.breakpoint.mdAndUp"
         >
           <v-card-text>
             <v-autocomplete
@@ -115,14 +156,14 @@
           </v-card-text>
         </v-col>
       </v-row>
-      <v-card-actions>
+      <v-card-actions class="d-block d-md-flex">
         <v-spacer></v-spacer>
         <v-btn
             :disabled="!isEditing"
             rounded
             color="white"
             outlined
-            class="pa-5 mr-3 orange--text btn-bg"
+            class="pa-5 mr-md-3 mb-4 orange--text btn-bg"
             @click="save"
             elevation="2"
         >
@@ -166,14 +207,14 @@ export default {
     }
   },
   methods: {
-    customFilter (item, queryText) {
-      const textOne = item.name.toLowerCase()
-      const textTwo = item.abbr.toLowerCase()
-      const searchText = queryText.toLowerCase()
-
-      return textOne.indexOf(searchText) > -1 ||
-          textTwo.indexOf(searchText) > -1
-    },
+    // customFilter (item, queryText) {
+    //   const textOne = item.name.toLowerCase()
+    //   const textTwo = item.abbr.toLowerCase()
+    //   const searchText = queryText.toLowerCase()
+    //
+    //   return textOne.indexOf(searchText) > -1 ||
+    //       textTwo.indexOf(searchText) > -1
+    // },
     save () {
       this.isEditing = !this.isEditing
       this.hasSaved = true
@@ -184,7 +225,7 @@ export default {
 
 <style scoped>
 .user__intro {
-  height: 474px;
+  height: auto;
   background: url("../assets/img/user_bg.png") no-repeat;
   background-size: cover;
 }

@@ -86,7 +86,7 @@
 
       <v-col
           cols="12"
-          align="center"
+          class="text-center"
       >
         2022 — <strong> © Веб-портал конкурсов учебных достижений обучающихся факультета ЦиТХИн</strong>
         <!--        {{ new Date().getFullYear() }} —-->
