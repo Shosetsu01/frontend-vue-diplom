@@ -167,14 +167,14 @@ export default {
 .news_content .news_content_card {
   border-radius: 20px;
   width: 348px;
-  height: 360px;
+  height: 320px;
   text-align: left;
 }
 
 .news_tabs {
   text-transform: capitalize;
   margin: 2% 20px 20px 20px;
-  height: 360px;
+  height: 320px;
   padding: 0;
   border-radius: 20px;
 }

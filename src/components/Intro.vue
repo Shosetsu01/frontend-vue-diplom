@@ -77,7 +77,7 @@ export default {
   .intro_bg {
     background: url("../assets/img/intro_bg_md.png") no-repeat 48%;
     background-size: cover;
-    height: 730px;
+    height: 670px;
   }
 
   #contests {
@@ -121,7 +121,7 @@ export default {
   .intro_bg {
     background: url("../assets/img/intro_bg_md.png") no-repeat 10% 10%;
     background-size: cover;
-    height: 430px;
+    height: 460px;
   }
   .more {
     text-transform: none;
