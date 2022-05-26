@@ -1,20 +1,20 @@
 <template>
 <v-container class="command__bg">
+  <h2 class="ml-3 text-left">Создать команду мушкетёров</h2>
   <v-card
-      color="blue-grey darken-1"
-      dark
-
+      class="shadow-disabled pa-2"
+      color="transparent"
   >
     <v-row
         class="pa-4"
         align="center"
         justify="center"
     >
-      <v-col class="text-center">
+      <v-col class="text-center grey--text text--darken-4">
         <h3 class="text-h5">
           {{ name }}
         </h3>
-        <span class="grey--text text--lighten-1">{{ title }}</span>
+        <span class="grey--text text--darken-3">{{ title }}</span>
       </v-col>
     </v-row>
     <v-form>
@@ -27,9 +27,10 @@
             <v-text-field
                 v-model="name"
                 :disabled="isUpdating"
-                filled
-                color="blue-grey lighten-2"
-                label="Name"
+                color=#777777
+                outlined
+                rounded
+                label="Название команды"
             ></v-text-field>
           </v-col>
           <v-col
@@ -39,9 +40,10 @@
             <v-text-field
                 v-model="title"
                 :disabled="isUpdating"
-                filled
-                color="blue-grey lighten-2"
-                label="Title"
+                color=#777777
+                outlined
+                rounded
+                label="Учебная группа"
             ></v-text-field>
           </v-col>
           <v-col cols="12">
@@ -49,10 +51,11 @@
                 v-model="friends"
                 :disabled="isUpdating"
                 :items="people"
-                filled
                 chips
-                color="blue-grey lighten-2"
-                label="Select"
+                color=#777777
+                outlined
+                rounded
+                label="Выберите участников команды"
                 item-text="name"
                 item-value="name"
                 multiple
@@ -91,19 +94,17 @@
       </v-container>
     </v-form>
     <v-divider></v-divider>
-    <v-card-actions>
+    <v-card-actions class="d-block d-md-flex">
       <v-spacer></v-spacer>
       <v-btn
-          :disabled="autoUpdate"
           :loading="isUpdating"
-          color="blue-grey darken-3"
-          depressed
           @click="isUpdating = true"
+          rounded
+          outlined
+          class="pa-5 mr-md-2 mt-3 orange--text"
+          elevation="2"
       >
-        <v-icon left>
-          mdi-update
-        </v-icon>
-        Update Now
+        Сохранить команду
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -126,7 +127,7 @@ export default {
       autoUpdate: true,
       friends: ['Sandra Adams', 'Britta Holt'],
       isUpdating: false,
-      name: 'Midnight Crew',
+      name: 'Конкурсы деканата',
       people: [
         { header: 'Group 1' },
         { name: 'Паша Поляков', group: 'Group 1', avatar: srcs[1] },
@@ -140,7 +141,7 @@ export default {
         { name: 'John Smith', group: 'Group 2', avatar: srcs[1] },
         { name: 'Sandra Williams', group: 'Group 2', avatar: srcs[3] },
       ],
-      title: 'The summer breeze',
+      title: 'Группа Кс-40',
     }
   },
 
@@ -163,7 +164,7 @@ export default {
 
 <style scoped>
 .command__bg {
-  height: 600px;
+  height: auto;
   background: url("../assets/img/invite_command_bg.png") no-repeat;
   background-size: cover;
 }
