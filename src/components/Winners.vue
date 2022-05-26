@@ -17,13 +17,13 @@
           class=""
           background-color="shadow-disabled"
       >
-        <v-tab class="cards_winners">
+        <v-tab class="winners_tabs">
           <p>Три Мушкетера</p>
         </v-tab>
-        <v-tab class="cards_winners">
+        <v-tab class="winners_tabs">
           <p>Дуэли</p>
         </v-tab>
-        <v-tab class="cards_winners">
+        <v-tab class="winners_tabs">
           <p>Конкурс</p>
         </v-tab>
       </v-tabs>
@@ -35,7 +35,7 @@
               <v-row>
                 <v-col order="1" cols="12" sm="4">
                   <v-card
-                      class="list-third-place lists shadow-disabled"
+                      class="list_third_place lists shadow-disabled"
                       tile
                       color="transparent"
                   >
@@ -67,7 +67,7 @@
                 </v-col>
                 <v-col order="3" cols="12" sm="4">
                   <v-card
-                      class="list-second-place lists shadow-disabled"
+                      class="list_second_place lists shadow-disabled"
                       tile
                       color="transparent"
                   >
@@ -138,18 +138,14 @@ export default {
   margin: 0 auto  ;
 }
 
-.v-tab p {
+.winners_tabs p {
   line-height: 30px;
 }
 
-.v-tab {
+.winners_tabs {
   display: block;
   border-radius: 30px;
   margin: 20px;
-}
-
-.v-tab--active {
-  outline: 1px solid #FA8305;
 }
 
 .lists{
@@ -157,13 +153,9 @@ export default {
   margin: 0 auto;
 }
 
-@media (min-width: 900px) {
-  .list-second-place {
-    margin-top: 50px;
-  }
-  .list-third-place {
-    margin-top: 100px;
-  }
+/*ВЬЮШНЫЙ ТЕГ*/
+.v-tab--active {
+  outline: 1px solid #FA8305;
 }
 
 /*НАЧАЛО работы с табами, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
@@ -181,5 +173,21 @@ export default {
   color: #FA8305;
 }
 /*КОНЕЦ работы с табами, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
+
+@media (min-width: 900px) {
+  .list_second_place {
+    margin-top: 50px;
+  }
+
+  .list_third_place {
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .winners_tabs {
+    margin: 20px 1px;
+  }
+}
 
 </style>

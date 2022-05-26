@@ -9,19 +9,19 @@
       <v-tabs
           color="#FA8305"
           centered
-          height="300px"
+          :height="isMobile"
       >
-        <v-tab>
+        <v-tab class="contests_tabs">
           <img src="../assets/img/musketers.jpg" alt="">
           <p>Три Мушкетера</p>
           <img src="../assets/img/cursor.png"  alt="">
         </v-tab>
-        <v-tab>
+        <v-tab class="contests_tabs">
           <img src="../assets/img/musketers.jpg" alt="">
           <p>Дуэли</p>
           <img src="../assets/img/cursor.png" alt="">
         </v-tab>
-        <v-tab>
+        <v-tab class="contests_tabs">
           <img src="../assets/img/musketers.jpg" alt="">
           <p>Конкурс</p>
           <img src="../assets/img/cursor.png" alt="">
@@ -32,7 +32,7 @@
             <v-card-title class="text-h5">
               Три Мушкетера
             </v-card-title>
-            <v-card-text>
+            <v-card-text class="text-left">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </v-card-text>
           </v-card>
@@ -42,7 +42,7 @@
             <v-card-title class="text-h5">
               Дуэли
             </v-card-title>
-            <v-card-text>
+            <v-card-text class="text-left">
               <p>
                 Duis lobortis massa imperdiet quam. Donec vitae orci sed dolor rutrum auctor. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Praesent congue erat at massa.
               </p>
@@ -62,7 +62,7 @@
             <v-card-title class="text-h5">
               Дуэли
             </v-card-title>
-            <v-card-text>
+            <v-card-text  class="text-left">
               <p>
                 Duis lobortis massa imperdiet quam. Donec vitae orci sed dolor rutrum auctor. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Praesent congue erat at massa.
               </p>
@@ -80,7 +80,18 @@
 
 <script>
 export default {
-  name: "Contests"
+  name: "Contests",
+  computed: {
+    isMobile() {
+      console.log(this.$vuetify.breakpoint)
+      if (this.$vuetify.breakpoint.xsOnly) {
+        return "210px"
+      }
+      else {
+        return "300px"
+      }
+    }
+  },
 }
 </script>
 
@@ -90,40 +101,33 @@ export default {
   min-height: 660px;
 }
 
-.v-tab {
+.contests_tabs {
   display: block;
   border-radius: 30px;
   margin: 20px;
 }
 
-.v-tab--active {
-  outline: 1px solid #FA8305;
-}
-
-.v-tab img {
+.contests_tabs img {
   display: block;
 }
 
-.v-tab img:nth-child(1) {
+.contests_tabs img:nth-child(1) {
   width: 230px;
   margin-top: 5px;
 }
 
-.v-tab img:nth-child(3) {
+.contests_tabs img:nth-child(3) {
   margin: 0 auto;
 }
 
-.v-tab p {
+.contests_tabs p {
   display: block;
   color: black;
 }
 
-.v-card__text {
-  text-align: left;
-}
-
-.v-tabs-slider {
-  height: 0;
+/*ВЬЮШНЫЙ ТЕГ*/
+.v-tab--active {
+  outline: 1px solid #FA8305;
 }
 
 /*НАЧАЛО работы с карточками, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
@@ -141,5 +145,20 @@ export default {
   color: #FA8305;
 }
 /*КОНЕЦ работы с карточками, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
+
+@media (max-width: 600px) {
+  .contests_tabs {
+    margin: 20px 1px;
+  }
+
+  .contests_tabs img:nth-child(1) {
+    width: 126px;
+  }
+
+  .contests_tabs {
+    height: 180px;
+  }
+
+}
 
 </style>

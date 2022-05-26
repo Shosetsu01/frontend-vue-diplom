@@ -2,11 +2,11 @@
   <v-container style="background-color: #F5F5F5">
     <v-card
         width="100%"
-        height="700px"
+        height="600px"
         color="#F5F5F5"
-        class="shadow-disabled"
+        class="shadow-disabled news_content"
     >
-      <div class="news__content">
+      <div class="news_header">
         <h2 class="headings">
           Новости
         </h2>
@@ -14,22 +14,22 @@
       </div>
       <v-tabs
           show-arrows
-          height="450px"
+          height="394px"
           color=#FA8305
           background-color="#F5F5F5"
       >
         <v-tabs-slider color="teal lighten-3"></v-tabs-slider>
 
-        <v-tab>
+        <v-tab class="news_tabs">
           <v-card
-              class="mx-auto"
+              class="mx-auto news_content_card"
           >
             <v-card-subtitle class="pb-0">
               Number 10
             </v-card-subtitle>
             <v-card-title>Top 10 Australian beaches</v-card-title>
             <v-card-text class="text--primary">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
             </v-card-text>
 
             <v-card-actions>
@@ -50,9 +50,9 @@
             </v-card-actions>
           </v-card>
         </v-tab>
-        <v-tab>
+        <v-tab class="news_tabs">
           <v-card
-              class="mx-auto"
+              class="mx-auto news_content_card"
               max-width="400"
           >
             <v-card-subtitle class="pb-0">
@@ -60,7 +60,7 @@
             </v-card-subtitle>
             <v-card-title>Top 10 Australian beaches</v-card-title>
             <v-card-text class="text--primary">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
             </v-card-text>
 
             <v-card-actions>
@@ -81,9 +81,9 @@
             </v-card-actions>
           </v-card>
         </v-tab>
-        <v-tab>
+        <v-tab class="news_tabs">
           <v-card
-              class="mx-auto"
+              class="mx-auto news_content_card"
               max-width="400"
           >
             <v-card-subtitle class="pb-0">
@@ -91,7 +91,7 @@
             </v-card-subtitle>
             <v-card-title>Top 10 Australian beaches</v-card-title>
             <v-card-text class="text--primary">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
             </v-card-text>
 
             <v-card-actions>
@@ -111,9 +111,9 @@
             </v-card-actions>
           </v-card>
         </v-tab>
-        <v-tab>
+        <v-tab class="news_tabs">
           <v-card
-              class="mx-auto"
+              class="mx-auto news_content_card"
               max-width="400"
           >
             <v-card-subtitle class="pb-0">
@@ -121,7 +121,7 @@
             </v-card-subtitle>
             <v-card-title>Top 10 Australian beaches</v-card-title>
             <v-card-text class="text--primary">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
             </v-card-text>
 
             <v-card-actions>
@@ -154,23 +154,24 @@ export default {
 
 <style scoped>
 
-.news__content {
+.news_header {
   margin-left: 20%;
   padding-top: 40px;
   width: 68%;
 }
 
-.v-card {
+.news_content {
   text-align: left;
 }
 
-.v-card .v-card{
+.news_content .news_content_card {
   border-radius: 20px;
   width: 348px;
   height: 360px;
+  text-align: left;
 }
 
-.v-tab {
+.news_tabs {
   text-transform: capitalize;
   margin: 2% 20px 20px 20px;
   height: 360px;
@@ -183,7 +184,6 @@ export default {
   border-radius: 20px;
   color: #FA8305;
 }
-
 .theme--light.v-tabs .v-tab:focus::before{
   border-radius: 20px;
   color: #FA8305;
@@ -194,5 +194,28 @@ export default {
   border-radius: 20px;
 }
 /*КОНЕЦ работы с карточками, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
+
+@media (max-width: 960px) {
+
+  .news_tabs {
+    margin: 2% 5px 20px 5px;
+    height: 300px;
+  }
+
+  .news_content_card :nth-child(2) {
+    font-size: 16px;
+  }
+
+  .news_content_card :nth-child(3) {
+    font-size: 12px;
+    padding-bottom: 0;
+  }
+
+  .news_content .news_content_card {
+    width: 292px;
+    height: 300px;
+  }
+
+}
 
 </style>
