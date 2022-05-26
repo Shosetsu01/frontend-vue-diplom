@@ -108,6 +108,14 @@
       </v-btn>
     </v-card-actions>
   </v-card>
+  <v-btn
+      color="#777777"
+      text
+      style="text-transform: none"
+      class="mt-4 mb-4"
+  >
+    <router-link to="/results" class="grey--text text--darken-2"><h3>Посмотреть список <br v-show="$vuetify.breakpoint.xsOnly"> участвующих команд ➜</h3></router-link>
+  </v-btn>
 </v-container>
 </template>
 

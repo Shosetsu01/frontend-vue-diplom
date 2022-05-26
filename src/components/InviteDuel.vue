@@ -30,9 +30,18 @@
       </v-col>
     </v-row>
   </v-card>
-  <div class="mt-8">
+<!--  <div class="mt-8">-->
+<!--    <router-link to="/results" class="orange&#45;&#45;text"><h3>Список всех участников ➜</h3></router-link>-->
+<!--  </div>-->
+
+  <v-btn
+      text
+      style="text-transform: none"
+      class="mt-9"
+      color=#FA8305
+  >
     <router-link to="/results" class="orange--text"><h3>Список всех участников ➜</h3></router-link>
-  </div>
+  </v-btn>
 </v-container>
 </template>
 
