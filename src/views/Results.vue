@@ -1,12 +1,18 @@
 <template>
-  <v-container>
-    <h1>This is an results page</h1>
+  <v-container class="pb-0">
+    <Archive/>
   </v-container>
 </template>
 
 <script>
+import Archive from "../components/Archive";
+
 export default {
-  name: "Results"
+  name: "Results",
+  components: {
+    Archive,
+  }
+
 }
 </script>
 

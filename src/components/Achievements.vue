@@ -64,8 +64,9 @@ export default {
   width: 320px;
   height: 320px;
   text-align: left;
-  filter: drop-shadow(0 0 10px rgba(0, 220, 114, 0.4));
-  background-color: rgba(0, 220, 114, 0.4);
+  filter: drop-shadow(0 0 10px rgba(0, 128, 0, 0.5));
+  /*background-color: rgba(0, 220, 114, 0.4);*/
+  background-color: rgba(0, 128, 0, 0.5);
 }
 
 .achievements_tabs {

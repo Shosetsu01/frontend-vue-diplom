@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="pb-0">
     <UserInfo/>
     <InviteDuel/>
     <InviteCommand/>
