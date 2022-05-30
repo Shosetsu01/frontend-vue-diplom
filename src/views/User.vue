@@ -3,6 +3,7 @@
     <UserInfo/>
     <InviteDuel/>
     <InviteCommand/>
+    <Achievements/>
   </v-container>
 </template>
 
@@ -10,6 +11,7 @@
 import UserInfo from "../components/UserInfo";
 import InviteDuel from "../components/InviteDuel";
 import InviteCommand from "../components/InviteCommand";
+import Achievements from "../components/Achievements";
 
 export default {
   name: "User",
@@ -17,6 +19,7 @@ export default {
     UserInfo,
     InviteDuel,
     InviteCommand,
+    Achievements
   }
 
 }

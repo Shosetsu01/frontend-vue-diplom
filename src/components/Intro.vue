@@ -107,16 +107,24 @@ export default {
   }
 }
 
+@media screen and (max-width: 420px) {
+  .intro_bg__content p:nth-child(4) {
+    margin-top: 8%;
+    margin-bottom: 14%;
+  }
+}
+
+@media screen and (max-width: 372px) {
+  .intro_bg {
+    height: 710px;
+  }
+}
+
 @media (min-width: 600px) and (max-width: 960px) {
   .intro_bg__content {
     width: 80%;
     text-align: justify;
     margin: 6% 6%;
-  }
-  .intro_bg__content p:nth-child(4) {
-    font-size: 20px;
-    margin-top: 7%;
-    margin-bottom: 3%;
   }
   .intro_bg {
     background: url("../assets/img/intro_bg_md.png") no-repeat 10% 10%;
@@ -129,6 +137,14 @@ export default {
     left: 50%;
     transform: translate(-50%, 0);
     height: 40px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 769px) {
+  .intro_bg__content p:nth-child(4) {
+    font-size: 20px;
+    margin-top: 7%;
+    margin-bottom: 3%;
   }
 }
 

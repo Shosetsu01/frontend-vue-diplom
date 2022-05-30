@@ -102,17 +102,12 @@
       </v-tabs-items>
     </v-card>
     <v-btn
-        color="#FA8305"
         text
         style="text-transform: none"
+        class="mt-sm-4 mb-2"
+        color=#FA8305
     >
-      Смотреть полностью &nbsp;
-      <v-img
-          width="24px"
-          src="../assets/img/cursor.png"
-          alt=""
-      >
-      </v-img>
+      <router-link to="/results" class="orange--text"><h3>Смотреть полностью ➜</h3></router-link>
     </v-btn>
   </v-container>
 </template>
@@ -174,7 +169,7 @@ export default {
 }
 /*КОНЕЦ работы с табами, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
 
-@media (min-width: 900px) {
+@media (min-width: 781px) {
   .list_second_place {
     margin-top: 50px;
   }

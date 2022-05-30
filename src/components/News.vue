@@ -20,16 +20,20 @@
       >
         <v-tabs-slider color="teal lighten-3"></v-tabs-slider>
 
-        <v-tab class="news_tabs">
+        <v-tab
+            class="news_tabs"
+            v-for="item in news_list"
+            :key="item.id"
+        >
           <v-card
               class="mx-auto news_content_card"
           >
             <v-card-subtitle class="pb-0">
-              Number 10
+              {{ item.date }}
             </v-card-subtitle>
-            <v-card-title>Top 10 Australian beaches</v-card-title>
+            <v-card-title>{{ item.title }}</v-card-title>
             <v-card-text class="text--primary">
-              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+              <p class="mb-0">{{ item.text }}</p>
             </v-card-text>
 
             <v-card-actions>
@@ -39,104 +43,7 @@
                   color="#FA8305"
                   text
               >
-                Read more &nbsp;
-                <v-img
-                    width="24px"
-                    src="../assets/img/cursor.png"
-                    alt=""
-                >
-                </v-img>
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-tab>
-        <v-tab class="news_tabs">
-          <v-card
-              class="mx-auto news_content_card"
-              max-width="400"
-          >
-            <v-card-subtitle class="pb-0">
-              Number 10
-            </v-card-subtitle>
-            <v-card-title>Top 10 Australian beaches</v-card-title>
-            <v-card-text class="text--primary">
-              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
-            </v-card-text>
-
-            <v-card-actions>
-              <v-spacer></v-spacer>
-
-              <v-btn
-                  color="#FA8305"
-                  text
-              >
-                Read more &nbsp;
-                <v-img
-                    width="24px"
-                    src="../assets/img/cursor.png"
-                    alt=""
-                >
-                </v-img>
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-tab>
-        <v-tab class="news_tabs">
-          <v-card
-              class="mx-auto news_content_card"
-              max-width="400"
-          >
-            <v-card-subtitle class="pb-0">
-              Number 10
-            </v-card-subtitle>
-            <v-card-title>Top 10 Australian beaches</v-card-title>
-            <v-card-text class="text--primary">
-              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
-            </v-card-text>
-
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn
-                  color="#FA8305"
-                  text
-              >
-                Read more &nbsp;
-                <v-img
-                    width="24px"
-                    src="../assets/img/cursor.png"
-                    alt=""
-                >
-                </v-img>
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-tab>
-        <v-tab class="news_tabs">
-          <v-card
-              class="mx-auto news_content_card"
-              max-width="400"
-          >
-            <v-card-subtitle class="pb-0">
-              Number 10
-            </v-card-subtitle>
-            <v-card-title>Top 10 Australian beaches</v-card-title>
-            <v-card-text class="text--primary">
-              <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
-            </v-card-text>
-
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn
-                  color="#FA8305"
-                  text
-              >
-                Read more &nbsp;
-                <v-img
-                    width="24px"
-                    src="../assets/img/cursor.png"
-                    alt=""
-                >
-                </v-img>
+                Read more ➜
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -148,14 +55,25 @@
 
 <script>
 export default {
-  name: "News"
+  name: "News",
+
+  data() {
+    return {
+      news_list: [
+        {date: "November 10", title: "Top 10 Australian beaches", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"},
+        {date: "November 10", title: "Top 10 Australian beaches", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"},
+        {date: "November 10", title: "Top 10 Australian beaches", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"},
+        {date: "November 10", title: "Top 10 Australian beaches", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"},
+      ]
+    }
+  }
 }
 </script>
 
 <style scoped>
 
 .news_header {
-  margin-left: 20%;
+  margin-left: 10%;
   padding-top: 40px;
   width: 68%;
 }
@@ -166,15 +84,15 @@ export default {
 
 .news_content .news_content_card {
   border-radius: 20px;
-  width: 348px;
-  height: 320px;
+  width: 340px;
+  height: 340px;
   text-align: left;
 }
 
 .news_tabs {
-  text-transform: capitalize;
-  margin: 2% 20px 20px 20px;
-  height: 320px;
+  text-transform: none;
+  margin: 20px;
+  height: 340px;
   padding: 0;
   border-radius: 20px;
 }
@@ -198,7 +116,7 @@ export default {
 @media (max-width: 960px) {
 
   .news_tabs {
-    margin: 2% 5px 20px 5px;
+    margin: 20px 5px 20px 5px;
     height: 300px;
   }
 
