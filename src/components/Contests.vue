@@ -83,7 +83,6 @@ export default {
   name: "Contests",
   computed: {
     isMobile() {
-      console.log(this.$vuetify.breakpoint)
       if (this.$vuetify.breakpoint.xsOnly) {
         return "210px"
       }

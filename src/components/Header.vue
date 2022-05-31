@@ -6,53 +6,57 @@
         elevation="5"
         elevate-on-scroll
     >
+      <router-link to="/">
       <v-toolbar-title>
-        <v-avatar class=""  size="36">
+        <v-avatar size="36">
           <img src="../assets/img/cithin_logo_white.png" alt="logo"/>
         </v-avatar>
-        <router-link to="/" class="header__title" v-show="$vuetify.breakpoint.smAndUp">
-          Конкурсы деканата факультета ЦиТХИн
-        </router-link>
-        <router-link to="/" class="header__title" v-show="$vuetify.breakpoint.xsOnly">
-          Конкурсы ЦиТХИн
-        </router-link>
+        <span class="header__title">Конкурсы деканата <span v-show="$vuetify.breakpoint.smAndUp">факультета ЦиТХИн</span></span>
       </v-toolbar-title>
+      </router-link>
 
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
+        <router-link to="/">
         <v-toolbar-items v-show="$vuetify.breakpoint.mdAndUp">
           <v-btn
               color=#E47500
               depressed
+              class="white--text font-weight-bold"
+              min-height="64px"
           >
-            <router-link to="/" class="nav__item">
               Главная
-            </router-link>
           </v-btn>
         </v-toolbar-items>
+        </router-link>
 
+        <router-link to="/results">
         <v-toolbar-items v-show="$vuetify.breakpoint.mdAndUp">
           <v-btn
               color=#E47500
               depressed
+              class="white--text font-weight-bold"
+              min-height="64px"
           >
-            <router-link to="/results" class="nav__item">
               Результаты
-            </router-link>
           </v-btn>
         </v-toolbar-items>
+        </router-link>
 
-        <v-toolbar-items v-show="$vuetify.breakpoint.mdAndUp">
+        <router-link to="/user" >
+        <v-toolbar-items v-show="$vuetify.breakpoint.mdAndUp" >
           <v-btn
               color=#E47500
               depressed
+              class="white--text font-weight-bold"
+              min-height="64px"
           >
-            <router-link to="/user" class="nav__item">
               Личный кабинет
-            </router-link>
+              <v-icon class="ml-1 pb-1">mdi-account</v-icon>
           </v-btn>
         </v-toolbar-items>
+        </router-link>
       </v-toolbar-items>
 
       <v-app-bar-nav-icon
@@ -61,6 +65,7 @@
           v-show="$vuetify.breakpoint.smAndDown"
       ></v-app-bar-nav-icon>
     </v-app-bar>
+
     <v-navigation-drawer
         v-model="drawer"
         right
@@ -73,38 +78,38 @@
             v-model="group"
             active-class="deep-orange--text text--accent-4"
         >
+          <router-link to="/" >
           <v-list-item>
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>
-              <router-link to="/" class="nav__item-burger">
+            <v-list-item-title class="black--text text-left">
                 Главная
-              </router-link>
             </v-list-item-title>
           </v-list-item>
+          </router-link>
 
+          <router-link to="/results" >
           <v-list-item>
             <v-list-item-icon>
               <v-icon>mdi-medal</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>
-              <router-link to="/results" class="nav__item-burger">
+            <v-list-item-title class="black--text text-left">
                 Результаты
-              </router-link>
             </v-list-item-title>
           </v-list-item>
+          </router-link>
 
+          <router-link to="/user" >
           <v-list-item>
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>
-              <router-link to="/user" class="nav__item-burger">
+            <v-list-item-title class="black--text text-left">
                 Личный кабинет
-              </router-link>
             </v-list-item-title>
           </v-list-item>
+          </router-link>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -126,16 +131,6 @@ export default {
   margin-left: 12px;
   color: white;
   vertical-align: middle;
-}
-
-.nav__item {
-  color: white;
-  font-weight: bold;
-}
-
-.nav__item-burger {
-  color: black !important;
-  float: left;
 }
 
 </style>

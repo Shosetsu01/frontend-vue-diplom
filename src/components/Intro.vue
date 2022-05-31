@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <div class="intro_bg">
+    <div class="intro_bg" ref="intro">
       <div class="intro_bg__content">
         <p>Факультет ЦиТХИн</p>
         <h2 class="headings">Конкурсы декана</h2>
@@ -12,6 +12,7 @@
             color="#FA8305"
             dark
             class="more"
+            @click="matchHeight"
         >
           Узнать больше
         </v-btn>
@@ -22,7 +23,17 @@
 
 <script>
 export default {
-  name: "Intro"
+  name: "Intro",
+  methods: {
+    matchHeight () {
+      let height = this.$refs.intro.clientHeight;
+      window.scrollTo({
+        top: height+30,
+        behavior: 'smooth'
+      })
+
+    }
+  },
 }
 </script>
 
