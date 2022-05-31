@@ -18,7 +18,7 @@
       </v-col>
     </v-row>
     <v-form>
-      <v-container>
+      <v-container style="background-color: transparent">
         <v-row>
           <v-col
               cols="12"

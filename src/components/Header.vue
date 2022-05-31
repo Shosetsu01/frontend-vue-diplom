@@ -8,7 +8,7 @@
     >
       <v-toolbar-title>
         <v-avatar class=""  size="36">
-          <img src="https://via.placeholder.com/35" alt="logo"/>
+          <img src="../assets/img/cithin_logo_white.png" alt="logo"/>
         </v-avatar>
         <router-link to="/" class="header__title" v-show="$vuetify.breakpoint.smAndUp">
           Конкурсы деканата факультета ЦиТХИн

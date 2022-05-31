@@ -24,15 +24,19 @@ export default {
 
 <style lang="scss">
 body {
-  background-color: white;
   font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
   color: white;
   text-align: center;
 }
 
+.theme--light.v-application {
+  background: #F5F5F5 !important;
+}
+
 .container {
   max-width: 1200px !important;
-  padding-top: 26px;
+  padding-top: 26px !important;
+  background-color: white;
 }
 
 a {
