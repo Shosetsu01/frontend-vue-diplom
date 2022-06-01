@@ -1,25 +1,40 @@
 <template>
-  <v-container>
+  <v-container class="px-0">
     <h2 class="text-center mb-5">Пары оппонентов конкурса “Дуэли”</h2>
-    <v-simple-table dense>
+    <v-simple-table
+        dense
+        fixed-header
+        height="600px"
+        class="text-center grey lighten-4"
+    >
       <template v-slot:default>
         <thead>
         <tr>
-          <th class="text-left">
-            Name
+          <th class="text-center grey lighten-4">
+            Оппонент 1
           </th>
-          <th class="text-left">
-            Calories
+          <th class="text-center grey lighten-4">
+            Группа
+          </th>
+          <th class="text-center grey lighten-4"></th>
+          <th class="text-center grey lighten-4">
+            Оппонент 2
+          </th>
+          <th class="text-center grey lighten-4">
+            Группа
           </th>
         </tr>
         </thead>
         <tbody>
         <tr
-            v-for="item in desserts"
-            :key="item.name"
+            v-for="item in opponents"
+            :key="item.id"
         >
-          <td>{{ item.name }}</td>
-          <td>{{ item.calories }}</td>
+          <td>{{ item.people1 }}</td>
+          <td>{{ item.group1 }}</td>
+          <td> — </td>
+          <td>{{ item.people2 }}</td>
+          <td>{{ item.group2 }}</td>
         </tr>
         </tbody>
       </template>
@@ -33,46 +48,30 @@ export default {
   name: "ParticipatingNowDuel",
   data () {
     return {
-      desserts: [
+      opponents: [
         {
-          name: 'Frozen Yogurt',
-          calories: 159,
+          people1: "Изюмов",
+          group1: "Тм-34",
+          people2: "Соловов",
+          group2: "Кс-10",
         },
         {
-          name: 'Ice cream sandwich',
-          calories: 237,
+          people1: "Изюмов",
+          group1: "Тм-34",
+          people2: "Соловов",
+          group2: "Кс-10",
         },
         {
-          name: 'Eclair',
-          calories: 262,
+          people1: "Изюмов",
+          group1: "Тм-34",
+          people2: "Соловов",
+          group2: "Кс-10",
         },
         {
-          name: 'Cupcake',
-          calories: 305,
-        },
-        {
-          name: 'Gingerbread',
-          calories: 356,
-        },
-        {
-          name: 'Jelly bean',
-          calories: 375,
-        },
-        {
-          name: 'Lollipop',
-          calories: 392,
-        },
-        {
-          name: 'Honeycomb',
-          calories: 408,
-        },
-        {
-          name: 'Donut',
-          calories: 452,
-        },
-        {
-          name: 'KitKat',
-          calories: 518,
+          people1: "Изюмов",
+          group1: "Тм-34",
+          people2: "Соловов",
+          group2: "Кс-10",
         },
       ],
     }
