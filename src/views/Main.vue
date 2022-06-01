@@ -1,8 +1,8 @@
 <template>
   <v-container class="pb-0">
     <Intro/>
-    <Contests/>
     <News/>
+    <Contests/>
     <Winners/>
   </v-container>
 </template>

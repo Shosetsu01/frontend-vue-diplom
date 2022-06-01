@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="px-0">
     <div class="intro_bg" ref="intro">
       <div class="intro_bg__content">
         <p>Факультет ЦиТХИн</p>
@@ -27,11 +27,17 @@ export default {
   methods: {
     matchHeight () {
       let height = this.$refs.intro.clientHeight;
-      window.scrollTo({
-        top: height+30,
-        behavior: 'smooth'
-      })
-
+      if (this.$vuetify.breakpoint.smOnly) {
+        window.scrollTo({
+          top: 2*height+220,
+          behavior: 'smooth'
+        })
+      } else {
+        window.scrollTo({
+          top: 2*height+15,
+          behavior: 'smooth'
+        })
+      }
     }
   },
 }
@@ -98,7 +104,7 @@ export default {
   }
 
   .intro_bg__content {
-    width: 84%;
+    width: 88%;
     text-align: justify;
     margin: 4% 0;
   }
