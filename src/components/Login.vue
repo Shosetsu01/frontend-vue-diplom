@@ -14,27 +14,11 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
       </v-toolbar>
-      <v-row>
+      <v-row class="justify-center">
         <v-col
-            cols="12" md="6"
+            cols="12" md="6" sm="8"
         >
           <v-card-text>
-            <v-text-field
-                color=#898989
-                outlined
-                solo
-                rounded
-                label="Имя"
-                type="text"
-            ></v-text-field>
-            <v-text-field
-                color=#898989
-                outlined
-                solo
-                rounded
-                label="Фамилия"
-                type="text"
-            ></v-text-field>
             <v-text-field
                 color=#898989
                 outlined
@@ -43,70 +27,6 @@
                 label="Электронная почта"
                 type="email"
             ></v-text-field>
-            <v-text-field
-                v-show="$vuetify.breakpoint.smAndDown"
-                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                :rules="[rules.required, rules.min]"
-                :type="show1 ? 'text' : 'password'"
-                outlined
-                solo
-                rounded
-                color=#898989
-                label="Пароль"
-                @click:append="show1 = !show1"
-            ></v-text-field>
-            <v-autocomplete
-                v-show="$vuetify.breakpoint.smAndDown"
-                outlined
-                solo
-                rounded
-                :items="states"
-                item-value="id"
-                v-model = state
-                color=#898989
-                item-text="name"
-                label="Факультет"
-            ></v-autocomplete>
-            <v-autocomplete
-                v-show="$vuetify.breakpoint.smAndDown"
-                outlined
-                solo
-                rounded
-                :items="states"
-                item-value="id"
-                v-model = state
-                color=#898989
-                item-text="name"
-                label="Группа"
-            ></v-autocomplete>
-          </v-card-text>
-        </v-col>
-        <v-col
-            cols="12" md="6"
-            v-show="$vuetify.breakpoint.mdAndUp"
-        >
-          <v-card-text>
-            <v-autocomplete
-                outlined
-                solo
-                rounded
-                :items="states"
-                item-value="id"
-                v-model = state
-                color=#898989
-                item-text="name"
-                label="Факультет"
-            ></v-autocomplete><v-autocomplete
-              outlined
-              solo
-              rounded
-              :items="states"
-              item-value="id"
-              v-model = state
-              color=#898989
-              item-text="name"
-              label="Группа"
-          ></v-autocomplete>
             <v-text-field
                 :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                 :rules="[rules.required, rules.min]"
@@ -121,28 +41,30 @@
           </v-card-text>
         </v-col>
       </v-row>
-      <v-card-actions class="d-block d-md-flex">
-        <v-spacer></v-spacer>
+      <v-card-actions class="d-flex flex-wrap justify-center">
         <v-btn
             rounded
             color="white"
             outlined
-            class="pa-5 mr-md-3 mb-4 orange--text btn-bg"
-            @click="save"
+            class="pa-5 orange--text btn-bg mb-5 mb-sm-0 mx-16 mx-sm-0"
+
             elevation="2"
+            min-width="186"
         >
-          Создать аккаунт
+          Войти
+        </v-btn>
+        <v-btn
+            rounded
+            color="white"
+            outlined
+            class="pa-5 grey--text ml-sm-2 mx-16 mx-sm-0 mb-5 mb-sm-0"
+
+            elevation="2"
+            min-width="150"
+        >
+          Забыли пароль?
         </v-btn>
       </v-card-actions>
-      <v-snackbar
-          v-model="hasSaved"
-          :timeout="2000"
-          absolute
-          bottom
-          centered
-      >
-        Спасибо за регистрацию в личном кабинете
-      </v-snackbar>
     </v-card>
   </v-container>
 </template>
@@ -178,9 +100,6 @@ export default {
     //   return textOne.indexOf(searchText) > -1 ||
     //       textTwo.indexOf(searchText) > -1
     // },
-    save () {
-      this.hasSaved = true
-    },
   },
 }
 </script>

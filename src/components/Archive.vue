@@ -67,12 +67,12 @@ export default {
     }
   },
   methods: {
-    getImageClass: function(i) {
+    getImageClass (i) {
       return {
         'fullWidthImage': this.fullWidthImageIndex === i
       };
     },
-    onImageClick: function(i) {
+    onImageClick (i) {
       if (this.fullWidthImageIndex === i) {
         this.fullWidthImageIndex = null;
       } else {
