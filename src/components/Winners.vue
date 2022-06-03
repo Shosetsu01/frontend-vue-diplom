@@ -7,7 +7,7 @@
         <h2 class="headings">
           Победители прошлого семестра
         </h2>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        <p class="black--text text--darken-4 font-weight-medium">В этом списке представлены только победители, <br v-show="$vuetify.breakpoint.smAndUp"> для ознакомления с полным списков перейдите на страницу результатов.</p>
       </div>
       <v-tabs
           v-model="tabs"
@@ -24,7 +24,7 @@
           <p>Дуэли</p>
         </v-tab>
         <v-tab class="winners_tabs">
-          <p>Конкурс</p>
+          <p>Лучшие группы</p>
         </v-tab>
       </v-tabs>
 
@@ -39,7 +39,7 @@
                       tile
                       color="transparent"
                   >
-                    3 Место
+                    <span class="blue--text text--darken-2 font-weight-bold ">3 Место</span>
                     <ol>
                       <li>Lorem Ipsum is simply dummy</li>
                       <li>Lorem Ipsum is simply dummy</li>
@@ -55,7 +55,7 @@
                       tile
                       color="transparent"
                   >
-                    1 Место
+                    <span class="blue--text text--darken-2 font-weight-bold ">1 Место</span>
                     <ol>
                       <li>Lorem Ipsum is simply dummy</li>
                       <li>Lorem Ipsum is simply dummy</li>
@@ -71,7 +71,7 @@
                       tile
                       color="transparent"
                   >
-                    2 Место
+                    <span class="blue--text text--darken-2 font-weight-bold ">2 Место</span>
                     <ol>
                       <li>Lorem Ipsum is simply dummy</li>
                       <li>Lorem Ipsum is simply dummy</li>
@@ -95,7 +95,7 @@
         <v-tab-item>
           <v-card class="shadow-disabled">
             <v-card-text>
-              Конкурс
+              Лучшие группы
             </v-card-text>
           </v-card>
         </v-tab-item>
@@ -129,7 +129,7 @@ export default {
 .winners_bg{
   background: url("../assets/img/intro_bg_md.png") no-repeat 64%;
   background-size: cover;
-  min-height: 560px;
+  min-height: 590px;
   margin: 0 auto  ;
 }
 

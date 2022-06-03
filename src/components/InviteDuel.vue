@@ -11,21 +11,23 @@
       <v-col cols="12" md="7">
         <v-card-title class="ml-md-5 white--text" >Отправьте вызов оппоненту</v-card-title>
         <v-card-text class="ml-md-5 white--text text-left">
-          Subscribe to receive the latest news and updates about TDA.
-          We promise not to spam you! Subscribe to receive the latest news and updates about TDA.
-          We promise not to spam you!
+          После отправки оппонент получит письмо на email, если он примет вызов, то Ваша пара дуэлянтов появится в списке участников.
         </v-card-text>
       </v-col>
       <v-col cols="12" md="5" class="pr-md-8 pt-md-10">
         <v-card-text>
-          <v-text-field
+          <v-autocomplete
               color=#898989
               solo
-              label="Введите email оппонента"
               type="text"
               :append-icon="'mdi-send'"
+              :items="states"
+              item-value="id"
+              v-model = state
+              item-text="name"
+              label="Введите имя оппонента"
               @click:append="toggleMarker"
-          ></v-text-field>
+          ></v-autocomplete>
         </v-card-text>
       </v-col>
     </v-row>
@@ -50,6 +52,14 @@ export default {
   name: "InviteDuel",
   data: () => ({
     marker: true,
+    state: null,
+    states: [
+      { name: 'Florida', abbr: 'FL', id: 1 },
+      { name: 'Georgia', abbr: 'GA', id: 2 },
+      { name: 'Nebraska', abbr: 'NE', id: 3 },
+      { name: 'California', abbr: 'CA', id: 4 },
+      { name: 'New York', abbr: 'NY', id: 5 },
+    ],
   }),
   methods: {
     toggleMarker () {

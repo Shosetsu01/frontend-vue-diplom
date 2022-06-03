@@ -5,7 +5,11 @@
         <p>Факультет ЦиТХИн</p>
         <h2 class="headings">Конкурсы декана</h2>
         <img src="../assets/img/contests.png" id="contests" alt="">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ea eum molestiae quidem? Consequuntur ea eius iure modi necessitatibus, nostrum numquam, possimus praesentium quidem quos repellendus rerum sequi ullam voluptas!</p>
+        <p>
+          Веб-портал создан для студентов факультета Цифровых технологий
+          и химического инжиниринга РХТУ им. Д.И. Менделеева.
+          Для участия в конкурсах Вам необходимо зарегистрироваться.
+        </p>
         <v-btn
             large
             rounded

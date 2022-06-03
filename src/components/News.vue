@@ -10,7 +10,7 @@
         <h2 class="headings">
           Новости
         </h2>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+<!--        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>-->
       </div>
       <v-tabs
           show-arrows
@@ -32,18 +32,17 @@
               {{ item.date }}
             </v-card-subtitle>
             <v-card-title>{{ item.title }}</v-card-title>
-            <v-card-text class="text--primary">
-              <p class="mb-0">{{ item.text }}</p>
+            <v-card-text class="text--primary items_text">
+              <p>{{ item.text }}</p>
             </v-card-text>
 
             <v-card-actions>
               <v-spacer></v-spacer>
-
               <v-btn
                   color="#FA8305"
                   text
               >
-                Read more ➜
+                ПОДРОБНЕЕ ➜
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -60,17 +59,26 @@ export default {
   data() {
     return {
       news_list: [
-        {date: "November 10", title: "Top 10 Australian beaches", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"},
-        {date: "November 10", title: "Top 10 Australian beaches", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"},
-        {date: "November 10", title: "Top 10 Australian beaches", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"},
-        {date: "November 10", title: "Top 10 Australian beaches", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"},
-      ]
+        {date: "10 февраля", title: "Результаты конкурса \"Дуэли\".", text: "В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета. В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета. В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета. В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета."},
+        {date: "2 марта", title: "Дорогие студенты!", text: "Ознакомьтесь, пожалуйста, с составами отрядов конкурса \"Три мушкетёра\" и парами оппонентов конкурса \"Дуэли\". Если кто-то оказался пропущен или закралась ошибка, пожалуйста, пишите в комментариях к данному посту.\n"},
+        {date: "26 февраля", title: "Результаты конкурса \"Дуэли\".", text: "В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета. В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета. В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета. В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета."},
+        {date: "17 марта", title: "Дорогие студенты!", text: "Ознакомьтесь, пожалуйста, с составами отрядов конкурса \"Три мушкетёра\" и парами оппонентов конкурса \"Дуэли\". Если кто-то оказался пропущен или закралась ошибка, пожалуйста, пишите в комментариях к данному посту.\n"},
+       ]
     }
   }
 }
 </script>
 
 <style scoped>
+.items_text {
+  text-align: justify;
+  height: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+}
 
 .news_header {
   margin-left: 10%;
