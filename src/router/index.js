@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 import Main from '../views/Main.vue'
 import User from '../views/User.vue'
 import Results from '../views/Results.vue'
-import Auth from "../views/Auth";
+import Login from "../views/Login";
+import Registration from "@/views/Registration";
 
 Vue.use(VueRouter)
 
@@ -24,9 +25,14 @@ const routes = [
     component: Results
   },
   {
-    path: '/auth',
-    name: 'Auth',
-    component: Auth
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/reg',
+    name: 'Registration',
+    component: Registration
   }
 ]
 

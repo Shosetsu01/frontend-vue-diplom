@@ -7,7 +7,7 @@
         <h2 class="headings">
           Победители прошлого семестра
         </h2>
-        <p class="black--text text--darken-4 font-weight-medium">В этом списке представлены только победители, <br v-show="$vuetify.breakpoint.smAndUp"> для ознакомления с полным списков перейдите на страницу результатов.</p>
+        <p class="black--text text--darken-4 font-weight-medium">В этом списке представлены только победители, <br v-show="$vuetify.breakpoint.smAndUp"> для ознакомления с полным списком перейдите на страницу результатов.</p>
       </div>
       <v-tabs
           v-model="tabs"
@@ -33,7 +33,7 @@
           <v-card class="shadow-disabled">
             <v-card-text>
               <v-row>
-                <v-col order="1" cols="12" sm="4">
+                <v-col order="1" cols="12" sm="4" v-show="$vuetify.breakpoint.smAndUp">
                   <v-card
                       class="list_third_place lists shadow-disabled"
                       tile
@@ -72,6 +72,22 @@
                       color="transparent"
                   >
                     <span class="blue--text text--darken-2 font-weight-bold ">2 Место</span>
+                    <ol>
+                      <li>Lorem Ipsum is simply dummy</li>
+                      <li>Lorem Ipsum is simply dummy</li>
+                      <li>Lorem Ipsum is simply dummy</li>
+                      <li>Lorem Ipsum is simply dummy</li>
+                      <li>Lorem Ipsum is simply dummy</li>
+                    </ol>
+                  </v-card>
+                </v-col>
+                <v-col order="4" cols="12" sm="4" v-show="$vuetify.breakpoint.xsOnly">
+                  <v-card
+                      class="list_third_place lists shadow-disabled"
+                      tile
+                      color="transparent"
+                  >
+                    <span class="blue--text text--darken-2 font-weight-bold ">3 Место</span>
                     <ol>
                       <li>Lorem Ipsum is simply dummy</li>
                       <li>Lorem Ipsum is simply dummy</li>

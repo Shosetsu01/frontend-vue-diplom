@@ -20,11 +20,12 @@
         <!--        </div>-->
         <div class="footer__item white--text">
           <v-icon>mdi-email-edit</v-icon>
-          Почта для связи: <a href="mailto:">mail</a>
+          Почта для связи: <a href="mailto: deans-competitions@mail.ru">deans-competitions@mail.ru
+        </a>
         </div>
         <div class="footer__item white--text">
           Нашли ошибку? Сообщите нам:<br>
-          <a href="mailto: romamarin16@gmail.com" target="_blank">mail</a>
+          <a href="mailto: deans-competitions@mail.ru" target="_blank">deans-competitions@mail.ru</a>
         </div>
       </v-col>
 
@@ -73,9 +74,18 @@
             </a>
           </div>
           <div class="footer__item">
-            <a href="#" target="_blank">
+            <a href="https://www.youtube.com/c/%D0%9A%D0%B0%D1%84%D0%B5%D0%B4%D1%80%D0%B0%D0%98%D0%9A%D0%A2%D0%A0%D0%A5%D0%A2%D0%A3%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8%D0%94%D0%98%D0%9C%D0%B5%D0%BD%D0%B4%D0%B5%D0%BB%D0%B5%D0%B5%D0%B2%D0%B0/featured" target="_blank">
               <v-img
                   src="../assets/img/youtube.svg"
+                  height="42"
+                  width="42"
+              />
+            </a>
+          </div>
+          <div class="footer__item">
+            <a href="https://ikt.muctr.ru/" target="_blank">
+              <v-img
+                  src="../assets/img/web-page-website-svgrepo-com.svg"
                   height="42"
                   width="42"
               />

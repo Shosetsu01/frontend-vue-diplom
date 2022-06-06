@@ -44,7 +44,7 @@
         </v-toolbar-items>
         </router-link>
 
-        <router-link to="/user" >
+        <router-link to="/login" >
         <v-toolbar-items v-show="$vuetify.breakpoint.mdAndUp" >
           <v-btn
               color=#E47500
@@ -100,7 +100,7 @@
           </v-list-item>
           </router-link>
 
-          <router-link to="/user" >
+          <router-link to="/login" >
           <v-list-item>
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
