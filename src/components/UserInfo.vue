@@ -53,6 +53,7 @@
                 rounded
                 label="Имя"
                 type="text"
+                v-model="userData.firstName"
             ></v-text-field>
             <v-text-field
                 :disabled="!isEditing"
@@ -62,6 +63,7 @@
                 rounded
                 label="Фамилия"
                 type="text"
+                v-model="userData.lastName"
             ></v-text-field>
             <v-text-field
                 :disabled="!isEditing"
@@ -71,12 +73,12 @@
                 rounded
                 label="Электронная почта"
                 type="email"
+                v-model="userData.email"
             ></v-text-field>
             <v-text-field
                 v-show="$vuetify.breakpoint.smAndDown"
                 :disabled="!isEditing"
                 :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                :rules="[rules.required, rules.min]"
                 :type="show1 ? 'text' : 'password'"
                 outlined
                 solo
@@ -84,6 +86,7 @@
                 color=#898989
                 label="Пароль"
                 @click:append="show1 = !show1"
+                v-model="userData.password"
             ></v-text-field>
             <v-autocomplete
               v-show="$vuetify.breakpoint.smAndDown"
@@ -93,10 +96,10 @@
               rounded
               :items="states"
               item-value="id"
-              v-model = state
               color=#898989
               item-text="name"
               label="Факультет"
+              v-model="userData.faculty"
             ></v-autocomplete>
             <v-autocomplete
               v-show="$vuetify.breakpoint.smAndDown"
@@ -106,10 +109,10 @@
               rounded
               :items="states"
               item-value="id"
-              v-model = state
               color=#898989
               item-text="name"
               label="Группа"
+              v-model="userData.group"
           ></v-autocomplete>
           </v-card-text>
         </v-col>
@@ -125,32 +128,33 @@
                 rounded
                 :items="states"
                 item-value="id"
-                v-model = state
                 color=#898989
                 item-text="name"
                 label="Факультет"
-            ></v-autocomplete><v-autocomplete
+                v-model="state"
+            ></v-autocomplete>
+            <v-autocomplete
                 :disabled="!isEditing"
                 outlined
                 solo
                 rounded
                 :items="states"
                 item-value="id"
-                v-model = state
                 color=#898989
                 item-text="name"
                 label="Группа"
+                v-model="state"
             ></v-autocomplete>
             <v-text-field
                 :disabled="!isEditing"
                 :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                :rules="[rules.required, rules.min]"
                 :type="show1 ? 'text' : 'password'"
                 outlined
                 solo
                 rounded
                 color=#898989
                 label="Пароль"
+                v-model="userData.password"
                 @click:append="show1 = !show1"
             ></v-text-field>
           </v-card-text>
@@ -188,22 +192,30 @@ export default {
   name: "UserInfo",
   data () {
     return {
+      userData: {
+        firstName: null,
+        lastName: null,
+        email: null,
+        password: null,
+        group: null,
+        faculty: null
+      },
       hasSaved: false,
       isEditing: null,
       model: null,
       state: null,
       states: [
-        { name: 'Florida', abbr: 'FL', id: 1 },
-        { name: 'Georgia', abbr: 'GA', id: 2 },
-        { name: 'Nebraska', abbr: 'NE', id: 3 },
-        { name: 'California', abbr: 'CA', id: 4 },
-        { name: 'New York', abbr: 'NY', id: 5 },
+        // { name: 'Florida', abbr: 'FL', id: 1 },
+        // { name: 'Georgia', abbr: 'GA', id: 2 },
+        // { name: 'Nebraska', abbr: 'NE', id: 3 },
+        // { name: 'California', abbr: 'CA', id: 4 },
+        // { name: 'New York', abbr: 'NY', id: 5 },
       ],
       show1: false,
-      rules: {
-        required: value => !!value || 'Required.',
-        min: v => v.length >= 8 || 'Min 8 characters',
-      }
+      // rules: {
+      //   required: value => !!value || 'Required.',
+      //   min: v => v.length >= 8 || 'Min 8 characters',
+      // }
     }
   },
   methods: {
@@ -220,6 +232,14 @@ export default {
       this.hasSaved = true
     },
   },
+  mounted() {
+    this.userData.firstName = this.$store.state.savedCurrentUser.first_name
+    this.userData.lastName = this.$store.state.savedCurrentUser.last_name
+    this.userData.email = this.$store.state.savedCurrentUser.email
+    this.userData.group = this.$store.state.savedCurrentUser.group
+    this.userData.faculty = this.$store.state.savedCurrentUser.faculty
+
+  }
 }
 </script>
 

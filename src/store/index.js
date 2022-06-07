@@ -7,13 +7,22 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     plugins: [createPersistedState()],
     state: {
-        savedCurrentUser: {}
+        savedCurrentUser: null,
+        savedCurrentToken: null,
     },
     mutations: {
-        savedCurrentUser (state, data) {
-            state.savedCurrentUser = data
+        savedCurrentUser: function (state, data) {
+            state.savedCurrentUser = data;
+        },
+        savedCurrentToken: function (state, data) {
+            state.savedCurrentToken = data;
         }
     },
-    actions: {},
+    actions: {
+        clearCurrentToken: function (state) {
+            state.savedCurrentUser = ''
+            state.savedCurrentToken = ''
+        }
+    },
     getters: {}
 })

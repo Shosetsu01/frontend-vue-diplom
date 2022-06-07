@@ -93,7 +93,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import { validationMixin } from 'vuelidate'
 import { required, maxLength, email } from 'vuelidate/lib/validators'
 
@@ -109,31 +109,23 @@ export default {
       email: '',
       password: '',
       submitStatus: null,
-      hasSaved: false,
       model: null,
-      state: null,
-      states: [
-        { name: 'Florida', abbr: 'FL', id: 1 },
-        { name: 'Georgia', abbr: 'GA', id: 2 },
-        { name: 'Nebraska', abbr: 'NE', id: 3 },
-        { name: 'California', abbr: 'CA', id: 4 },
-        { name: 'New York', abbr: 'NY', id: 5 },
-      ],
       show1: false,
+      get_data: [],
     }
   },
   computed: {
     emailErrors () {
       const errors = []
       if (!this.$v.email.$dirty) return errors
-      !this.$v.email.required && errors.push('Email is required.')
-      !this.$v.email.email && errors.push('Must be valid e-mail')
+      !this.$v.email.required && errors.push('Поле логина не должно оставаться пустым.')
+      !this.$v.email.email && errors.push('Электронная почта введена некорректно.')
       return errors
     },
     passwordErrors () {
       const errors = []
       if (!this.$v.password.$dirty) return errors
-      !this.$v.password.required && errors.push('Password is required')
+      !this.$v.password.required && errors.push('Поле пароля не должно оставаться пустым.')
       return errors
     }
   },
@@ -153,38 +145,37 @@ export default {
       }
     },
 
-    Login: function () {
-      const formData = new FormData()
-      if (this.email !== '') {
-        formData.append('email', this.email)
-      }
-      if (this.password !== '') {
-        formData.append('password', this.password)
-      }
-
-      axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/api/v1/login',
-        data: formData,
-        headers: { 'Content-Type': 'multipart/form-data' }
-      }).then(response => {
-        if (response.status === 200) {
-          console.log("replace")
-          console.log(response.data)
-          this.get_user = response.data
-          // save user info in store
-          this.$store.commit('savedCurrentUser', this.get_user)
-          this.$router.push({path: '/user', replace: true})
-        } else {
-          console.log("else")
-          console.log(response.data)
-        }
-      })
-        .catch((error) => {
-          this.submitStatus = 'ERROR'
-          console.log("error")
-          console.log(JSON.stringify(error.response.data))
+    Login() {
+      let email, password;
+      email = this.email;
+      password = this.password;
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password
         })
+      };
+      fetch("http://127.0.0.1:8000/api/v1/login", requestOptions)
+          .then(response => {
+            if (response.status === 200) {
+              return response.json()
+            }
+          })
+          .then(result => {
+              console.log("here", result)
+              this.$store.commit('savedCurrentUser', result.user)
+              this.$store.commit('savedCurrentToken', result.token)
+              this.$router.push({path: '/user', replace: true})
+          })
+          .catch((error) => {
+            this.submitStatus = 'ERROR'
+            console.log("error")
+            console.log(JSON.stringify(error.response.data))
+          })
     }
   },
 }
