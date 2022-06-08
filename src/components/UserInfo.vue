@@ -94,7 +94,7 @@
               outlined
               solo
               rounded
-              :items="states"
+              :items="faculties"
               item-value="id"
               color=#898989
               item-text="name"
@@ -107,7 +107,7 @@
               outlined
               solo
               rounded
-              :items="states"
+              :items="groups"
               item-value="id"
               color=#898989
               item-text="name"
@@ -126,24 +126,24 @@
                 outlined
                 solo
                 rounded
-                :items="states"
+                :items="faculties"
                 item-value="id"
                 color=#898989
                 item-text="name"
                 label="Факультет"
-                v-model="state"
+                v-model="userData.faculty"
             ></v-autocomplete>
             <v-autocomplete
                 :disabled="!isEditing"
                 outlined
                 solo
                 rounded
-                :items="states"
+                :items="groups"
                 item-value="id"
                 color=#898989
                 item-text="name"
                 label="Группа"
-                v-model="state"
+                v-model="userData.group"
             ></v-autocomplete>
             <v-text-field
                 :disabled="!isEditing"
@@ -203,14 +203,8 @@ export default {
       hasSaved: false,
       isEditing: null,
       model: null,
-      state: null,
-      states: [
-        // { name: 'Florida', abbr: 'FL', id: 1 },
-        // { name: 'Georgia', abbr: 'GA', id: 2 },
-        // { name: 'Nebraska', abbr: 'NE', id: 3 },
-        // { name: 'California', abbr: 'CA', id: 4 },
-        // { name: 'New York', abbr: 'NY', id: 5 },
-      ],
+      groups: ['Кс-40', 'Кс-30'],
+      faculties: ['ЦиТХИн', 'НПМ'],
       show1: false,
       // rules: {
       //   required: value => !!value || 'Required.',
@@ -238,7 +232,6 @@ export default {
     this.userData.email = this.$store.state.savedCurrentUser.email
     this.userData.group = this.$store.state.savedCurrentUser.group
     this.userData.faculty = this.$store.state.savedCurrentUser.faculty
-
   }
 }
 </script>
