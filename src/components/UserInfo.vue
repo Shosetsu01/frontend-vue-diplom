@@ -206,21 +206,9 @@ export default {
       groups: ['Кс-40', 'Кс-30'],
       faculties: ['ЦиТХИн', 'НПМ'],
       show1: false,
-      // rules: {
-      //   required: value => !!value || 'Required.',
-      //   min: v => v.length >= 8 || 'Min 8 characters',
-      // }
     }
   },
   methods: {
-    // customFilter (item, queryText) {
-    //   const textOne = item.name.toLowerCase()
-    //   const textTwo = item.abbr.toLowerCase()
-    //   const searchText = queryText.toLowerCase()
-    //
-    //   return textOne.indexOf(searchText) > -1 ||
-    //       textTwo.indexOf(searchText) > -1
-    // },
     save () {
       this.isEditing = !this.isEditing
       this.hasSaved = true

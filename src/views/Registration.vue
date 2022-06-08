@@ -1,20 +1,23 @@
 <template>
-<!--  <v-container>-->
-    <v-container class="login__bg px-0 mt-1 mt-md-3">
-      <v-card
-          class="shadow-disabled pa-md-16 mt-md-4"
+  <v-container class="login__bg px-0 mt-1 mt-md-3">
+    <v-card
+        class="shadow-disabled pa-md-16 mt-md-4"
+    >
+      <v-toolbar
+          flat
+          color="transparent"
       >
-        <v-toolbar
-            flat
-            color="transparent"
-        >
-          <v-spacer></v-spacer>
-          <v-icon class="text-h5 mr-3  text-md-h4 mb-4">mdi-account</v-icon>
-          <v-toolbar-title class="text-h5 text-md-h4 font-weight-medium mr-3 mb-4">
-            Регистрация
-          </v-toolbar-title>
-          <v-spacer></v-spacer>
-        </v-toolbar>
+        <v-spacer></v-spacer>
+        <v-icon class="text-h5 mr-3  text-md-h4 mb-4">mdi-account</v-icon>
+        <v-toolbar-title class="text-h5 text-md-h4 font-weight-medium mr-3 mb-4">
+          Регистрация
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+      </v-toolbar>
+      <v-form
+          ref="form"
+          lazy-validation
+      >
         <v-row>
           <v-col
               cols="12" md="6"
@@ -27,6 +30,9 @@
                   rounded
                   label="Имя"
                   type="text"
+                  v-model="firstName"
+                  :error-messages="firstNameErrors"
+                  @input="$v.firstName.$touch()"
               ></v-text-field>
               <v-text-field
                   color=#898989
@@ -35,6 +41,9 @@
                   rounded
                   label="Фамилия"
                   type="text"
+                  v-model="lastName"
+                  :error-messages="lastNameErrors"
+                  @input="$v.lastName.$touch()"
               ></v-text-field>
               <v-text-field
                   color=#898989
@@ -43,11 +52,13 @@
                   rounded
                   label="Электронная почта"
                   type="email"
+                  v-model="email"
+                  :error-messages="emailErrors"
+                  @input="$v.email.$touch()"
               ></v-text-field>
               <v-text-field
                   v-show="$vuetify.breakpoint.smAndDown"
                   :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                  :rules="[rules.required, rules.min]"
                   :type="show1 ? 'text' : 'password'"
                   outlined
                   solo
@@ -55,30 +66,37 @@
                   color=#898989
                   label="Пароль"
                   @click:append="show1 = !show1"
+                  v-model="password"
+                  :error-messages="passwordErrors"
+                  @input="$v.password.$touch()"
               ></v-text-field>
               <v-autocomplete
                   v-show="$vuetify.breakpoint.smAndDown"
                   outlined
                   solo
                   rounded
-                  :items="states"
+                  :items="faculties"
                   item-value="id"
-                  v-model = state
                   color=#898989
-                  item-text="name"
+                  item-text="faculty"
                   label="Факультет"
+                  v-model="faculty"
+                  :error-messages="facultyErrors"
+                  @input="$v.faculty.$touch()"
               ></v-autocomplete>
               <v-autocomplete
                   v-show="$vuetify.breakpoint.smAndDown"
                   outlined
                   solo
                   rounded
-                  :items="states"
+                  :items="groups"
                   item-value="id"
-                  v-model = state
                   color=#898989
-                  item-text="name"
+                  item-text="group"
                   label="Группа"
+                  v-model="group"
+                  :error-messages="groupErrors"
+                  @input="$v.group.$touch()"
               ></v-autocomplete>
             </v-card-text>
           </v-col>
@@ -91,26 +109,29 @@
                   outlined
                   solo
                   rounded
-                  :items="states"
+                  :items="faculties"
                   item-value="id"
-                  v-model = state
                   color=#898989
-                  item-text="name"
+                  item-text="faculty"
                   label="Факультет"
+                  v-model="faculty"
+                  :error-messages="facultyErrors"
+                  @input="$v.faculty.$touch()"
               ></v-autocomplete><v-autocomplete
                 outlined
                 solo
                 rounded
-                :items="states"
+                :items="groups"
                 item-value="id"
-                v-model = state
                 color=#898989
-                item-text="name"
+                item-text="group"
                 label="Группа"
+                v-model="group"
+                :error-messages="groupErrors"
+                @input="$v.group.$touch()"
             ></v-autocomplete>
               <v-text-field
                   :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                  :rules="[rules.required, rules.min]"
                   :type="show1 ? 'text' : 'password'"
                   outlined
                   solo
@@ -118,72 +139,190 @@
                   color=#898989
                   label="Пароль"
                   @click:append="show1 = !show1"
+                  v-model="password"
+                  :error-messages="passwordErrors"
+                  @input="$v.password.$touch()"
               ></v-text-field>
             </v-card-text>
           </v-col>
         </v-row>
-        <v-card-actions class="d-block d-md-flex">
-          <v-spacer></v-spacer>
-          <v-btn
-              rounded
-              color="white"
-              outlined
-              class="pa-5 mr-md-3 mb-4 orange--text btn-bg"
-              @click="save"
-              elevation="2"
-              to="/user"
-          >
-            Создать аккаунт
-          </v-btn>
-        </v-card-actions>
-        <v-snackbar
-            v-model="hasSaved"
-            :timeout="2000"
-            absolute
-            bottom
-            centered
+      </v-form>
+      <v-card-actions class="d-block d-md-flex">
+        <p v-if="submitStatus === 'ERROR'"> Please fill the form correctly. </p>
+        <p v-if="submitStatus === 'PENDING'"> Sending... </p>
+        <v-spacer></v-spacer>
+        <v-btn
+            rounded
+            color="white"
+            outlined
+            class="pa-5 mr-md-3 mb-4 orange--text btn-bg"
+            @click="Registration"
+            elevation="2"
         >
-          Спасибо за регистрацию в личном кабинете
-        </v-snackbar>
-      </v-card>
-    </v-container>
-<!--  </v-container>-->
+          Создать аккаунт
+        </v-btn>
+      </v-card-actions>
+      <v-snackbar
+          v-model="hasSaved"
+          :timeout="2000"
+          absolute
+          bottom
+          centered
+      >
+        Спасибо за регистрацию в личном кабинете
+      </v-snackbar>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
+import { validationMixin } from 'vuelidate'
+import { required, minLength, email } from 'vuelidate/lib/validators'
+
 export default {
   name: "Registration",
+
+  mixins: [validationMixin],
+
+  validations: {
+    email: { required, email },
+    password: { required, minLength: minLength(8) },
+    firstName: { required },
+    lastName: { required },
+    group: { required },
+    faculty: { required },
+  },
+
   data () {
     return {
+      firstName: null,
+      lastName: null,
+      email: null,
+      password: null,
+      group: null,
+      faculty: null,
+      groups: ['Кс-40', 'Кс-30'],
+      faculties: ['ЦиТХИн', 'НПМ'],
       hasSaved: false,
-      model: null,
-      state: null,
-      states: [
-        { name: 'Florida', abbr: 'FL', id: 1 },
-        { name: 'Georgia', abbr: 'GA', id: 2 },
-        { name: 'Nebraska', abbr: 'NE', id: 3 },
-        { name: 'California', abbr: 'CA', id: 4 },
-        { name: 'New York', abbr: 'NY', id: 5 },
-      ],
       show1: false,
-      rules: {
-        required: value => !!value || 'Required.',
-        min: v => v.length >= 8 || 'Min 8 characters',
-      }
+      submitStatus: null
+    }
+  },
+  computed: {
+    emailErrors () {
+      const errors = []
+      if (!this.$v.email.$dirty) return errors
+      !this.$v.email.required && errors.push('Email is required.')
+      !this.$v.email.email && errors.push('Must be valid e-mail')
+      return errors
+    },
+    passwordErrors () {
+      const errors = []
+      if (!this.$v.password.$dirty) return errors
+      !this.$v.password.required && errors.push('Password is required')
+      !this.$v.password.minLength && errors.push('Password must be at least 6 characters')
+      return errors
+    },
+    firstNameErrors () {
+      const errors = []
+      if (!this.$v.firstName.$dirty) return errors
+      !this.$v.firstName.required && errors.push('First Name is required')
+      return errors
+    },
+    lastNameErrors () {
+      const errors = []
+      if (!this.$v.lastName.$dirty) return errors
+      !this.$v.lastName.required && errors.push('Last Name is required')
+      return errors
+    },
+    groupErrors () {
+      const errors = []
+      if (!this.$v.group.$dirty) return errors
+      !this.$v.group.required && errors.push('Last Name is required')
+      return errors
+    },
+    facultyErrors () {
+      const errors = []
+      if (!this.$v.faculty.$dirty) return errors
+      !this.$v.faculty.required && errors.push('Last Name is required')
+      return errors
     }
   },
   methods: {
-    // customFilter (item, queryText) {
-    //   const textOne = item.name.toLowerCase()
-    //   const textTwo = item.abbr.toLowerCase()
-    //   const searchText = queryText.toLowerCase()
-    //
-    //   return textOne.indexOf(searchText) > -1 ||
-    //       textTwo.indexOf(searchText) > -1
-    // },
-    save () {
-      this.hasSaved = true
+    submit () {
+      console.log('submit!')
+      this.$v.$touch()
+      if (this.$v.$invalid) {
+        this.submitStatus = 'ERROR'
+      } else {
+        // do your submit logic here
+        console.log('send...')
+        this.Registration()
+        this.submitStatus = 'PENDING'
+        setTimeout(() => {
+          this.submitStatus = 'OK'
+        }, 500)
+      }
     },
+
+    Registration: function () {
+      const formData = new FormData()
+      if (this.email !== '') {
+        formData.append('email', this.email)
+      }
+      if (this.password !== '') {
+        formData.append('password', this.password)
+      }
+      if (this.firstName !== '') {
+        formData.append('first_name', this.firstName)
+      }
+      if (this.lastName !== '') {
+        formData.append('last_name', this.lastName)
+      }
+      if (this.group !== '') {
+        formData.append('group', this.group)
+      }
+      if (this.faculty !== '') {
+        formData.append('faculty', this.faculty)
+      }
+      console.log(formData)
+    //   axios({
+    //     method: 'post',
+    //     url: 'http://127.0.0.1:8000/api/v1/registration',
+    //     data: formData,
+    //     headers: { 'Content-Type': 'multipart/form-data' }
+    //   }).then(response => {
+    //     if (response.status === 200) {
+    //       console.log(response.data)
+    //     } else {
+    //       console.log(response.data)
+    //     }
+    //   })
+    //       .catch((error) => {
+    //         console.log(JSON.stringify(error.response.data))
+    //       })
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData
+        })
+      };
+      fetch("http://127.0.0.1:8000/api/v1/registration", requestOptions)
+          .then(response => {
+            if (response.status === 200) {
+              this.hasSaved = true
+              return response.json()
+            }
+          })
+          .catch((error) => {
+            this.submitStatus = 'ERROR'
+            console.log("error")
+            console.log(JSON.stringify(error.response.data))
+          })
+    }
   },
 }
 </script>

@@ -72,24 +72,23 @@
               outlined
               class="pa-5 grey--text ml-sm-2 mx-16 mx-sm-0 mb-5 mb-sm-0"
 
-              elevation="2"
-              min-width="150"
-          >
-            Забыли пароль?
-          </v-btn>
-        </v-card-actions>
-        <v-btn
-            text
-            style="text-transform: none"
-            class="mt-3"
-            color=#FA8305
-            rounded
+            elevation="2"
+            min-width="150"
         >
-          <router-link to="/reg" class="orange--text"><h3>Еще нет аккаунта? Создать ➜</h3></router-link>
+          Забыли пароль?
         </v-btn>
-      </v-card>
-    </v-container>
-<!--  </v-container>-->
+      </v-card-actions>
+      <v-btn
+          text
+          style="text-transform: none"
+          class="mt-3"
+          color=#FA8305
+          rounded
+      >
+        <router-link to="/reg" class="orange--text"><h3>Еще нет аккаунта? Создать ➜</h3></router-link>
+      </v-btn>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
