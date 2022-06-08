@@ -148,15 +148,17 @@
         </v-row>
       </v-form>
       <v-card-actions class="d-block d-md-flex">
-        <p v-if="submitStatus === 'ERROR'"> Please fill the form correctly. </p>
-        <p v-if="submitStatus === 'PENDING'"> Sending... </p>
+        <v-spacer></v-spacer>
+        <p v-if="submitStatus === 'ERROR'" class="red--text"> Заполните данные правильно. </p>
+        <p v-if="submitStatus === 'PENDING'" class="red--text"> Обработка данных... </p>
+
         <v-spacer></v-spacer>
         <v-btn
             rounded
             color="white"
             outlined
             class="pa-5 mr-md-3 mb-4 orange--text btn-bg"
-            @click="Registration"
+            @click="submit"
             elevation="2"
         >
           Создать аккаунт
@@ -178,6 +180,8 @@
 <script>
 import { validationMixin } from 'vuelidate'
 import { required, minLength, email } from 'vuelidate/lib/validators'
+// import axios from "axios";
+
 
 export default {
   name: "Registration",
@@ -205,46 +209,47 @@ export default {
       faculties: ['ЦиТХИн', 'НПМ'],
       hasSaved: false,
       show1: false,
-      submitStatus: null
+      submitStatus: null,
+      message: null
     }
   },
   computed: {
     emailErrors () {
       const errors = []
       if (!this.$v.email.$dirty) return errors
-      !this.$v.email.required && errors.push('Email is required.')
-      !this.$v.email.email && errors.push('Must be valid e-mail')
+      !this.$v.email.required && errors.push('Поле не должно оставаться пустым.')
+      !this.$v.email.email && errors.push('Введите корректный адрес электронной почты')
       return errors
     },
     passwordErrors () {
       const errors = []
       if (!this.$v.password.$dirty) return errors
-      !this.$v.password.required && errors.push('Password is required')
-      !this.$v.password.minLength && errors.push('Password must be at least 6 characters')
+      !this.$v.password.required && errors.push('Поле не должно оставаться пустым.')
+      !this.$v.password.minLength && errors.push('Мин. 8 символов, включая хотя бы одну заглавную букву и цифру.')
       return errors
     },
     firstNameErrors () {
       const errors = []
       if (!this.$v.firstName.$dirty) return errors
-      !this.$v.firstName.required && errors.push('First Name is required')
+      !this.$v.firstName.required && errors.push('Поле не должно оставаться пустым.')
       return errors
     },
     lastNameErrors () {
       const errors = []
       if (!this.$v.lastName.$dirty) return errors
-      !this.$v.lastName.required && errors.push('Last Name is required')
+      !this.$v.lastName.required && errors.push('Поле не должно оставаться пустым.')
       return errors
     },
     groupErrors () {
       const errors = []
       if (!this.$v.group.$dirty) return errors
-      !this.$v.group.required && errors.push('Last Name is required')
+      !this.$v.group.required && errors.push('Поле не должно оставаться пустым.')
       return errors
     },
     facultyErrors () {
       const errors = []
       if (!this.$v.faculty.$dirty) return errors
-      !this.$v.faculty.required && errors.push('Last Name is required')
+      !this.$v.faculty.required && errors.push('Поле не должно оставаться пустым.')
       return errors
     }
   },
@@ -255,7 +260,6 @@ export default {
       if (this.$v.$invalid) {
         this.submitStatus = 'ERROR'
       } else {
-        // do your submit logic here
         console.log('send...')
         this.Registration()
         this.submitStatus = 'PENDING'
@@ -266,41 +270,40 @@ export default {
     },
 
     Registration: function () {
-      const formData = new FormData()
-      if (this.email !== '') {
-        formData.append('email', this.email)
+      let formData = {
+        first_name: null,
+        last_name: null,
+        email: null,
+        password: null,
+        group: null,
+        faculty: null
       }
-      if (this.password !== '') {
-        formData.append('password', this.password)
-      }
-      if (this.firstName !== '') {
-        formData.append('first_name', this.firstName)
-      }
-      if (this.lastName !== '') {
-        formData.append('last_name', this.lastName)
-      }
-      if (this.group !== '') {
-        formData.append('group', this.group)
-      }
-      if (this.faculty !== '') {
-        formData.append('faculty', this.faculty)
-      }
+
+      formData.first_name = this.firstName
+      formData.last_name = this.lastName
+      formData.email = this.email
+      formData.password = this.password
+      formData.group = this.group
+      formData.faculty = this.faculty
+
       console.log(formData)
-    //   axios({
-    //     method: 'post',
-    //     url: 'http://127.0.0.1:8000/api/v1/registration',
-    //     data: formData,
-    //     headers: { 'Content-Type': 'multipart/form-data' }
-    //   }).then(response => {
-    //     if (response.status === 200) {
-    //       console.log(response.data)
-    //     } else {
-    //       console.log(response.data)
-    //     }
-    //   })
-    //       .catch((error) => {
-    //         console.log(JSON.stringify(error.response.data))
-    //       })
+      // axios({
+      //   method: 'post',
+      //   url: 'http://127.0.0.1:8000/api/v1/registration',
+      //   data: formData,
+      //   headers: { 'Content-Type': 'multipart/form-data' }
+      // }).then(response => {
+      //   if (response.status === 200) {
+      //     console.log(response.data)
+      //     this.$router.push({path: '/login', replace: true})
+      //   } else {
+      //     console.log(response.data)
+      //   }
+      // })
+      //     .catch((error) => {
+      //       console.log(JSON.stringify(error.response.data))
+      //     })
+
       const requestOptions = {
         method: "POST",
         headers: {
@@ -312,9 +315,11 @@ export default {
       };
       fetch("http://127.0.0.1:8000/api/v1/registration", requestOptions)
           .then(response => {
-            if (response.status === 200) {
+            if (response.status === 201) {
               this.hasSaved = true
-              return response.json()
+              setTimeout(() => {
+                this.$router.push({path: '/login', replace: true})
+              }, 1000)
             }
           })
           .catch((error) => {
