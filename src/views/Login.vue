@@ -74,7 +74,7 @@
 
             elevation="2"
             min-width="150"
-        >
+          >
           Забыли пароль?
         </v-btn>
       </v-card-actions>
@@ -184,7 +184,7 @@ export default {
 .login__bg {
   background: url("../assets/img/login_bg.png") no-repeat;
   background-size: cover;
-  min-height: 68.5vh;
+  min-height: 73.3vh;
   border-radius: 30px;
 }
 

@@ -148,10 +148,20 @@
         </v-row>
       </v-form>
       <v-card-actions class="d-block d-md-flex">
+        <v-btn
+            rounded
+            color="white"
+            outlined
+            class="pa-5 grey--text btn-bg ml-md-3 mb-4"
+            elevation="2"
+            min-width="193"
+            to="/login"
+        >
+          Назад
+        </v-btn>
         <v-spacer></v-spacer>
         <p v-if="submitStatus === 'ERROR'" class="red--text"> Заполните данные правильно. </p>
-        <p v-if="submitStatus === 'PENDING'" class="red--text"> Обработка данных... </p>
-
+        <p v-if="submitStatus === 'PENDING'" class="orange--text"> Обработка данных... </p>
         <v-spacer></v-spacer>
         <v-btn
             rounded
@@ -336,7 +346,7 @@ export default {
 .login__bg {
   background: url("../assets/img/login_bg.png") no-repeat;
   background-size: cover;
-  min-height: 68.5vh;
+  min-height: 73.3vh;
   border-radius: 30px;
 }
 
