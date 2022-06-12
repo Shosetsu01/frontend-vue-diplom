@@ -39,11 +39,11 @@ export default {
       fullWidthImageIndex: null,
       archive_list: [
         {
-          year: "2020/21",
-          semester: "Весенний",
-          musketeers: "https://via.placeholder.com/300x200",
-          duel: "https://via.placeholder.com/303x202",
-          groups: "https://via.placeholder.com/306x204"
+          year: "2021/22",
+          semester: "Осенний",
+          musketeers: "https://sun9-33.userapi.com/s/v1/ig2/IVpaZx_3NUP4_aqv-g0-_qYGzlNcpUT4dVvmQ_jCYYvi6PJ19NEoEVnXabtXhLydgv1djmIysv_152mz-TIHR6bi.jpg?size=805x701&quality=96&type=album",
+          duel: "https://sun9-43.userapi.com/s/v1/ig2/BZ9kYpUy4dDOWfoP8ZBGU9CLJeAvOb916-2DEW6jTfAU5mE5npCqDums6aHmDhphhyiSmKN-_552rNycP_LC2ee5.jpg?size=547x749&quality=96&type=album",
+          groups: "https://sun9-78.userapi.com/s/v1/ig2/w2GeK7OwMm2lUEAGakGW5JORfHPtWBxCrh9BZlpw1Yuk5ltVY8EMe4XX_kIkiKxlsIrowGrhEJmixTzePf6gwMP9.jpg?size=1353x741&quality=96&type=album"
         },{
           year: "2020/21",
           semester: "Весенний",
@@ -52,12 +52,12 @@ export default {
           groups: "https://via.placeholder.com/300x200"
         },{
           year: "2020/21",
-          semester: "Весенний",
+          semester: "Осенний",
           musketeers: "https://via.placeholder.com/300x200",
           duel: "https://via.placeholder.com/300x200",
           groups: "https://via.placeholder.com/300x200"
         },{
-          year: "2020/21",
+          year: "2019/20",
           semester: "Весенний",
           musketeers: "https://via.placeholder.com/300x200",
           duel: "https://via.placeholder.com/300x200",

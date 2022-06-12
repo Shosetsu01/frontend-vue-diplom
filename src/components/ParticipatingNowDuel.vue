@@ -50,28 +50,16 @@ export default {
     return {
       opponents: [
         {
-          people1: "Изюмов",
-          group1: "Тм-34",
-          people2: "Соловов",
-          group2: "Кс-10",
+          people1: "Марьин",
+          group1: "Кс-40",
+          people2: "Поляков",
+          group2: "Кс-40",
         },
         {
-          people1: "Изюмов",
-          group1: "Тм-34",
-          people2: "Соловов",
-          group2: "Кс-10",
-        },
-        {
-          people1: "Изюмов",
-          group1: "Тм-34",
-          people2: "Соловов",
-          group2: "Кс-10",
-        },
-        {
-          people1: "Изюмов",
-          group1: "Тм-34",
-          people2: "Соловов",
-          group2: "Кс-10",
+          people1: "Букин",
+          group1: "Кс-40",
+          people2: "Абросимов",
+          group2: "Кс-40",
         },
       ],
     }

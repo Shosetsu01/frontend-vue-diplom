@@ -35,10 +35,7 @@
               color=#E47500
               class="mt-md-8 ml-md-7"
           >
-            <img
-                src="https://via.placeholder.com/200"
-                alt="avatar"
-            >
+            <v-icon size="160" class="mb-3 white--text">mdi-account</v-icon>
           </v-avatar>
         </v-col>
         <v-col

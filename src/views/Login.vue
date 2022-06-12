@@ -1,98 +1,96 @@
 <template>
-<!--  <v-container>-->
-    <v-container class="login__bg px-0 mt-1 mt-md-3">
-      <v-card
-          class="shadow-disabled pa-md-16 mt-md-4"
+  <v-container class="login__bg px-0 mt-1 mt-md-3">
+    <v-card
+        class="shadow-disabled pa-md-16 mt-md-4"
+    >
+      <v-toolbar
+          flat
+          color="transparent"
       >
-        <v-toolbar
-            flat
-            color="transparent"
-        >
-          <v-spacer></v-spacer>
-          <v-icon class="text-h5 mr-3  text-md-h4 mb-4">mdi-account</v-icon>
-          <v-toolbar-title class="text-h5 text-md-h4 font-weight-medium mr-3 mb-4">
-            Привет!
-          </v-toolbar-title>
-          <v-spacer></v-spacer>
-        </v-toolbar>
-        <v-form
-            ref="form"
-            lazy-validation
-        >
-          <v-row class="justify-center">
-            <v-col
-                cols="12" md="6" sm="8"
-            >
-              <v-card-text>
-                <v-text-field
-                    color=#898989
-                    outlined
-                    solo
-                    rounded
-                    label="Электронная почта"
-                    type="email"
-                    v-model="email"
-                    :error-messages="emailErrors"
-                    @input="$v.email.$touch()"
-                ></v-text-field>
-                <v-text-field
-                    :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                    :type="show1 ? 'text' : 'password'"
-                    v-model="password"
-                    @input="$v.password.$touch()"
-                    :error-messages="passwordErrors"
-                    outlined
-                    solo
-                    rounded
-                    color=#898989
-                    label="Пароль"
-                    @click:append="show1 = !show1"
-                ></v-text-field>
-              </v-card-text>
-            </v-col>
-          </v-row>
-        </v-form>
-        <p v-if="submitStatus === 'ERROR'" class="red--text"> Заполните данные правильно. </p>
-        <p v-if="submitStatus === 'PENDING'" class="orange--text"> Отправка... </p>
-        <v-card-actions class="d-flex flex-wrap justify-center">
-          <v-btn
-              rounded
-              color="white"
-              outlined
-              class="pa-5 orange--text btn-bg mb-5 mb-sm-0 mx-16 mx-sm-0"
-              elevation="2"
-              min-width="186"
-              @click="submit"
+        <v-spacer></v-spacer>
+        <v-icon class="text-h5 mr-3  text-md-h4 mb-4">mdi-account</v-icon>
+        <v-toolbar-title class="text-h5 text-md-h4 font-weight-medium mr-3 mb-4">
+          Привет!
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+      </v-toolbar>
+      <v-form
+          ref="form"
+          lazy-validation
+      >
+        <v-row class="justify-center">
+          <v-col
+              cols="12" md="6" sm="8"
           >
-            Войти
-          </v-btn>
-          <v-btn
-              rounded
-              color="white"
-              outlined
-              class="pa-5 grey--text ml-sm-2 mx-16 mx-sm-0 mb-5 mb-sm-0"
-
+            <v-card-text>
+              <v-text-field
+                  color=#898989
+                  outlined
+                  solo
+                  rounded
+                  label="Электронная почта"
+                  type="email"
+                  v-model="email"
+                  :error-messages="emailErrors"
+                  @input="$v.email.$touch()"
+              ></v-text-field>
+              <v-text-field
+                  :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                  :type="show1 ? 'text' : 'password'"
+                  v-model="password"
+                  @input="$v.password.$touch()"
+                  :error-messages="passwordErrors"
+                  outlined
+                  solo
+                  rounded
+                  color=#898989
+                  label="Пароль"
+                  @click:append="show1 = !show1"
+              ></v-text-field>
+            </v-card-text>
+          </v-col>
+        </v-row>
+      </v-form>
+      <p v-if="submitStatus === 'ERROR'" class="red--text"> Заполните данные правильно. </p>
+      <p v-if="submitStatus === 'PENDING'" class="orange--text"> Отправка... </p>
+      <v-card-actions class="d-flex flex-wrap justify-center">
+        <v-btn
+            rounded
+            color="white"
+            outlined
+            class="pa-5 orange--text btn-bg mb-5 mb-sm-0 mx-16 mx-sm-0"
             elevation="2"
-            min-width="150"
-          >
-          Забыли пароль?
+            min-width="186"
+            @click="submit"
+        >
+          Войти
         </v-btn>
-      </v-card-actions>
-      <v-btn
-          text
-          style="text-transform: none"
-          class="mt-3"
-          color=#FA8305
-          rounded
-      >
-        <router-link to="/reg" class="orange--text"><h3>Еще нет аккаунта? Создать ➜</h3></router-link>
+        <v-btn
+            rounded
+            color="white"
+            outlined
+            class="pa-5 grey--text ml-sm-2 mx-16 mx-sm-0 mb-5 mb-sm-0"
+
+          elevation="2"
+          min-width="150"
+        >
+        Забыли пароль?
       </v-btn>
-    </v-card>
-  </v-container>
+    </v-card-actions>
+    <v-btn
+        text
+        style="text-transform: none"
+        class="mt-3"
+        color=#FA8305
+        rounded
+    >
+      <router-link to="/reg" class="orange--text"><h3>Еще нет аккаунта? Создать ➜</h3></router-link>
+    </v-btn>
+  </v-card>
+</v-container>
 </template>
 
 <script>
-// import axios from 'axios'
 import { validationMixin } from 'vuelidate'
 import { required, maxLength, email } from 'vuelidate/lib/validators'
 
@@ -130,12 +128,10 @@ export default {
   },
   methods: {
     submit () {
-      console.log('submit!')
       this.$v.$touch()
       if (this.$v.$invalid) {
         this.submitStatus = 'ERROR'
       } else {
-        console.log('send...')
         this.Login()
         this.submitStatus = 'PENDING'
         setTimeout(() => {
@@ -165,14 +161,12 @@ export default {
             }
           })
           .then(result => {
-              console.log("here", result)
               this.$store.commit('savedCurrentUser', result.user)
               this.$store.commit('savedCurrentToken', result.token)
               this.$router.push({path: '/user', replace: true})
           })
           .catch((error) => {
             this.submitStatus = 'ERROR'
-            console.log("error")
             console.log(JSON.stringify(error.response.data))
           })
     }

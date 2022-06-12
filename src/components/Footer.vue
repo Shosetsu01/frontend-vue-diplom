@@ -14,10 +14,6 @@
         <h2 class="footer__item-title">
           КОНТАКТЫ
         </h2>
-        <!--        <div class="footer__item white&#45;&#45;text">-->
-        <!--          <v-icon>mdi-map-marker</v-icon>-->
-        <!--          Наш адрес:-->
-        <!--        </div>-->
         <div class="footer__item white--text">
           <v-icon>mdi-email-edit</v-icon>
           Почта для связи: <a href="mailto: deans-competitions@mail.ru">deans-competitions@mail.ru
@@ -99,7 +95,6 @@
           class="text-center"
       >
         2022 — <strong> © Веб-портал конкурсов учебных достижений обучающихся факультета ЦиТХИн</strong>
-        <!--        {{ new Date().getFullYear() }} —-->
       </v-col>
     </v-row>
   </v-footer>

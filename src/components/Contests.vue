@@ -12,21 +12,13 @@
           :height="isMobile"
       >
         <v-tab class="contests_tabs">
-          <img src="../assets/img/musketers.jpg" alt="">
+          <img src="../assets/img/command_img.png" alt="command_img" class="mb-md-3 mb-4">
           <p>Три Мушкетера</p>
-          <img src="../assets/img/cursor.png"  alt="">
         </v-tab>
         <v-tab class="contests_tabs">
-          <img src="../assets/img/musketers.jpg" alt="">
+          <img src="../assets/img/duel_img.png" alt="duel_img" class="mb-md-3 mb-4">
           <p>Дуэли</p>
-          <img src="../assets/img/cursor.png" alt="">
         </v-tab>
-<!--        <v-tab class="contests_tabs">-->
-<!--          <img src="../assets/img/musketers.jpg" alt="">-->
-<!--          <p>Конкурс</p>-->
-<!--          <img src="../assets/img/cursor.png" alt="">-->
-<!--        </v-tab>-->
-
         <v-tab-item>
           <v-card flat>
             <v-card-title class="text-h5">
@@ -87,22 +79,6 @@
             </v-card-text>
           </v-card>
         </v-tab-item>
-<!--        <v-tab-item>-->
-<!--          <v-card flat>-->
-<!--            <v-card-title class="text-h5">-->
-<!--              Дуэли-->
-<!--            </v-card-title>-->
-<!--            <v-card-text  class="text-left">-->
-<!--              <p>-->
-<!--                Duis lobortis massa imperdiet quam. Donec vitae orci sed dolor rutrum auctor. Vestibulum facilisis, purus nec pulvinar iaculis, ligula mi congue nunc, vitae euismod ligula urna in dolor. Praesent congue erat at massa.-->
-<!--              </p>-->
-
-<!--              <p>-->
-<!--                Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Pellentesque egestas, neque sit amet convallis pulvinar, justo nulla eleifend augue, ac auctor orci leo non est. Etiam sit amet orci eget eros faucibus tincidunt. Donec sodales sagittis magna.-->
-<!--              </p>-->
-<!--            </v-card-text>-->
-<!--          </v-card>-->
-<!--        </v-tab-item>-->
       </v-tabs>
     </v-card>
   </v-container>
@@ -117,7 +93,7 @@ export default {
         return "210px"
       }
       else {
-        return "300px"
+        return "320px"
       }
     }
   },
@@ -189,5 +165,4 @@ export default {
   }
 
 }
-
 </style>

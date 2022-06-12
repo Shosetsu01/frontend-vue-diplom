@@ -57,6 +57,7 @@
           </v-btn>
         </v-toolbar-items>
         </router-link>
+
         <router-link to="/login" v-else>
         <v-toolbar-items v-show="$vuetify.breakpoint.mdAndUp" >
           <v-btn
@@ -70,6 +71,7 @@
           </v-btn>
         </v-toolbar-items>
         </router-link>
+
         <a v-show="this.$store.state.savedCurrentToken && $vuetify.breakpoint.mdAndUp" @click="logout">
           <v-toolbar-items>
             <v-btn
@@ -136,6 +138,7 @@
             </v-list-item-title>
           </v-list-item>
           </router-link>
+
           <router-link to="/login" v-else>
             <v-list-item>
               <v-list-item-icon>
@@ -201,5 +204,4 @@ export default {
   color: white;
   vertical-align: middle;
 }
-
 </style>

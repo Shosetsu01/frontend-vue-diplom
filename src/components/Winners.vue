@@ -39,14 +39,13 @@
                       tile
                       color="transparent"
                   >
-                    <span class="blue--text text--darken-2 font-weight-bold ">3 Место</span>
-                    <ol>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                    </ol>
+                    <p class="blue--text text--darken-2 font-weight-bold ">3 Место</p>
+                      <div class="font-weight-bold">{{ winners_list[2].group }}</div>
+                      <div>{{ winners_list[2].member1 }}</div>
+                      <div>{{ winners_list[2].member2 }}</div>
+                      <div>{{ winners_list[2].member3 }}</div>
+                      <div>{{ winners_list[2].member4 }}</div>
+                      <div>{{ winners_list[2].member5 }}</div>
                   </v-card>
                 </v-col>
                 <v-col order="2" cols="12" sm="4">
@@ -55,14 +54,13 @@
                       tile
                       color="transparent"
                   >
-                    <span class="blue--text text--darken-2 font-weight-bold ">1 Место</span>
-                    <ol>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                    </ol>
+                    <p class="blue--text text--darken-2 font-weight-bold">1 Место</p>
+                      <div class="font-weight-bold">{{ winners_list[0].group }}</div>
+                      <div>{{ winners_list[0].member1 }}</div>
+                      <div>{{ winners_list[0].member2 }}</div>
+                      <div>{{ winners_list[0].member3 }}</div>
+                      <div>{{ winners_list[0].member4 }}</div>
+                      <div>{{ winners_list[0].member5 }}</div>
                   </v-card>
                 </v-col>
                 <v-col order="3" cols="12" sm="4">
@@ -71,14 +69,13 @@
                       tile
                       color="transparent"
                   >
-                    <span class="blue--text text--darken-2 font-weight-bold ">2 Место</span>
-                    <ol>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                    </ol>
+                    <p class="blue--text text--darken-2 font-weight-bold ">2 Место</p>
+                      <div class="font-weight-bold">{{ winners_list[1].group }}</div>
+                      <div>{{ winners_list[1].member1 }}</div>
+                      <div>{{ winners_list[1].member2 }}</div>
+                      <div>{{ winners_list[1].member3 }}</div>
+                      <div>{{ winners_list[1].member4 }}</div>
+                      <div>{{ winners_list[1].member5 }}</div>
                   </v-card>
                 </v-col>
                 <v-col order="4" cols="12" sm="4" v-show="$vuetify.breakpoint.xsOnly">
@@ -134,14 +131,17 @@ export default {
   data () {
     return {
       tabs: null,
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      winners_list: [
+        {group: "МТ-18", member1: "Мавлянбердиев", member2: "Абузярова", member3: "Гайдукова", member4: "Городничев", member5: ""},
+        {group: "К-35", member1: "Гордионок", member2: "Окишева", member3: "Пашкин", member4: "Сулханов", member5: "Фаустова"},
+        {group: "Ц-11", member1: "Долгов", member2: "Неруссков", member3: "Бутырский", member4: "Варданян", member5: "Малашенков"},
+      ]
     }
   },
 }
 </script>
 
 <style scoped>
-
 .winners_bg{
   background: url("../assets/img/intro_bg_md.png") no-repeat 64%;
   background-size: cover;
@@ -164,7 +164,7 @@ export default {
   margin: 0 auto;
 }
 
-/*ВЬЮШНЫЙ ТЕГ*/
+/*Vuetify ТЕГ*/
 .v-tab--active {
   box-shadow: 0 0 0 1px #FA8305;
 }
@@ -200,5 +200,4 @@ export default {
     margin: 20px 1px;
   }
 }
-
 </style>

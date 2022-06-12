@@ -190,14 +190,10 @@
 <script>
 import { validationMixin } from 'vuelidate'
 import { required, minLength, email } from 'vuelidate/lib/validators'
-// import axios from "axios";
-
 
 export default {
   name: "Registration",
-
   mixins: [validationMixin],
-
   validations: {
     email: { required, email },
     password: { required, minLength: minLength(8) },
@@ -206,7 +202,6 @@ export default {
     group: { required },
     faculty: { required },
   },
-
   data () {
     return {
       firstName: null,
@@ -265,12 +260,10 @@ export default {
   },
   methods: {
     submit () {
-      console.log('submit!')
       this.$v.$touch()
       if (this.$v.$invalid) {
         this.submitStatus = 'ERROR'
       } else {
-        console.log('send...')
         this.Registration()
         this.submitStatus = 'PENDING'
         setTimeout(() => {
@@ -278,7 +271,6 @@ export default {
         }, 500)
       }
     },
-
     Registration: function () {
       let formData = {
         first_name: null,
@@ -288,31 +280,12 @@ export default {
         group: null,
         faculty: null
       }
-
       formData.first_name = this.firstName
       formData.last_name = this.lastName
       formData.email = this.email
       formData.password = this.password
       formData.group = this.group
       formData.faculty = this.faculty
-
-      console.log(formData)
-      // axios({
-      //   method: 'post',
-      //   url: 'http://127.0.0.1:8000/api/v1/registration',
-      //   data: formData,
-      //   headers: { 'Content-Type': 'multipart/form-data' }
-      // }).then(response => {
-      //   if (response.status === 200) {
-      //     console.log(response.data)
-      //     this.$router.push({path: '/login', replace: true})
-      //   } else {
-      //     console.log(response.data)
-      //   }
-      // })
-      //     .catch((error) => {
-      //       console.log(JSON.stringify(error.response.data))
-      //     })
 
       const requestOptions = {
         method: "POST",
@@ -334,7 +307,6 @@ export default {
           })
           .catch((error) => {
             this.submitStatus = 'ERROR'
-            console.log("error")
             console.log(JSON.stringify(error.response.data))
           })
     }

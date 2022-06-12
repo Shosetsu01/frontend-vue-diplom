@@ -48,7 +48,6 @@ export default {
 </script>
 
 <style scoped>
-
 .intro_bg{
   background: url("../assets/img/intro_bg.png") no-repeat 64%;
   background-size: cover;
@@ -182,5 +181,4 @@ export default {
     padding-left: 110px;
   }
 }
-
 </style>

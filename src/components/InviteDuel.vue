@@ -32,9 +32,6 @@
       </v-col>
     </v-row>
   </v-card>
-<!--  <div class="mt-8">-->
-<!--    <router-link to="/results" class="orange&#45;&#45;text"><h3>Список всех участников ➜</h3></router-link>-->
-<!--  </div>-->
 
   <v-btn
       text
@@ -54,11 +51,11 @@ export default {
     marker: true,
     state: null,
     states: [
-      { name: 'Florida', abbr: 'FL', id: 1 },
-      { name: 'Georgia', abbr: 'GA', id: 2 },
-      { name: 'Nebraska', abbr: 'NE', id: 3 },
-      { name: 'California', abbr: 'CA', id: 4 },
-      { name: 'New York', abbr: 'NY', id: 5 },
+      { name: 'Поляков Павел', id: 1 },
+      { name: 'Марьин Роман', id: 2 },
+      { name: 'Иванов Андрей', id: 3 },
+      { name: 'Букин Никита', id: 4 },
+      { name: 'Абросимов Владислав', id: 5 },
     ],
   }),
   methods: {
