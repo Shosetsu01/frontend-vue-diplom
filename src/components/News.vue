@@ -39,6 +39,7 @@
               <v-btn
                   color="#FA8305"
                   text
+                  @click="openNews(item.date, item.title, item.text)"
               >
                 ПОДРОБНЕЕ ➜
               </v-btn>
@@ -47,6 +48,38 @@
         </v-tab>
       </v-tabs>
     </v-card>
+
+
+    <v-dialog
+        v-model="dialog"
+        width="700"
+    >
+      <v-card style="border-radius: 20px !important;">
+        <v-card-subtitle class="pt-4 pb-0 text-h6">
+          {{ this.dialogDate.date }}
+        </v-card-subtitle>
+        <v-card-title class="text-sm-h4 text-h5 orange--text justify-center mb-3">
+          {{ this.dialogDate.title }}
+        </v-card-title>
+
+        <v-card-text class="text-justify">
+          {{ this.dialogDate.text }}
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+              color="#FA8305"
+              text
+              @click="closeNews"
+              min-width="150"
+          >
+            Закрыть
+          </v-btn>
+          <v-spacer></v-spacer>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -56,12 +89,25 @@ export default {
 
   data() {
     return {
+      dialog: false,
+      dialogDate: {date: null, title: null, text: null},
       news_list: [
         {date: "10 февраля", title: "Результаты конкурса \"Дуэли\".", text: "В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета. В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета. В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета. В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета."},
-        {date: "2 марта", title: "Дорогие студенты!", text: "Ознакомьтесь, пожалуйста, с составами отрядов конкурса \"Три мушкетёра\" и парами оппонентов конкурса \"Дуэли\". Если кто-то оказался пропущен или закралась ошибка, пожалуйста, пишите в комментариях к данному посту.\n"},
+        {date: "2 марта", title: "Дорогие студенты!", text: "Ознакомьтесь, пожалуйста, с составами отрядов конкурса \"Три мушкетёра\" и парами оппонентов конкурса \"Дуэли\". Если кто-то оказался пропущен или закралась ошибка, пожалуйста, напишите нам.\n"},
        ]
     }
-  }
+  },
+  methods: {
+    openNews (date, title, text) {
+      this.dialogDate.date = date
+      this.dialogDate.title = title
+      this.dialogDate.text = text
+      this.dialog = true
+    },
+    closeNews () {
+      this.dialog = false
+    }
+  },
 }
 </script>
 

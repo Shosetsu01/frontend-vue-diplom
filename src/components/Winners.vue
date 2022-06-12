@@ -40,6 +40,7 @@
                       color="transparent"
                   >
                     <p class="blue--text text--darken-2 font-weight-bold ">3 Место</p>
+                      <div class="font-weight-bold  green--text">{{ winners_list[2].command }}</div>
                       <div class="font-weight-bold">{{ winners_list[2].group }}</div>
                       <div>{{ winners_list[2].member1 }}</div>
                       <div>{{ winners_list[2].member2 }}</div>
@@ -55,6 +56,7 @@
                       color="transparent"
                   >
                     <p class="blue--text text--darken-2 font-weight-bold">1 Место</p>
+                      <div class="font-weight-bold  green--text">{{ winners_list[0].command }}</div>
                       <div class="font-weight-bold">{{ winners_list[0].group }}</div>
                       <div>{{ winners_list[0].member1 }}</div>
                       <div>{{ winners_list[0].member2 }}</div>
@@ -70,6 +72,7 @@
                       color="transparent"
                   >
                     <p class="blue--text text--darken-2 font-weight-bold ">2 Место</p>
+                      <div class="font-weight-bold green--text">{{ winners_list[1].command }}</div>
                       <div class="font-weight-bold">{{ winners_list[1].group }}</div>
                       <div>{{ winners_list[1].member1 }}</div>
                       <div>{{ winners_list[1].member2 }}</div>
@@ -84,14 +87,14 @@
                       tile
                       color="transparent"
                   >
-                    <span class="blue--text text--darken-2 font-weight-bold ">3 Место</span>
-                    <ol>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                      <li>Lorem Ipsum is simply dummy</li>
-                    </ol>
+                    <p class="blue--text text--darken-2 font-weight-bold ">3 Место</p>
+                    <div class="font-weight-bold green--text">{{ winners_list[2].command }}</div>
+                    <div class="font-weight-bold">{{ winners_list[2].group }}</div>
+                    <div>{{ winners_list[2].member1 }}</div>
+                    <div>{{ winners_list[2].member2 }}</div>
+                    <div>{{ winners_list[2].member3 }}</div>
+                    <div>{{ winners_list[2].member4 }}</div>
+                    <div>{{ winners_list[2].member5 }}</div>
                   </v-card>
                 </v-col>
               </v-row>
@@ -132,9 +135,9 @@ export default {
     return {
       tabs: null,
       winners_list: [
-        {group: "МТ-18", member1: "Мавлянбердиев", member2: "Абузярова", member3: "Гайдукова", member4: "Городничев", member5: ""},
-        {group: "К-35", member1: "Гордионок", member2: "Окишева", member3: "Пашкин", member4: "Сулханов", member5: "Фаустова"},
-        {group: "Ц-11", member1: "Долгов", member2: "Неруссков", member3: "Бутырский", member4: "Варданян", member5: "Малашенков"},
+        {command: "в бой идут одни старики", group: "МТ-18", member1: "Мавлянбердиев", member2: "Абузярова", member3: "Гайдукова", member4: "Городничев", member5: ""},
+        {command: "Инженеры-заочники", group: "К-35", member1: "Гордионок", member2: "Окишева", member3: "Пашкин", member4: "Сулханов", member5: "Фаустова"},
+        {command: "Кахцер ворикнер" , group: "Ц-11", member1: "Долгов", member2: "Неруссков", member3: "Бутырский", member4: "Варданян", member5: "Малашенков"},
       ]
     }
   },
