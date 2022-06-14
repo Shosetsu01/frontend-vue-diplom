@@ -175,7 +175,7 @@
           Создать аккаунт
         </v-btn>
       </v-card-actions>
-      <span class="grey--text text--darken-1">Нажимая «Создать аккаунт», Вы принимаете пользовательское соглашение и <a href="https://drive.google.com/file/d/17ZlqRUFCPyy4q0W67XYcHKvnmZg5vWN2/view?usp=sharing" target="_blank" class="orange--text text-decoration-underline">политику конфиденциальности</a> </span>
+      <span class="grey--text text--darken-1">Нажимая «Создать аккаунт», Вы принимаете <a href="https://drive.google.com/file/d/17ZlqRUFCPyy4q0W67XYcHKvnmZg5vWN2/view?usp=sharing" target="_blank" class="orange--text text-decoration-underline">политику конфиденциальности</a> </span>
     </v-card>
 
     <v-snackbar
