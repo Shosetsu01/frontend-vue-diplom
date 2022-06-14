@@ -1,7 +1,7 @@
 <template>
   <v-container class="login__bg px-0 mt-1 mt-md-3">
     <v-card
-        class="shadow-disabled pa-md-16 mt-md-4"
+        class="shadow-disabled pa-2 pa-md-16 mt-10 mt-md-4"
     >
       <v-toolbar
           flat
