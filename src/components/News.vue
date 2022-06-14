@@ -108,6 +108,27 @@ export default {
       this.dialog = false
     }
   },
+  // mounted() {
+  //   const requestOptions = {
+  //     method: "GET",
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   };
+  //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
+  //       .then(resp => {
+  //         console.log(resp);
+  //         if (!resp.ok) {
+  //           throw Error(resp.statusText);
+  //         }
+  //         return resp.json()
+  //       })
+  //       .then(data => {
+  //         this.news_list = data
+  //       }).catch(error => {
+  //     console.log(error)
+  //   });
+  // }
 }
 </script>
 
@@ -147,7 +168,7 @@ export default {
   border-radius: 20px;
 }
 
-/*НАЧАЛО работы с карточками, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
+/*Vue system tags*/
 .theme--light.v-tabs .v-tab:hover::before {
   border-radius: 20px;
   color: #FA8305;
@@ -161,10 +182,8 @@ export default {
   color: #FA8305;
   border-radius: 20px;
 }
-/*КОНЕЦ работы с карточками, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
 
 @media (max-width: 960px) {
-
   .news_tabs {
     margin: 20px 5px 20px 5px;
     height: 300px;

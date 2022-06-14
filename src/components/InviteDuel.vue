@@ -41,6 +41,16 @@
   >
     <router-link to="/results" class="orange--text"><h3>Список всех участников ➜</h3></router-link>
   </v-btn>
+
+  <v-snackbar
+      v-model="hasSaved"
+      :timeout="2000"
+      absolute
+      bottom
+      centered
+  >
+    Вызов на дуэль успешно отправлен
+  </v-snackbar>
 </v-container>
 </template>
 
@@ -60,9 +70,57 @@ export default {
   }),
   methods: {
     toggleMarker () {
-      alert('its work')
+      // this.inviteDuel()
     },
-  }
+
+    // inviteDuel: function () {
+    //   let formData = {
+    //     name: null,
+    //   }
+    //   formData.name = this.state
+    //
+    //   const requestOptions = {
+    //     method: "POST",
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       ...formData
+    //     })
+    //   };
+    //   fetch("http://127.0.0.1:8000/api/v1/", requestOptions)
+    //       .then(response => {
+    //         if (response.status === 201) {
+    //           this.hasSaved = true
+    //         }
+    //       })
+    //       .catch((error) => {
+    //         this.submitStatus = 'ERROR'
+    //         console.log(JSON.stringify(error.response.data))
+    //       })
+    // }
+  },
+  // mounted() {
+  //   const requestOptions = {
+  //     method: "GET",
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   };
+  //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
+  //       .then(resp => {
+  //         console.log(resp);
+  //         if (!resp.ok) {
+  //           throw Error(resp.statusText);
+  //         }
+  //         return resp.json()
+  //       })
+  //       .then(data => {
+  //         this.states = data
+  //       }).catch(error => {
+  //     console.log(error)
+  //   });
+  // }
 }
 </script>
 

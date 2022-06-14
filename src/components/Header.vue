@@ -204,4 +204,5 @@ export default {
   color: white;
   vertical-align: middle;
 }
+
 </style>

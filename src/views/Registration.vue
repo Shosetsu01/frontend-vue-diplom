@@ -147,6 +147,7 @@
           </v-col>
         </v-row>
       </v-form>
+
       <v-card-actions class="d-block d-md-flex">
         <v-btn
             rounded
@@ -174,16 +175,18 @@
           Создать аккаунт
         </v-btn>
       </v-card-actions>
-      <v-snackbar
-          v-model="hasSaved"
-          :timeout="2000"
-          absolute
-          bottom
-          centered
-      >
-        Спасибо за регистрацию в личном кабинете
-      </v-snackbar>
+      <span class="grey--text text--darken-1">Нажимая «Создать аккаунт», Вы принимаете пользовательское соглашение и <a href="https://drive.google.com/file/d/17ZlqRUFCPyy4q0W67XYcHKvnmZg5vWN2/view?usp=sharing" target="_blank" class="orange--text text-decoration-underline">политику конфиденциальности</a> </span>
     </v-card>
+
+    <v-snackbar
+        v-model="hasSaved"
+        :timeout="2000"
+        absolute
+        bottom
+        centered
+    >
+      Спасибо за регистрацию в личном кабинете
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -311,6 +314,28 @@ export default {
           })
     }
   },
+  mounted() {
+    // const requestOptions = {
+    //     method: "GET",
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   };
+    //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
+    //       .then(resp => {
+    //         console.log(resp);
+    //         if (!resp.ok) {
+    //           throw Error(resp.statusText);
+    //         }
+    //         return resp.json()
+    //       })
+    //       .then(data => {
+    //         this.groups = data.groups
+    //         this.faculties = data.faculties
+    //       }).catch(error => {
+    //     console.log(error)
+    //   });
+  }
 }
 </script>
 
@@ -322,6 +347,7 @@ export default {
   border-radius: 30px;
 }
 
+/*Vue system tags*/
 .v-text-field--outlined >>> fieldset {
   border-color: #E47500;
 }

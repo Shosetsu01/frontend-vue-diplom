@@ -37,30 +37,29 @@ export default {
 }
 
 
-/*ВЬЮШНЫЙ ТЕГ*/
+/*Vue system tags*/
 .v-tabs-slider {
   height: 0;
 }
 
-/*ВЬЮШНЫЙ ТЕГ*/
+/*Vue system tags*/
 .v-slide-group__content {
   padding: 1px;
 }
 
 @media (max-width: 960px) {
-  /*ВЬЮШНЫЙ ТЕГ*/
+  /*Vue system tags*/
   .v-slide-group__next, .v-slide-group__prev {
     min-width: 10px !important;
   }
 
-  /*ВЬЮШНЫЙ ТЕГ*/
+  /*Vue system tags*/
   .v-tabs:not(.v-tabs--vertical):not(.v-tabs--right) > .v-slide-group--is-overflowing.v-tabs-bar--is-mobile:not(.v-slide-group--has-affixes) .v-slide-group__prev {
     display: none;
   }
 }
 
 @media (max-width: 600px) {
-
   .headings {
     font-size: 30px;
     line-height: 1.2;

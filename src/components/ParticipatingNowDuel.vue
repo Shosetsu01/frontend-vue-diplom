@@ -64,6 +64,27 @@ export default {
       ],
     }
   },
+  // mounted() {
+  //   const requestOptions = {
+  //     method: "GET",
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   };
+  //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
+  //       .then(resp => {
+  //         console.log(resp);
+  //         if (!resp.ok) {
+  //           throw Error(resp.statusText);
+  //         }
+  //         return resp.json()
+  //       })
+  //       .then(data => {
+  //         this.opponents = data
+  //       }).catch(error => {
+  //     console.log(error)
+  //   });
+  // }
 }
 </script>
 

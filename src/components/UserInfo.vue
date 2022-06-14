@@ -210,6 +210,46 @@ export default {
       this.isEditing = !this.isEditing
       this.hasSaved = true
     },
+
+    // changeUserDate: function () {
+    //   let formData = {
+    //     first_name: null,
+    //     last_name: null,
+    //     email: null,
+    //     password: null,
+    //     group: null,
+    //     faculty: null
+    //   }
+    //   formData.first_name = this.firstName
+    //   formData.last_name = this.lastName
+    //   formData.email = this.email
+    //   formData.password = this.password
+    //   formData.group = this.group
+    //   formData.faculty = this.faculty
+    //
+    //   const requestOptions = {
+    //     method: "POST",
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       ...formData
+    //     })
+    //   };
+    //   fetch("http://127.0.0.1:8000/api/v1/", requestOptions)
+    //       .then(response => {
+    //         if (response.status === 201) {
+    //           this.hasSaved = true
+    //           setTimeout(() => {
+    //             this.$router.push({path: '/login', replace: true})
+    //           }, 1000)
+    //         }
+    //       })
+    //       .catch((error) => {
+    //         this.submitStatus = 'ERROR'
+    //         console.log(JSON.stringify(error.response.data))
+    //       })
+    // }
   },
   mounted() {
     this.userData.firstName = this.$store.state.savedCurrentUser.first_name
@@ -217,6 +257,27 @@ export default {
     this.userData.email = this.$store.state.savedCurrentUser.email
     this.userData.group = this.$store.state.savedCurrentUser.group
     this.userData.faculty = this.$store.state.savedCurrentUser.faculty
+
+      // const requestOptions = {
+      //     method: "GET",
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //   };
+      //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
+      //       .then(resp => {
+      //         console.log(resp);
+      //         if (!resp.ok) {
+      //           throw Error(resp.statusText);
+      //         }
+      //         return resp.json()
+      //       })
+      //       .then(data => {
+      //         this.groups = data.groups
+      //         this.faculties = data.faculties
+      //       }).catch(error => {
+      //     console.log(error)
+      //   });
   }
 }
 </script>

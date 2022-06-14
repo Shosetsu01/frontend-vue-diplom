@@ -70,9 +70,8 @@
             color="white"
             outlined
             class="pa-5 grey--text ml-sm-2 mx-16 mx-sm-0 mb-5 mb-sm-0"
-
-          elevation="2"
-          min-width="150"
+            elevation="2"
+            min-width="150"
         >
         Забыли пароль?
       </v-btn>

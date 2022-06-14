@@ -141,6 +141,27 @@ export default {
       ]
     }
   },
+  // mounted() {
+  //   const requestOptions = {
+  //     method: "GET",
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   };
+  //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
+  //       .then(resp => {
+  //         console.log(resp);
+  //         if (!resp.ok) {
+  //           throw Error(resp.statusText);
+  //         }
+  //         return resp.json()
+  //       })
+  //       .then(data => {
+  //         this.winners_list = data
+  //       }).catch(error => {
+  //     console.log(error)
+  //   });
+  // }
 }
 </script>
 
@@ -167,12 +188,12 @@ export default {
   margin: 0 auto;
 }
 
-/*Vuetify ТЕГ*/
+/*Vue system tags*/
 .v-tab--active {
   box-shadow: 0 0 0 1px #FA8305;
 }
 
-/*НАЧАЛО работы с табами, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
+/*Vue system tags*/
 .theme--light.v-tabs .v-tab:hover::before {
   border-radius: 30px;
   color: #FA8305;
@@ -186,7 +207,6 @@ export default {
 .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active), .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-icon, .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-btn, .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
   color: #FA8305;
 }
-/*КОНЕЦ работы с табами, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
 
 @media (min-width: 781px) {
   .list_second_place {

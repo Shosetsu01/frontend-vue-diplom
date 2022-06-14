@@ -79,7 +79,28 @@ export default {
         this.fullWidthImageIndex = i;
       }
     }
-  }
+  },
+  // mounted() {
+  //   const requestOptions = {
+  //     method: "GET",
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   };
+  //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
+  //       .then(resp => {
+  //         console.log(resp);
+  //         if (!resp.ok) {
+  //           throw Error(resp.statusText);
+  //         }
+  //         return resp.json()
+  //       })
+  //       .then(data => {
+  //         this.archive_list = data
+  //       }).catch(error => {
+  //     console.log(error)
+  //   });
+  // }
 }
 </script>
 
@@ -96,10 +117,12 @@ export default {
   transform: translate(-50%, -50%);
 }
 
+/*Vue system tags*/
 .v-expansion-panel {
   border-radius: 20px !important;
 }
 
+/*Vue system tags*/
 .v-expansion-panel:not(:first-child)::after {
   border-top: none;
 }

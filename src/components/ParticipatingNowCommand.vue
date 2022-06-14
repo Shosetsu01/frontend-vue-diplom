@@ -60,7 +60,7 @@ export default {
   return {
     command: [
       {
-        name: "Абобусы",
+        name: "Бутерброды с сыром",
         group: "Кс-44",
         member1: "Дорохов",
         member2: "Аржаков",
@@ -76,7 +76,7 @@ export default {
         member3: "Дворовой",
       },
       {
-        name: "Бутерброды с сыром",
+        name: "Абобусы Кс-40",
         group: "Кс-40",
         member1: "Авдеев",
         member2: "Абросимов",
@@ -94,7 +94,28 @@ export default {
       },
     ],
   }
-  }
+  },
+  // mounted() {
+  //   const requestOptions = {
+  //     method: "GET",
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   };
+  //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
+  //       .then(resp => {
+  //         console.log(resp);
+  //         if (!resp.ok) {
+  //           throw Error(resp.statusText);
+  //         }
+  //         return resp.json()
+  //       })
+  //       .then(data => {
+  //         this.command = data
+  //       }).catch(error => {
+  //     console.log(error)
+  //   });
+  // }
 }
 </script>
 

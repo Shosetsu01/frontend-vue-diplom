@@ -110,6 +110,7 @@
       </v-btn>
     </v-card-actions>
   </v-card>
+
   <v-btn
       color="#777777"
       text
@@ -118,6 +119,16 @@
   >
     <router-link to="/results" class="grey--text text--darken-2"><h3>Посмотреть список <br v-show="$vuetify.breakpoint.xsOnly"> участвующих команд ➜</h3></router-link>
   </v-btn>
+
+  <v-snackbar
+      v-model="hasSaved"
+      :timeout="2000"
+      absolute
+      bottom
+      centered
+  >
+    Вызов на дуэль успешно отправлен
+  </v-snackbar>
 </v-container>
 </template>
 
@@ -126,7 +137,6 @@ export default {
   name: "InviteCommand",
   data () {
     return {
-      autoUpdate: true,
       friends: ['Марьин Роман'],
       isUpdating: false,
       name: 'Абобусы Кс-40',
@@ -147,7 +157,6 @@ export default {
       title: 'Группа Кс-40',
     }
   },
-
   watch: {
     isUpdating (val) {
       if (val) {
@@ -155,13 +164,64 @@ export default {
       }
     },
   },
-
   methods: {
     remove (item) {
       const index = this.friends.indexOf(item.name)
       if (index >= 0) this.friends.splice(index, 1)
     },
+
+    // inviteDuel: function () {
+    //   let formData = {
+    //     command: null,
+    //     name: null,
+    //     title: null
+    //   }
+    //   formData.name = this.name
+    //   formData.title = this.title
+    //   formData.command = this.friends
+    //
+    //   const requestOptions = {
+    //     method: "POST",
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       ...formData
+    //     })
+    //   };
+    //   fetch("http://127.0.0.1:8000/api/v1/", requestOptions)
+    //       .then(response => {
+    //         if (response.status === 201) {
+    //           this.hasSaved = true
+    //         }
+    //       })
+    //       .catch((error) => {
+    //         this.submitStatus = 'ERROR'
+    //         console.log(JSON.stringify(error.response.data))
+    //       })
+    // }
   },
+  // mounted() {
+  //   const requestOptions = {
+  //     method: "GET",
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   };
+  //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
+  //       .then(resp => {
+  //         console.log(resp);
+  //         if (!resp.ok) {
+  //           throw Error(resp.statusText);
+  //         }
+  //         return resp.json()
+  //       })
+  //       .then(data => {
+  //         this.people = data
+  //       }).catch(error => {
+  //     console.log(error)
+  //   });
+  // }
 }
 </script>
 
@@ -171,4 +231,5 @@ export default {
   background: url("../assets/img/invite_command_bg.png") no-repeat;
   background-size: cover;
 }
+
 </style>

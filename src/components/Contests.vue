@@ -130,12 +130,12 @@ export default {
   color: black;
 }
 
-/*ВЬЮШНЫЙ ТЕГ*/
+/*Vue system tags*/
 .v-tab--active {
   box-shadow: 0 0 0 1px #FA8305;
 }
 
-/*НАЧАЛО работы с карточками, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
+/*Vue system tags*/
 .theme--light.v-tabs .v-tab:hover::before {
   border-radius: 30px;
   color: #FA8305;
@@ -149,7 +149,6 @@ export default {
 .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active), .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-icon, .theme--light.v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) > .v-btn, .theme--light.v-tabs > .v-tabs-bar .v-tab--disabled {
   color: #FA8305;
 }
-/*КОНЕЦ работы с карточками, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
 
 @media (max-width: 600px) {
   .contests_tabs {
@@ -163,6 +162,5 @@ export default {
   .contests_tabs {
     height: 180px;
   }
-
 }
 </style>

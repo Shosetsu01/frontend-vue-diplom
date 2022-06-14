@@ -43,7 +43,10 @@ export default {
         {date: "",title: "У Вас пока нет достижений", text: "Принимайте участие в конкурсах и они скоро появятся"},
       ]
     }
-  }
+  },
+  // mounted() {
+  //   this.achievements_list = this.$store.state.savedCurrentUser.achievements
+  // }
 }
 </script>
 
@@ -69,7 +72,7 @@ export default {
   border-radius: 20px;
 }
 
-/*НАЧАЛО работы с карточками, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
+/*Vue system tags*/
 .theme--light.v-tabs .v-tab:hover::before {
   border-radius: 20px;
   color: #00DC72;
@@ -83,10 +86,8 @@ export default {
   color: #00DC72;
   border-radius: 20px;
 }
-/*КОНЕЦ работы с карточками, СКРУГЛЕНИЕ БОРДЕРОВ, РЕДАКТИРОВАНИЕ ЦВЕТА*/
 
 @media (max-width: 960px) {
-
   .achievements_tabs {
     margin: 20px 5px 20px 5px;
     height: 300px;
@@ -105,6 +106,5 @@ export default {
     width: 292px;
     height: 300px;
   }
-
 }
 </style>
