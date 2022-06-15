@@ -59,6 +59,7 @@ export default {
   name: "InviteDuel",
   data: () => ({
     marker: true,
+    hasSaved: false,
     state: null,
     states: [
       { name: 'Поляков Павел', id: 1 },

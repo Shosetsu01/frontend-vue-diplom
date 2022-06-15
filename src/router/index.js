@@ -4,42 +4,90 @@ import Main from '../views/Main.vue'
 import User from '../views/User.vue'
 import Results from '../views/Results.vue'
 import Login from "../views/Login";
-import Registration from "@/views/Registration";
+import Registration from "../views/Registration";
+import RebootPassword from "../views/RebootPassword";
+import store from "../store";
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Main',
-    component: Main
-  },
-  {
-    path: '/user',
-    name: 'User',
-    component: User
-  },
-  {
-    path: '/results',
-    name: 'Results',
-    component: Results
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/reg',
-    name: 'Registration',
-    component: Registration
-  }
-]
+// const routes = [
+//   {
+//     path: '/',
+//     name: 'Main',
+//     component: Main
+//   },
+//   {
+//     path: '/user',
+//     name: 'User',
+//     component: User,
+//     // before: (to, from, next) => {
+//     //   if (this.$store.state.savedCurrentToken == null) {
+//     //     next('/login');
+//     //   }
+//     //   next();
+//     // }
+//   },
+//   {
+//     path: '/results',
+//     name: 'Results',
+//     component: Results
+//   },
+//   {
+//     path: '/login',
+//     name: 'Login',
+//     component: Login
+//   },
+//   {
+//     path: '/reg',
+//     name: 'Registration',
+//     component: Registration
+//   }
+// ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes: [
+    {
+      path: '/',
+      name: 'Main',
+      component: Main
+    },
+    {
+      path: '/user',
+      name: 'User',
+      component: User,
+      beforeEnter(to, from, next) {
+        if (store.state.savedCurrentToken) {
+          next()
+        } else {
+          next({
+            name: "Login"
+          })
+        }
+      }
+    },
+    {
+      path: '/results',
+      name: 'Results',
+      component: Results
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/reg',
+      name: 'Registration',
+      component: Registration
+    },
+    {
+      path: '/repass',
+      name: 'RebootPassword',
+      component: RebootPassword
+    }
+  ]
 })
 
 export default router

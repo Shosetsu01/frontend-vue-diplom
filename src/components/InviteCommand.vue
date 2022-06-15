@@ -137,6 +137,7 @@ export default {
   name: "InviteCommand",
   data () {
     return {
+      hasSaved: false,
       friends: ['Марьин Роман'],
       isUpdating: false,
       name: 'Абобусы Кс-40',

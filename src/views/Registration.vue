@@ -8,7 +8,7 @@
           color="transparent"
       >
         <v-spacer></v-spacer>
-        <v-icon class="text-h5 mr-3  text-md-h4 mb-4">mdi-account</v-icon>
+        <v-icon class="text-h5 mr-3 text-md-h4 mb-4">mdi-account-edit</v-icon>
         <v-toolbar-title class="text-h5 text-md-h4 font-weight-medium mr-3 mb-4">
           Регистрация
         </v-toolbar-title>
