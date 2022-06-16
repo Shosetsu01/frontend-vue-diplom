@@ -73,6 +73,16 @@
         <router-link to="/reg" class="orange--text"><h3>Еще нет аккаунта? Создать ➜</h3></router-link>
       </v-btn>
     </v-card>
+
+    <v-snackbar
+        v-model="hasSaved"
+        :timeout="2000"
+        absolute
+        bottom
+        centered
+    >
+      Письмо с информацией было отправлено на почту
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -88,6 +98,7 @@ export default {
   },
   data () {
     return {
+      hasSaved: false,
       email: '',
       submitStatus: null,
       model: null,
@@ -106,22 +117,12 @@ export default {
   },
   // methods: {
   //   submit () {
-  //     this.$v.$touch()
-  //     if (this.$v.$invalid) {
-  //       this.submitStatus = 'ERROR'
-  //     } else {
-  //       this.Login()
-  //       this.submitStatus = 'PENDING'
-  //       setTimeout(() => {
-  //         this.submitStatus = 'OK'
-  //       }, 100)
-  //     }
+  //     this.rebootPassword()
   //   },
   //
-  //   Login() {
-  //     let email, password;
+  //   rebootPassword() {
+  //     let email;
   //     email = this.email;
-  //     password = this.password;
   //     const requestOptions = {
   //       method: "POST",
   //       headers: {
@@ -129,19 +130,16 @@ export default {
   //       },
   //       body: JSON.stringify({
   //         email,
-  //         password
   //       })
   //     };
-  //     fetch("http://127.0.0.1:8000/api/v1/login", requestOptions)
+  //     fetch("http://127.0.0.1:8000/api/v1/", requestOptions)
   //         .then(response => {
-  //           if (response.status === 200) {
-  //             return response.json()
+  //           if (response.status === 201) {
+  //             this.hasSaved = true
+  //             setTimeout(() => {
+  //               this.$router.push({path: '/login', replace: true})
+  //             }, 2000)
   //           }
-  //         })
-  //         .then(result => {
-  //           this.$store.commit('savedCurrentUser', result.user)
-  //           this.$store.commit('savedCurrentToken', result.token)
-  //           this.$router.push({path: '/user', replace: true})
   //         })
   //         .catch((error) => {
   //           this.submitStatus = 'ERROR'

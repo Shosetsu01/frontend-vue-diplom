@@ -106,12 +106,12 @@ export default {
 
 <style scoped>
 .fullWidthImage {
-  width: 990px !important;
-  height: 660px !important;
+  width: 900px !important;
+  height: 600px !important;
   display: flex;
-  z-index: 1;
+  z-index: 1000;
   position: fixed;
-  top: 50%;
+  top: 55%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
