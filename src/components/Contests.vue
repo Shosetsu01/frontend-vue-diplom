@@ -49,6 +49,9 @@
               <p>
               4. Итоги конкурса будут подведены и обнародованы в конце учебного семестра. Отряд-победитель и отряды-призёры получат дипломы.
               </p>
+              <p>
+                <a href="https://drive.google.com/file/d/1nOOiE4K50SGeZ2HiKAuFFeNkkVnd8VJq/view?usp=sharing" target="_blank" class="orange--text text-decoration-underline">Полный текст положения конкурса.</a>
+              </p>
             </v-card-text>
           </v-card>
         </v-tab-item>
@@ -75,6 +78,9 @@
               <p>
                 4. Итоги конкурса будут подведены и обнародованы в конце учебного семестра.
                 Победители (обладатели наивысшего дуэльного рейтинга) и призёры (2 и 3 места в дуэльном рейтинге) получат дипломы.
+              </p>
+              <p>
+                <a href="https://drive.google.com/file/d/13q-5-KAWUaQL1msKsUrT9YaM5B9FFoXq/view?usp=sharing" target="_blank" class="orange--text text-decoration-underline">Полный текст положения конкурса.</a>
               </p>
             </v-card-text>
           </v-card>

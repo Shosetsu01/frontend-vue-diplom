@@ -10,40 +10,6 @@ import store from "../store";
 
 Vue.use(VueRouter)
 
-// const routes = [
-//   {
-//     path: '/',
-//     name: 'Main',
-//     component: Main
-//   },
-//   {
-//     path: '/user',
-//     name: 'User',
-//     component: User,
-//     // before: (to, from, next) => {
-//     //   if (this.$store.state.savedCurrentToken == null) {
-//     //     next('/login');
-//     //   }
-//     //   next();
-//     // }
-//   },
-//   {
-//     path: '/results',
-//     name: 'Results',
-//     component: Results
-//   },
-//   {
-//     path: '/login',
-//     name: 'Login',
-//     component: Login
-//   },
-//   {
-//     path: '/reg',
-//     name: 'Registration',
-//     component: Registration
-//   }
-// ]
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,

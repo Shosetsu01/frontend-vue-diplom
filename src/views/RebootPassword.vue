@@ -103,7 +103,6 @@ export default {
       submitStatus: null,
       model: null,
       show1: false,
-      get_data: [],
     }
   },
   computed: {
