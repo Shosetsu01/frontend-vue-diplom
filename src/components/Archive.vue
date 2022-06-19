@@ -37,33 +37,7 @@ export default {
   data() {
     return {
       fullWidthImageIndex: null,
-      archive_list: [
-        {
-          year: "2021/22",
-          semester: "Осенний",
-          musketeers: "https://sun9-33.userapi.com/s/v1/ig2/IVpaZx_3NUP4_aqv-g0-_qYGzlNcpUT4dVvmQ_jCYYvi6PJ19NEoEVnXabtXhLydgv1djmIysv_152mz-TIHR6bi.jpg?size=805x701&quality=96&type=album",
-          duel: "https://sun9-43.userapi.com/s/v1/ig2/BZ9kYpUy4dDOWfoP8ZBGU9CLJeAvOb916-2DEW6jTfAU5mE5npCqDums6aHmDhphhyiSmKN-_552rNycP_LC2ee5.jpg?size=547x749&quality=96&type=album",
-          groups: "https://sun9-78.userapi.com/s/v1/ig2/w2GeK7OwMm2lUEAGakGW5JORfHPtWBxCrh9BZlpw1Yuk5ltVY8EMe4XX_kIkiKxlsIrowGrhEJmixTzePf6gwMP9.jpg?size=1353x741&quality=96&type=album"
-        },{
-          year: "2020/21",
-          semester: "Весенний",
-          musketeers: "https://via.placeholder.com/300x200",
-          duel: "https://via.placeholder.com/300x200",
-          groups: "https://via.placeholder.com/300x200"
-        },{
-          year: "2020/21",
-          semester: "Осенний",
-          musketeers: "https://via.placeholder.com/300x200",
-          duel: "https://via.placeholder.com/300x200",
-          groups: "https://via.placeholder.com/300x200"
-        },{
-          year: "2019/20",
-          semester: "Весенний",
-          musketeers: "https://via.placeholder.com/300x200",
-          duel: "https://via.placeholder.com/300x200",
-          groups: "https://via.placeholder.com/300x200"
-        },
-      ]
+      archive_list: []
     }
   },
   methods: {
@@ -80,34 +54,35 @@ export default {
       }
     }
   },
-  // mounted() {
-  //   const requestOptions = {
-  //     method: "GET",
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   };
-  //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
-  //       .then(resp => {
-  //         console.log(resp);
-  //         if (!resp.ok) {
-  //           throw Error(resp.statusText);
-  //         }
-  //         return resp.json()
-  //       })
-  //       .then(data => {
-  //         this.archive_list = data
-  //       }).catch(error => {
-  //     console.log(error)
-  //   });
-  // }
+  mounted() {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch('http://127.0.0.1:8000/api/v1/archive_list', requestOptions)
+        .then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }
+        })
+        .then(json => {
+          console.log(json)
+          this.archive_list = json.reverse()
+        })
+        .catch((error) => {
+          this.submitStatus = 'ERROR'
+          console.log(JSON.stringify(error.response))
+        })
+  }
 }
 </script>
 
 <style scoped>
 .fullWidthImage {
-  width: 900px !important;
-  height: 600px !important;
+  width: 1100px !important;
+  height: 700px !important;
   display: flex;
   z-index: 1000;
   position: fixed;
@@ -125,6 +100,13 @@ export default {
 /*Vue system tags*/
 .v-expansion-panel:not(:first-child)::after {
   border-top: none;
+}
+
+@media screen and (max-width: 1200px){
+.fullWidthImage {
+  width: 900px !important;
+  height: 600px !important;
+}
 }
 
 @media screen and (max-width: 990px){

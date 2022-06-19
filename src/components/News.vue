@@ -91,10 +91,7 @@ export default {
     return {
       dialog: false,
       dialogDate: {date: null, title: null, text: null},
-      news_list: [
-        {date: "10 февраля", title: "Результаты конкурса \"Дуэли\".", text: "В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета. В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета. В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета. В VII конкурсе деканата ЦиТХИн \"Дуэли\" определились победители пар и лучшие дуэлянты факультета."},
-        {date: "2 марта", title: "Дорогие студенты!", text: "Ознакомьтесь, пожалуйста, с составами отрядов конкурса \"Три мушкетёра\" и парами оппонентов конкурса \"Дуэли\". Если кто-то оказался пропущен или закралась ошибка, пожалуйста, напишите нам.\n"},
-       ]
+      news_list: []
     }
   },
   methods: {
@@ -108,27 +105,27 @@ export default {
       this.dialog = false
     }
   },
-  // mounted() {
-  //   const requestOptions = {
-  //     method: "GET",
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   };
-  //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
-  //       .then(resp => {
-  //         console.log(resp);
-  //         if (!resp.ok) {
-  //           throw Error(resp.statusText);
-  //         }
-  //         return resp.json()
-  //       })
-  //       .then(data => {
-  //         this.news_list = data
-  //       }).catch(error => {
-  //     console.log(error)
-  //   });
-  // }
+  mounted() {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch('http://127.0.0.1:8000/api/v1/news_list', requestOptions)
+        .then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }
+        })
+        .then(json => {
+          this.news_list = json
+        })
+        .catch((error) => {
+          this.submitStatus = 'ERROR'
+          console.log(JSON.stringify(error.response))
+        })
+  }
 }
 </script>
 

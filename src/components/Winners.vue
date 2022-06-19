@@ -40,13 +40,13 @@
                       color="transparent"
                   >
                     <p class="blue--text text--darken-2 font-weight-bold ">3 Место</p>
-                      <div class="font-weight-bold  green--text">{{ winners_list[2].command }}</div>
+                      <div class="font-weight-bold  green--text">{{ winners_list[2].name }}</div>
                       <div class="font-weight-bold">{{ winners_list[2].group }}</div>
-                      <div>{{ winners_list[2].member1 }}</div>
-                      <div>{{ winners_list[2].member2 }}</div>
-                      <div>{{ winners_list[2].member3 }}</div>
-                      <div>{{ winners_list[2].member4 }}</div>
-                      <div>{{ winners_list[2].member5 }}</div>
+                      <div>{{ winners_list[2].lineOne }}</div>
+                      <div>{{ winners_list[2].lineTwo }}</div>
+                      <div>{{ winners_list[2].lineThree }}</div>
+                      <div>{{ winners_list[2].lineFour }}</div>
+                      <div>{{ winners_list[2].lineFive }}</div>
                   </v-card>
                 </v-col>
                 <v-col order="2" cols="12" sm="4">
@@ -56,13 +56,13 @@
                       color="transparent"
                   >
                     <p class="blue--text text--darken-2 font-weight-bold">1 Место</p>
-                      <div class="font-weight-bold  green--text">{{ winners_list[0].command }}</div>
+                      <div class="font-weight-bold  green--text">{{ winners_list[0].name }}</div>
                       <div class="font-weight-bold">{{ winners_list[0].group }}</div>
-                      <div>{{ winners_list[0].member1 }}</div>
-                      <div>{{ winners_list[0].member2 }}</div>
-                      <div>{{ winners_list[0].member3 }}</div>
-                      <div>{{ winners_list[0].member4 }}</div>
-                      <div>{{ winners_list[0].member5 }}</div>
+                      <div>{{ winners_list[0].lineOne }}</div>
+                      <div>{{ winners_list[0].lineTwo }}</div>
+                      <div>{{ winners_list[0].lineThree }}</div>
+                      <div>{{ winners_list[0].lineFour }}</div>
+                      <div>{{ winners_list[0].lineFive }}</div>
                   </v-card>
                 </v-col>
                 <v-col order="3" cols="12" sm="4">
@@ -72,13 +72,13 @@
                       color="transparent"
                   >
                     <p class="blue--text text--darken-2 font-weight-bold ">2 Место</p>
-                      <div class="font-weight-bold green--text">{{ winners_list[1].command }}</div>
+                      <div class="font-weight-bold green--text">{{ winners_list[1].name }}</div>
                       <div class="font-weight-bold">{{ winners_list[1].group }}</div>
-                      <div>{{ winners_list[1].member1 }}</div>
-                      <div>{{ winners_list[1].member2 }}</div>
-                      <div>{{ winners_list[1].member3 }}</div>
-                      <div>{{ winners_list[1].member4 }}</div>
-                      <div>{{ winners_list[1].member5 }}</div>
+                      <div>{{ winners_list[1].lineOne }}</div>
+                      <div>{{ winners_list[1].lineTwo }}</div>
+                      <div>{{ winners_list[1].lineThree }}</div>
+                      <div>{{ winners_list[1].lineFour }}</div>
+                      <div>{{ winners_list[1].lineFive }}</div>
                   </v-card>
                 </v-col>
                 <v-col order="4" cols="12" sm="4" v-show="$vuetify.breakpoint.xsOnly">
@@ -88,13 +88,13 @@
                       color="transparent"
                   >
                     <p class="blue--text text--darken-2 font-weight-bold ">3 Место</p>
-                    <div class="font-weight-bold green--text">{{ winners_list[2].command }}</div>
+                    <div class="font-weight-bold green--text">{{ winners_list[2].name }}</div>
                     <div class="font-weight-bold">{{ winners_list[2].group }}</div>
-                    <div>{{ winners_list[2].member1 }}</div>
-                    <div>{{ winners_list[2].member2 }}</div>
-                    <div>{{ winners_list[2].member3 }}</div>
-                    <div>{{ winners_list[2].member4 }}</div>
-                    <div>{{ winners_list[2].member5 }}</div>
+                    <div>{{ winners_list[2].lineOne }}</div>
+                    <div>{{ winners_list[2].lineTwo }}</div>
+                    <div>{{ winners_list[2].lineThree }}</div>
+                    <div>{{ winners_list[2].lineFour }}</div>
+                    <div>{{ winners_list[2].lineFive }}</div>
                   </v-card>
                 </v-col>
               </v-row>
@@ -103,15 +103,34 @@
         </v-tab-item>
         <v-tab-item>
           <v-card class="shadow-disabled">
-            <v-card-text>
-              Дуэли
+            <v-card-text v-if="winners_list[3]">
+              <p class="mb-0 green--text font-weight-bold">Победители Дуэлей</p>
+              <p class="blue--text">(с наивысшим рейтингом)</p>
+              <div>{{ winners_list[3].lineOne }}</div>
+              <div>{{ winners_list[3].lineTwo }}</div>
+              <div>{{ winners_list[3].lineThree }}</div>
+              <div>{{ winners_list[3].lineFour }}</div>
+              <div>{{ winners_list[3].lineFive }}</div>
+            </v-card-text>
+            <v-card-text v-else>
+              <p class="green--text font-weight-bold">Ой, тут ничего нет</p>
             </v-card-text>
           </v-card>
         </v-tab-item>
         <v-tab-item>
           <v-card class="shadow-disabled">
-            <v-card-text>
-              Лучшие группы
+            <v-card-text v-if="winners_list[4]">
+              <p class="mb-0 green--text font-weight-bold">Лучшие группы факультета</p>
+              <p class="blue--text">(с наивысшим рейтингом)</p>
+              <div>1 курс {{ winners_list[4].group }}</div>
+              <div>2 курс {{ winners_list[4].lineOne }}</div>
+              <div>3 курс {{ winners_list[4].lineTwo }}</div>
+              <div>4 курс {{ winners_list[4].lineThree }}</div>
+              <div>1 курс маг. {{ winners_list[4].lineFour }}</div>
+              <div>2 курс маг. {{ winners_list[4].lineFive }}</div>
+            </v-card-text>
+            <v-card-text v-else>
+              <p class="green--text font-weight-bold">Ой, тут ничего нет</p>
             </v-card-text>
           </v-card>
         </v-tab-item>
@@ -135,33 +154,35 @@ export default {
     return {
       tabs: null,
       winners_list: [
-        {command: "в бой идут одни старики", group: "МТ-18", member1: "Мавлянбердиев", member2: "Абузярова", member3: "Гайдукова", member4: "Городничев", member5: ""},
-        {command: "Инженеры-заочники", group: "К-35", member1: "Гордионок", member2: "Окишева", member3: "Пашкин", member4: "Сулханов", member5: "Фаустова"},
-        {command: "Кахцер ворикнер" , group: "Ц-11", member1: "Долгов", member2: "Неруссков", member3: "Бутырский", member4: "Варданян", member5: "Малашенков"},
+        { name: null, group: null, lineOne: null, lineTwo: null, lineThree: null, lineFour: null, lineFive: null},
+        { name: null, group: null, lineOne: null, lineTwo: null, lineThree: null, lineFour: null, lineFive: null},
+        { name: null, group: null, lineOne: null, lineTwo: null, lineThree: null, lineFour: null, lineFive: null},
+        { name: null, group: null, lineOne: null, lineTwo: null, lineThree: null, lineFour: null, lineFive: null},
+        { name: null, group: null, lineOne: null, lineTwo: null, lineThree: null, lineFour: null, lineFive: null},
       ]
     }
   },
-  // mounted() {
-  //   const requestOptions = {
-  //     method: "GET",
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   };
-  //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
-  //       .then(resp => {
-  //         console.log(resp);
-  //         if (!resp.ok) {
-  //           throw Error(resp.statusText);
-  //         }
-  //         return resp.json()
-  //       })
-  //       .then(data => {
-  //         this.winners_list = data
-  //       }).catch(error => {
-  //     console.log(error)
-  //   });
-  // }
+  mounted () {
+    const requestListOptions = {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch('http://127.0.0.1:8000/api/v1/winners_list', requestListOptions)
+        .then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }
+        })
+        .then(json => {
+          this.winners_list = json
+        })
+        .catch((error) => {
+          this.submitStatus = 'ERROR'
+          console.log(JSON.stringify(error.response))
+        });
+  }
 }
 </script>
 

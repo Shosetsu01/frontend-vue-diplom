@@ -213,8 +213,8 @@ export default {
       password: null,
       group: null,
       faculty: null,
-      groups: ['Кс-40', 'Кс-30'],
-      faculties: ['ЦиТХИн', 'НПМ'],
+      groups: [],
+      faculties: ['ЦиТХИн'],
       hasSaved: false,
       show1: false,
       submitStatus: null,
@@ -315,26 +315,29 @@ export default {
     }
   },
   mounted() {
-    // const requestOptions = {
-    //     method: "GET",
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   };
-    //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
-    //       .then(resp => {
-    //         console.log(resp);
-    //         if (!resp.ok) {
-    //           throw Error(resp.statusText);
-    //         }
-    //         return resp.json()
-    //       })
-    //       .then(data => {
-    //         this.groups = data.groups
-    //         this.faculties = data.faculties
-    //       }).catch(error => {
-    //     console.log(error)
-    //   });
+    let getGroups;
+    const requestOptions = {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+      fetch('http://127.0.0.1:8000/api/v1/groups_list', requestOptions)
+          .then(response => {
+            if (response.status === 200) {
+              return response.json()
+            }
+          })
+          .then(json => {
+            getGroups = json
+            for (let i = 0; i < getGroups.length; i++ ) {
+              this.groups.push(getGroups[i].name)
+            }
+          })
+          .catch((error) => {
+            this.submitStatus = 'ERROR'
+            console.log(JSON.stringify(error.response))
+          })
   }
 }
 </script>

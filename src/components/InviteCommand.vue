@@ -37,14 +37,27 @@
               cols="12"
               md="6"
           >
-            <v-text-field
-                v-model="title"
+<!--            <v-text-field-->
+<!--                v-model="title"-->
+<!--                :disabled="isUpdating"-->
+<!--                color=#777777-->
+<!--                outlined-->
+<!--                rounded-->
+<!--                label="Учебная группа"-->
+<!--            ></v-text-field>-->
+
+            <v-autocomplete
                 :disabled="isUpdating"
-                color=#777777
                 outlined
                 rounded
+                :items="groups"
+                item-value="id"
+                color=#777777
+                item-text="name"
                 label="Учебная группа"
-            ></v-text-field>
+                v-model="title"
+            ></v-autocomplete>
+
           </v-col>
           <v-col cols="12">
             <v-autocomplete
@@ -100,7 +113,7 @@
       <v-spacer></v-spacer>
       <v-btn
           :loading="isUpdating"
-          @click="isUpdating = true"
+          @click="saveCommand"
           rounded
           outlined
           class="pa-5 mr-md-2 mt-3 orange--text"
@@ -129,6 +142,16 @@
   >
     Вызов на дуэль успешно отправлен
   </v-snackbar>
+
+  <v-snackbar
+      v-model="errorCommand"
+      :timeout="2000"
+      absolute
+      bottom
+      centered
+  >
+    Заполните поля правильно
+  </v-snackbar>
 </v-container>
 </template>
 
@@ -138,34 +161,32 @@ export default {
   data () {
     return {
       hasSaved: false,
-      friends: ['Марьин Роман'],
+      errorCommand: false,
+      friends: [],
       isUpdating: false,
-      name: 'Абобусы Кс-40',
-      people: [
-        { header: 'Кс-40' },
-        { name: 'Поляков Павел', group: 'Кс-40'},
-        { name: 'Авдеев Алексей', group: 'Кс-40'},
-        { name: 'Букин Никита', group: 'Кс-40' },
-        { name: 'Абросимов Владислав', group: 'Кс-40'},
-        { name: 'Марьин Роман', group: 'Кс-40'},
-        { divider: true },
-        { header: 'Кс-44' },
-        { name: 'Макляев Илья', group: 'Кс-44'},
-        { name: 'Богодухова Алина', group: 'Кс-44'},
-        { name: 'Басистый Илья', group: 'Кс-44'},
-        { name: 'Бочаров Михаил', group: 'Кс-44'},
-      ],
-      title: 'Группа Кс-40',
+      name: '',
+      people: [],
+      title: null,
+      groups: [],
     }
   },
   watch: {
     isUpdating (val) {
       if (val) {
-        setTimeout(() => (this.isUpdating = false), 3000)
+        setTimeout(() => (this.isUpdating = false), 2000)
       }
     },
   },
   methods: {
+    saveCommand () {
+      if (this.friends.length <= 5 && this.friends.length >= 3 && this.name && this.title) {
+        this.isUpdating = true
+        // this.inviteDuel()
+      } else {
+        this.errorCommand = true
+      }
+    },
+
     remove (item) {
       const index = this.friends.indexOf(item.name)
       if (index >= 0) this.friends.splice(index, 1)
@@ -202,27 +223,60 @@ export default {
     //       })
     // }
   },
-  // mounted() {
-  //   const requestOptions = {
-  //     method: "GET",
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   };
-  //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
-  //       .then(resp => {
-  //         console.log(resp);
-  //         if (!resp.ok) {
-  //           throw Error(resp.statusText);
-  //         }
-  //         return resp.json()
-  //       })
-  //       .then(data => {
-  //         this.people = data
-  //       }).catch(error => {
-  //     console.log(error)
-  //   });
-  // }
+  mounted() {
+    let getGroups;
+    let getPeople;
+
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch('http://127.0.0.1:8000/api/v1/groups_list', requestOptions)
+        .then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }
+        })
+        .then(json => {
+          getGroups = json
+          for (let i = 0; i < getGroups.length; i++ ) {
+            this.groups.push(getGroups[i].name)
+          }
+        })
+        .catch((error) => {
+          this.submitStatus = 'ERROR'
+          console.log(JSON.stringify(error.response))
+        });
+
+    const requestListOptions = {
+      method: "GET",
+      headers: {
+        Authorization: 'Token' + ' ' + this.$store.state.savedCurrentToken
+      },
+    };
+    fetch('http://127.0.0.1:8000/api/v1/users_list', requestListOptions)
+        .then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }
+        })
+        .then(json => {
+          getPeople = json
+          for (let i = 0; i < getPeople.length; i++ ) {
+            this.people.push({
+              name: getPeople[i].last_name+' '+getPeople[i].first_name,
+              group: getPeople[i].group
+            })
+          }
+
+        })
+        .catch((error) => {
+          this.submitStatus = 'ERROR'
+          console.log(JSON.stringify(error.response))
+        });
+  }
 }
 </script>
 

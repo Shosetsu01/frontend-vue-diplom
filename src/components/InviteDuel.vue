@@ -61,13 +61,7 @@ export default {
     marker: true,
     hasSaved: false,
     state: null,
-    states: [
-      { name: 'Поляков Павел', id: 1 },
-      { name: 'Марьин Роман', id: 2 },
-      { name: 'Иванов Андрей', id: 3 },
-      { name: 'Букин Никита', id: 4 },
-      { name: 'Абросимов Владислав', id: 5 },
-    ],
+    states: [],
   }),
   methods: {
     toggleMarker () {
@@ -101,27 +95,36 @@ export default {
     //       })
     // }
   },
-  // mounted() {
-  //   const requestOptions = {
-  //     method: "GET",
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   };
-  //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
-  //       .then(resp => {
-  //         console.log(resp);
-  //         if (!resp.ok) {
-  //           throw Error(resp.statusText);
-  //         }
-  //         return resp.json()
-  //       })
-  //       .then(data => {
-  //         this.states = data
-  //       }).catch(error => {
-  //     console.log(error)
-  //   });
-  // }
+  mounted() {
+    let getPeople;
+
+    const requestListOptions = {
+      method: "GET",
+      headers: {
+        Authorization: 'Token' + ' ' + this.$store.state.savedCurrentToken
+      },
+    };
+    fetch('http://127.0.0.1:8000/api/v1/users_list', requestListOptions)
+        .then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }
+        })
+        .then(json => {
+          getPeople = json
+          for (let i = 0; i < getPeople.length; i++ ) {
+            this.states.push({
+              name: getPeople[i].last_name+' '+getPeople[i].first_name,
+              group: getPeople[i].group
+            })
+          }
+
+        })
+        .catch((error) => {
+          this.submitStatus = 'ERROR'
+          console.log(JSON.stringify(error.response))
+        });
+  }
 }
 </script>
 

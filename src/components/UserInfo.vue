@@ -200,8 +200,8 @@ export default {
       hasSaved: false,
       isEditing: null,
       model: null,
-      groups: ['Кс-40', 'Кс-30'],
-      faculties: ['ЦиТХИн', 'НПМ'],
+      groups: [],
+      faculties: ['ЦиТХИн'],
       show1: false,
     }
   },
@@ -258,26 +258,29 @@ export default {
     this.userData.group = this.$store.state.savedCurrentUser.group
     this.userData.faculty = this.$store.state.savedCurrentUser.faculty
 
-      // const requestOptions = {
-      //     method: "GET",
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //   };
-      //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
-      //       .then(resp => {
-      //         console.log(resp);
-      //         if (!resp.ok) {
-      //           throw Error(resp.statusText);
-      //         }
-      //         return resp.json()
-      //       })
-      //       .then(data => {
-      //         this.groups = data.groups
-      //         this.faculties = data.faculties
-      //       }).catch(error => {
-      //     console.log(error)
-      //   });
+    let getGroups;
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch('http://127.0.0.1:8000/api/v1/groups_list', requestOptions)
+        .then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }
+        })
+        .then(json => {
+          getGroups = json
+          for (let i = 0; i < getGroups.length; i++ ) {
+            this.groups.push(getGroups[i].name)
+          }
+        })
+        .catch((error) => {
+          this.submitStatus = 'ERROR'
+          console.log(JSON.stringify(error.response))
+        })
   }
 }
 </script>
