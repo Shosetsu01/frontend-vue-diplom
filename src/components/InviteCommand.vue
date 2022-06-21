@@ -240,9 +240,7 @@ export default {
     }
   },
   mounted() {
-    let getGroups;
-    let getPeople;
-
+    this.friends.push(this.$store.state.savedCurrentUser.last_name+' '+this.$store.state.savedCurrentUser.first_name)
     const requestOptions = {
       method: "GET",
       headers: {
@@ -256,9 +254,8 @@ export default {
           }
         })
         .then(json => {
-          getGroups = json
-          for (let i = 0; i < getGroups.length; i++ ) {
-            this.groups.push(getGroups[i].name)
+          for (let i = 0; i < json.length; i++ ) {
+            this.groups.push(json[i].name)
           }
         })
         .catch((error) => {
@@ -278,11 +275,10 @@ export default {
           }
         })
         .then(json => {
-          getPeople = json
-          for (let i = 0; i < getPeople.length; i++ ) {
+          for (let i = 0; i < json.length; i++ ) {
             this.people.push({
-              name: getPeople[i].last_name+' '+getPeople[i].first_name,
-              group: getPeople[i].group
+              name: json[i].last_name+' '+json[i].first_name,
+              group: json[i].group
             })
           }
 

@@ -368,27 +368,27 @@ export default {
     //   formData.group = this.group
     //   formData.faculty = this.faculty
     //
-    //   const requestOptions = {
-    //     method: "POST",
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //       ...formData
-    //     })
-    //   };
-    //   fetch("http://127.0.0.1:8000/api/v1/", requestOptions)
-    //       .then(response => {
-    //         if (response.status === 201) {
-    //           this.hasSaved = true
-    //           setTimeout(() => {
-    //             this.$router.push({path: '/login', replace: true})
-    //           }, 1000)
-    //         }
-    //       })
-    //       .catch((error) => {
-    //         console.log(JSON.stringify(error.response.data))
-    //       })
+      // const requestOptions = {
+      //   method: "POST",
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     ...formData
+      //   })
+      // };
+      // fetch("http://127.0.0.1:8000/api/v1/registration", requestOptions)
+      //     .then(response => {
+      //       if (response.status === 201) {
+      //         this.hasSaved = true
+      //         setTimeout(() => {
+      //           this.$router.push({path: '/login', replace: true})
+      //         }, 1000)
+      //       }
+      //     })
+      //     .catch((error) => {
+      //       console.log(JSON.stringify(error.response.data))
+      //     })
     // }
   },
   mounted() {
