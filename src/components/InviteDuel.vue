@@ -19,12 +19,11 @@
           <v-autocomplete
               color=#898989
               solo
-              type="text"
               :append-icon="'mdi-send'"
               :items="states"
-              item-value="id"
-              v-model = state
+              v-model =state
               item-text="name"
+              item-value="id"
               label="Введите имя оппонента"
               @click:append="toggleMarker"
           ></v-autocomplete>
@@ -46,10 +45,19 @@
       v-model="hasSaved"
       :timeout="2000"
       absolute
-      bottom
       centered
   >
-    Вызов на дуэль успешно отправлен
+    Вызов на дуэль успешно отправлен!
+  </v-snackbar>
+
+  <v-snackbar
+      v-model="errorBadRequest"
+      :timeout="4000"
+      absolute
+      centered
+  >
+    Похоже что Вы уже отправили кому-то вызов или <br>
+    выбранный пользователь уже участвует в дуэли.
   </v-snackbar>
 </v-container>
 </template>
@@ -60,40 +68,54 @@ export default {
   data: () => ({
     marker: true,
     hasSaved: false,
+    errorBadRequest: false,
     state: null,
+    group: null,
     states: [],
   }),
   methods: {
     toggleMarker () {
-      // this.inviteDuel()
+      for (let i = 0; i < this.states.length; i++) {
+        if (this.states[i].name === this.state) {
+          this.group = this.states[i].group
+        } else {
+          continue
+        }
+      }
+      this.inviteDuel()
     },
 
-    // inviteDuel: function () {
-    //   let formData = {
-    //     name: null,
-    //   }
-    //   formData.name = this.state
-    //
-    //   const requestOptions = {
-    //     method: "POST",
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //       ...formData
-    //     })
-    //   };
-    //   fetch("http://127.0.0.1:8000/api/v1/", requestOptions)
-    //       .then(response => {
-    //         if (response.status === 201) {
-    //           this.hasSaved = true
-    //         }
-    //       })
-    //       .catch((error) => {
-    //         this.submitStatus = 'ERROR'
-    //         console.log(JSON.stringify(error.response.data))
-    //       })
-    // }
+    inviteDuel: function () {
+      let formData = {
+        firstPeople: this.$store.state.savedCurrentUser.last_name+' '+this.$store.state.savedCurrentUser.first_name,
+        groupFirst: this.$store.state.savedCurrentUser.group,
+        secondPeople: this.state,
+        groupSecond: this.group,
+        acceptDuel: false,
+      }
+
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData
+        })
+      };
+      fetch("http://127.0.0.1:8000/api/v1/add_duel", requestOptions)
+          .then(response => {
+            if (response.status === 201) {
+              this.hasSaved = true
+              this.state = null
+            } else {
+              this.errorBadRequest = true
+            }
+          })
+          .catch((error) => {
+            console.log(JSON.stringify(error.response.data))
+          })
+    }
   },
   mounted() {
     let getPeople;
@@ -118,10 +140,8 @@ export default {
               group: getPeople[i].group
             })
           }
-
         })
         .catch((error) => {
-          this.submitStatus = 'ERROR'
           console.log(JSON.stringify(error.response))
         });
   }

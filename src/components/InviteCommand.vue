@@ -37,15 +37,6 @@
               cols="12"
               md="6"
           >
-<!--            <v-text-field-->
-<!--                v-model="title"-->
-<!--                :disabled="isUpdating"-->
-<!--                color=#777777-->
-<!--                outlined-->
-<!--                rounded-->
-<!--                label="Учебная группа"-->
-<!--            ></v-text-field>-->
-
             <v-autocomplete
                 :disabled="isUpdating"
                 outlined
@@ -57,7 +48,6 @@
                 label="Учебная группа"
                 v-model="title"
             ></v-autocomplete>
-
           </v-col>
           <v-col cols="12">
             <v-autocomplete
@@ -140,7 +130,7 @@
       bottom
       centered
   >
-    Вызов на дуэль успешно отправлен
+    Команда успешно создана!
   </v-snackbar>
 
   <v-snackbar
@@ -150,7 +140,18 @@
       bottom
       centered
   >
-    Заполните поля правильно
+    Заполните поля правильно!
+  </v-snackbar>
+
+  <v-snackbar
+      v-model="errorBadRequest"
+      :timeout="4000"
+      absolute
+      bottom
+      centered
+  >
+    Имя команды или учебная группа уже используются. <br>
+    А также выбранные участники возможно состоять в другой команду.
   </v-snackbar>
 </v-container>
 </template>
@@ -162,6 +163,7 @@ export default {
     return {
       hasSaved: false,
       errorCommand: false,
+      errorBadRequest: false,
       friends: [],
       isUpdating: false,
       name: '',
@@ -181,7 +183,16 @@ export default {
     saveCommand () {
       if (this.friends.length <= 5 && this.friends.length >= 3 && this.name && this.title) {
         this.isUpdating = true
-        // this.inviteDuel()
+        if (this.friends.length === 3) {
+          this.friends.push(null)
+          this.friends.push(null)
+          this.inviteDuel()
+        } else if (this.friends.length === 4) {
+          this.friends.push(null)
+          this.inviteDuel()
+        } else {
+          this.inviteDuel()
+        }
       } else {
         this.errorCommand = true
       }
@@ -192,36 +203,41 @@ export default {
       if (index >= 0) this.friends.splice(index, 1)
     },
 
-    // inviteDuel: function () {
-    //   let formData = {
-    //     command: null,
-    //     name: null,
-    //     title: null
-    //   }
-    //   formData.name = this.name
-    //   formData.title = this.title
-    //   formData.command = this.friends
-    //
-    //   const requestOptions = {
-    //     method: "POST",
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //       ...formData
-    //     })
-    //   };
-    //   fetch("http://127.0.0.1:8000/api/v1/", requestOptions)
-    //       .then(response => {
-    //         if (response.status === 201) {
-    //           this.hasSaved = true
-    //         }
-    //       })
-    //       .catch((error) => {
-    //         this.submitStatus = 'ERROR'
-    //         console.log(JSON.stringify(error.response.data))
-    //       })
-    // }
+    inviteDuel: function () {
+      let formData = {
+        name: this.name,
+        group: this.title,
+        firstPeople: this.friends[0],
+        secondPeople: this.friends[1],
+        thirdPeople: this.friends[2],
+        fourthPeople: this.friends[3],
+        fifthPeople: this.friends[4],
+      }
+
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData
+        })
+      };
+      fetch("http://127.0.0.1:8000/api/v1/command", requestOptions)
+          .then(response => {
+            if (response.status === 201) {
+              this.hasSaved = true
+              this.title = null
+              this.name = null
+              this.friends = null
+            } else {
+              this.errorBadRequest = true
+            }
+          })
+          .catch((error) => {
+            console.log(JSON.stringify(error.response.data))
+          })
+    }
   },
   mounted() {
     let getGroups;
@@ -246,7 +262,6 @@ export default {
           }
         })
         .catch((error) => {
-          this.submitStatus = 'ERROR'
           console.log(JSON.stringify(error.response))
         });
 
@@ -273,7 +288,6 @@ export default {
 
         })
         .catch((error) => {
-          this.submitStatus = 'ERROR'
           console.log(JSON.stringify(error.response))
         });
   }

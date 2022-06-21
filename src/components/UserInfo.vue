@@ -16,6 +16,18 @@
             color=#E47500
             fab
             small
+            @click="dialog = true"
+            class="mr-3"
+            v-show="inviteDuel.length > 0"
+        >
+          <v-icon>
+            mdi-email-newsletter
+          </v-icon>
+        </v-btn>
+        <v-btn
+            color=#E47500
+            fab
+            small
             @click="isEditing = !isEditing"
         >
           <v-icon v-if="isEditing">
@@ -181,6 +193,64 @@
         Данные профиля пользователя были обновлены.
       </v-snackbar>
     </v-card>
+
+    <v-dialog
+        v-model="dialog"
+        width="700"
+    >
+      <v-card style="border-radius: 20px !important;">
+        <v-card-title class="text-h6 orange--text justify-center mb-3">
+          Входящие вызовы на дуэль
+        </v-card-title>
+        <v-card-text class="text-justify">
+          <v-row
+              v-for="item in inviteDuel"
+              :key="item.id"
+          >
+            <v-col cols="6" class="text-sm-h4 text-h6"> {{ item.firstPeople }} </v-col>
+            <v-spacer></v-spacer>
+            <v-col cols="6" class="text-right">
+              <v-spacer></v-spacer>
+              <v-btn
+                  color=#E47500
+                  fab
+                  small
+                  @click="rejectDuel(item)"
+                  class="mr-3"
+              >
+                <v-icon>
+                  mdi-close
+                </v-icon>
+              </v-btn>
+              <v-btn
+                  color=#E47500
+                  fab
+                  small
+                  @click="acceptDuel(item)"
+              >
+                <v-icon>
+                  mdi-check
+                </v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+              color="#FA8305"
+              text
+              @click="dialog = false"
+              min-width="150"
+          >
+            Закрыть
+          </v-btn>
+          <v-spacer></v-spacer>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
   </v-container>
 </template>
 
@@ -189,6 +259,8 @@ export default {
   name: "UserInfo",
   data () {
     return {
+      dialog: false,
+      inviteDuel: [],
       userData: {
         firstName: null,
         lastName: null,
@@ -209,6 +281,75 @@ export default {
     save () {
       this.isEditing = !this.isEditing
       this.hasSaved = true
+    },
+
+    acceptDuel (item) {
+      const index = this.inviteDuel.indexOf(item)
+      let formData = {
+        id: item.id,
+        firstPeople: item.firstPeople,
+        groupFirst: item.groupFirst,
+        secondPeople: item.secondPeople,
+        groupSecond: item.groupSecond,
+        acceptDuel: true
+        }
+      const address = "http://127.0.0.1:8000/api/v1/update_duel/"+item.id+"/"
+      const requestOptions = {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData
+        }),
+      };
+
+      fetch(address, requestOptions)
+          .then(response => {
+            if (response.status === 200) {
+              if (index >= 0) this.inviteDuel.splice(index, 1)
+              this.dialog = false
+              setTimeout(() => {
+                             this.inviteDuel = null
+                          }, 1000)
+            }
+          })
+          .catch((error) => {
+            console.log(JSON.stringify(error.response.data))
+          })
+    },
+
+    rejectDuel (item) {
+      const index = this.inviteDuel.indexOf(item)
+      let formData = {
+        id: item.id,
+        firstPeople: item.firstPeople,
+        groupFirst: item.groupFirst,
+        secondPeople: item.secondPeople,
+        groupSecond: item.groupSecond,
+        acceptDuel: false
+      }
+      const address = "http://127.0.0.1:8000/api/v1/delete_duel/"+item.id+"/"
+      const requestOptions = {
+        method: "DELETE",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData
+        }),
+      };
+
+      fetch(address, requestOptions)
+          .then(response => {
+            if (response.status === 204) {
+              if (index >= 0) this.inviteDuel.splice(index, 1)
+              this.dialog = false
+            }
+          })
+          .catch((error) => {
+            console.log(JSON.stringify(error.response.data))
+          })
     },
 
     // changeUserDate: function () {
@@ -246,7 +387,6 @@ export default {
     //         }
     //       })
     //       .catch((error) => {
-    //         this.submitStatus = 'ERROR'
     //         console.log(JSON.stringify(error.response.data))
     //       })
     // }
@@ -258,13 +398,13 @@ export default {
     this.userData.group = this.$store.state.savedCurrentUser.group
     this.userData.faculty = this.$store.state.savedCurrentUser.faculty
 
-    let getGroups;
     const requestOptions = {
       method: "GET",
       headers: {
         'Content-Type': 'application/json',
       },
     };
+
     fetch('http://127.0.0.1:8000/api/v1/groups_list', requestOptions)
         .then(response => {
           if (response.status === 200) {
@@ -272,13 +412,29 @@ export default {
           }
         })
         .then(json => {
-          getGroups = json
-          for (let i = 0; i < getGroups.length; i++ ) {
-            this.groups.push(getGroups[i].name)
+          for (let i = 0; i < json.length; i++ ) {
+            this.groups.push(json[i].name)
           }
         })
         .catch((error) => {
-          this.submitStatus = 'ERROR'
+          console.log(JSON.stringify(error.response))
+        })
+
+    fetch('http://127.0.0.1:8000/api/v1/duel_list', requestOptions)
+        .then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }
+        })
+        .then(json => {
+          for (let i = 0; i < json.length; i++ ) {
+            if ((this.userData.lastName + ' ' + this.userData.firstName) === json[i].secondPeople
+                && json[i].acceptDuel === false) {
+              this.inviteDuel.push(json[i])
+            }
+          }
+        })
+        .catch((error) => {
           console.log(JSON.stringify(error.response))
         })
   }

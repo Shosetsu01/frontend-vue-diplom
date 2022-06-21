@@ -68,11 +68,9 @@ export default {
           }
         })
         .then(json => {
-          console.log(json)
           this.archive_list = json.reverse()
         })
         .catch((error) => {
-          this.submitStatus = 'ERROR'
           console.log(JSON.stringify(error.response))
         })
   }

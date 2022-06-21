@@ -30,11 +30,11 @@
             v-for="item in opponents"
             :key="item.id"
         >
-          <td>{{ item.people1 }}</td>
-          <td>{{ item.group1 }}</td>
+          <td>{{ item.firstPeople }}</td>
+          <td>{{ item.groupFirst }}</td>
           <td> — </td>
-          <td>{{ item.people2 }}</td>
-          <td>{{ item.group2 }}</td>
+          <td>{{ item.secondPeople }}</td>
+          <td>{{ item.groupSecond }}</td>
         </tr>
         </tbody>
       </template>
@@ -48,43 +48,33 @@ export default {
   name: "ParticipatingNowDuel",
   data () {
     return {
-      opponents: [
-        {
-          people1: "Марьин",
-          group1: "Кс-40",
-          people2: "Поляков",
-          group2: "Кс-40",
-        },
-        {
-          people1: "Букин",
-          group1: "Кс-40",
-          people2: "Абросимов",
-          group2: "Кс-40",
-        },
-      ],
+      opponents: [],
     }
   },
-  // mounted() {
-  //   const requestOptions = {
-  //     method: "GET",
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   };
-  //   fetch('http://127.0.0.1:8000/api/v1/', requestOptions)
-  //       .then(resp => {
-  //         console.log(resp);
-  //         if (!resp.ok) {
-  //           throw Error(resp.statusText);
-  //         }
-  //         return resp.json()
-  //       })
-  //       .then(data => {
-  //         this.opponents = data
-  //       }).catch(error => {
-  //     console.log(error)
-  //   });
-  // }
+  mounted() {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    fetch('http://127.0.0.1:8000/api/v1/duel_list', requestOptions)
+        .then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }
+        })
+        .then(json => {
+          for (let i = 0; i < json.length; i++ ) {
+            if (json[i].acceptDuel === true) {
+              this.opponents.push(json[i])
+            }
+          }
+        })
+        .catch((error) => {
+          console.log(JSON.stringify(error.response))
+        });
+  }
 }
 </script>
 
